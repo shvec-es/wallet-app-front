@@ -1,0 +1,20 @@
+:root {
+  --color-primary: #4a56e2;
+  --color-primary-light: #6e78e8;
+  --color-secondary: #24cca7;
+  --color-tertiary: #ff6596;
+
+  --color-backdrop: rgba(0, 0, 0, 0.25);
+  --color-gray: #bdbdbd;
+  --color-gray-light: #e0e0e0;
+  --color-ellipse-top: #ffd8d0;
+  --color-ellipse-bottom: #c5baff;
+  --color-background: rgba(255, 255, 255, 0.4);
+  --color-blur: #e7eaf2;
+
+  --border-radius: 20px;
+  --backdrop-filter: blur(50px);
+  --box-shadow-light: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  --drop-shadow: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+}
