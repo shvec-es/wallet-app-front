@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Circe', 'Segoe UI';
+  src: local('Circe', 'Segoe UI'),
+    url('../assets/fonts/Circe-Regular.otf') format('OpenType'),
+    url('../assets/fonts/Circe-Bold.otf') format('OpenType'),
+    url('../assets/fonts/segoeui.ttf') format('TrueType'),
+    url('../assets/fonts/segoeuib.ttf') format('TrueType');
+}
