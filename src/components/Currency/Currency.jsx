@@ -17,6 +17,7 @@ const Currency = () => {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    //
     const localCurrency = JSON.parse(localStorage.getItem('currency'));
     const currencyTime = JSON.parse(localStorage.getItem('currency_time'));
 
@@ -28,7 +29,7 @@ const Currency = () => {
 
         if (response.ok) {
           const data = await response.json();
-
+          //
           localStorage.setItem('currency', JSON.stringify(data));
           localStorage.setItem('currency_time', Date.now());
 
