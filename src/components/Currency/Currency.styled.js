@@ -3,8 +3,8 @@ import header from 'images/header.svg';
 import footer from 'images/footer.svg';
 
 export const CurrencyTable = styled.table`
-  width: 280px;
-  height: 90px;
+  min-width: 280px;
+  min-height: 174px;
   border-collapse: collapse;
   border-spacing: 0;
   border-radius: 30px;
@@ -20,6 +20,7 @@ export const CurrencyTable = styled.table`
 
   @media (min-width: 768px) {
     min-width: 336px;
+    min-height: 182px;
   }
 
   @media (min-width: 1280px) {
@@ -53,10 +54,14 @@ export const TableData = styled.td`
   line-height: 24px;
 
   text-align: center;
+
+  @media (min-width: 1280px) {
+    padding: 12px;
+  }
 `;
 
 export const TableFooter = styled.tfoot`
   @media (min-width: 1280px) {
-    height: 100px;
+    height: 165px;
   }
 `;
