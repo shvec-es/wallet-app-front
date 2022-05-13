@@ -78,21 +78,9 @@
         d="M24.667 10.667h-1.333v-2.667c0-3.68-2.987-6.667-6.667-6.667s-6.667 2.987-6.667 6.667v2.667h-1.333c-1.467 0-2.667 1.2-2.667 2.667v13.333c0 1.467 1.2 2.667 2.667 2.667h16c1.467 0 2.667-1.2 2.667-2.667v-13.333c0-1.467-1.2-2.667-2.667-2.667zM16.667 22.667c-1.467 0-2.667-1.2-2.667-2.667s1.2-2.667 2.667-2.667c1.467 0 2.667 1.2 2.667 2.667s-1.2 2.667-2.667 2.667zM20.8 10.667h-8.267v-2.667c0-2.28 1.853-4.133 4.133-4.133s4.133 1.853 4.133 4.133v2.667z"
       ></path>
     </symbol>
-    <symbol id="minus-btn" viewBox="0 0 32 32">
-      <path
-        fill="currentColor"
-        d="M25.514 13.405c0 5.254-4.259 9.513-9.514 9.513s-9.514-4.259-9.514-9.514c0-5.254 4.259-9.514 9.514-9.514s9.514 4.259 9.514 9.514z"
-      ></path>
-      <path
-        fill="none"
-        stroke="#fff"
-        stroke-linejoin="miter"
-        stroke-linecap="butt"
-        stroke-miterlimit="4"
-        stroke-width="0.8649"
-        d="M11.676 13.405h8.649"
-      ></path>
-    </symbol>
+    <symbol id="minus-btn" viewBox="0 0 320 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="32" d="M0 16l320-0"></path>
+</symbol>
     <symbol id="oval" viewBox="0 0 64 32">
       <path
         fill="none"
@@ -105,29 +93,9 @@
       ></path>
     </symbol>
     <symbol id="plus-btn" viewBox="0 0 32 32">
-      <path
-        fill="currentColor"
-        d="M25.514 13.405c0 5.254-4.259 9.513-9.514 9.513s-9.514-4.259-9.514-9.514c0-5.254 4.259-9.514 9.514-9.514s9.514 4.259 9.514 9.514z"
-      ></path>
-      <path
-        fill="none"
-        stroke="#fff"
-        stroke-linejoin="miter"
-        stroke-linecap="butt"
-        stroke-miterlimit="4"
-        stroke-width="0.8649"
-        d="M16 9.081v8.649"
-      ></path>
-      <path
-        fill="none"
-        stroke="#fff"
-        stroke-linejoin="miter"
-        stroke-linecap="butt"
-        stroke-miterlimit="4"
-        stroke-width="0.8649"
-        d="M11.676 13.405h8.649"
-      ></path>
-    </symbol>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 0v32"></path>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M0 16h32"></path>
+</symbol>
     <symbol id="timeline" viewBox="0 0 32 32">
       <path
         fill="currentColor"
