@@ -1,2 +1,2 @@
-import Currency from './Currency';
-export default Currency;
+export { default } from './Currency';
+export { default } from './HomeTab';
