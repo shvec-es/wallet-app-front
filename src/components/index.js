@@ -1,3 +1,2 @@
-
-
-export { default } from './HomeTab'
+export { default } from './Currency';
+export { default } from './HomeTab';
