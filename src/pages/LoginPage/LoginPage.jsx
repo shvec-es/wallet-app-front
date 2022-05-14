@@ -2,7 +2,7 @@
 //Зробити форму логінізації
 //Зробити лінк на регістрацію
 
-import LoginForm from '../LoginForm/LoginForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 
 
