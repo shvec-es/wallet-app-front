@@ -1,6 +1,7 @@
 
 /*тимчасові стилі, далі перероблю на styled comp (ще з ними  не розбирався)*/
-.table_mobile {
+.home_mobile__card {
+  list-style: none;
   position: relative;
   display: block;
   width: 280px;
@@ -11,11 +12,12 @@
   border-left: 5px solid var(--color-tertiary); 
 }
 
-.table_mobile:not(:last-child) {
+.home_mobile__card:not(:last-child) {
   margin-bottom: 40px;
 }
 
-.table__card {
+.home_mobile__group {
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,11 +33,12 @@
 .table__item_value {
   text-align: right;
 }
-.table__item_costs {
+.home_mobile__card_spend {
   font-weight: 700;
-  color: var(--color-tertiary);
+  border-left: 5px solid var(--color-tertiary);
+
 }
-.table__item_income {
+.home_mobile__card_income {
   font-weight: 700;
-  color: var(--color-secondary);
+  border-left: 5px solid var(--color-secondary);
 }
