@@ -11,6 +11,13 @@ import {
 } from './StatsTable.styled';
 
 function StatsTable({ expences }) {
+
+  const caclulateExpences = (expences) => {
+    return expences.reduce((acc, expence) => acc + expence.amount, 0);
+  }
+
+  const totalExpences = caclulateExpences(expences);
+
   return (
     <div>
       <Table>
@@ -37,7 +44,7 @@ function StatsTable({ expences }) {
           </TableRow>
           <TableRow>
             <TotalTableData>Income:</TotalTableData>
-            <TotalTableData><TotalAmount type={"income"}>Expences</TotalAmount></TotalTableData>
+            <TotalTableData><TotalAmount type={"income"}>{totalExpences}</TotalAmount></TotalTableData>
           </TableRow>
         </TableBody>
       </Table>

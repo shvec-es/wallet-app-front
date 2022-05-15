@@ -3,6 +3,11 @@ import { useState } from 'react';
 import Chart from 'components/Chart';
 import StatsTable from 'components/StatsTable';
 
+import {
+  TabTitle,
+  TabSection,
+} from './DiagramTab.styled';
+
 function DiagramTab() {
   const [expences, setExpences] = useState([
     { type: 'main expences', amount: 100, color: '#FFDD33' },
@@ -20,11 +25,11 @@ function DiagramTab() {
     }
     const total = expences.reduce((a, expence) => a + expence.amount,0)
     return (
-        <div>
-        <h1>Statistics</h1>
-        <Chart expences={chartData} total={total} />
+        <TabSection>
+        <TabTitle>Statistics</TabTitle>
+        <Chart expences={chartData} total={total}/>
         <StatsTable expences={expences}/>
-        </div>
+        </TabSection>
      )
 }
 

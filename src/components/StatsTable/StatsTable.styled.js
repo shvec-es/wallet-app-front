@@ -1,23 +1,20 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
-  min-width: 280px;
-  min-height: 174px;
+  width: 280px;
   border-collapse: collapse;
   border-spacing: 0;
 
   font-family: 'Circe';
   font-style: normal;
-  color: #000000;
   // background-color: blue;
 
   @media (min-width: 768px) {
-    min-width: 336px;
-    min-height: 182px;
+    width: 336px;
   }
 
   @media (min-width: 1280px) {
-    min-width: 393px;
+    min-width: 395px;
   }
 `;
 export const TableHeader = styled.thead`
@@ -55,7 +52,8 @@ export const HeadCell = styled.th`
 
 export const TableBody = styled.tbody``;
 
-export const TableRow = styled.tr``;
+export const TableRow = styled.tr`
+`;
 
 export const TableData = styled.td`
   padding-top: 14px;
