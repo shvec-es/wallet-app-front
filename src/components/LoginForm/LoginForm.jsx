@@ -3,7 +3,8 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useFormik } from 'formik';
-import {logIn} from '../../redux/auth/auth-operations'
+import { logIn } from '../../redux/auth/auth-operations'
+import {FormWrapper, FormBg,AppTitleWrapper, AppTitle, Label, Input, Form, InputIcon,SignInBtn, SignUpBtn, LinkText } from './LoginForm.styled';
 import * as Yup from 'yup';
 import icons from 'images/sprite.svg';
 
@@ -39,29 +40,29 @@ const LoginForm = () => {
   });
   return (
    
-    <div>
-      <div>
-        <div>
+    <FormWrapper>
+      <FormBg>
+        <AppTitleWrapper>
            <svg width="40" height="40">
         <use href={`${icons}#wallet`}></use>
       </svg>
-      <h1>Wallet</h1>
-        </div>
+      <AppTitle>Wallet</AppTitle>
+        </AppTitleWrapper>
      
-      <form onSubmit={formik.handleSubmit}>
-          <label >
-              <svg width="24" height="24">
+      <Form onSubmit={formik.handleSubmit}>
+          <Label >
+              <InputIcon width="24" height="24">
         <use href={`${icons}#email`}></use>
-      </svg>
-               <input
+      </InputIcon>
+               <Input
                     
           name="email"
             type="email"
-              placeholder='Email'
+              placeholder='E-mail'
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
             value={formik.values.email}/>
-        </label>
+        </Label>
        
             
      
@@ -72,11 +73,11 @@ const LoginForm = () => {
         {formik.touched.email && formik.errors.email ? (
           <p>{formik.errors.email}</p>
         ) : null}
-          <label >
-              <svg width="24" height="24">
+          <Label >
+              <InputIcon width="24" height="24">
         <use href={`${icons}#lock`}></use>
-      </svg>
-             <input
+      </InputIcon>
+             <Input
          
           name="password"
             type="password"
@@ -86,18 +87,26 @@ const LoginForm = () => {
           value={formik.values.password}
           autoComplete="off"
         />
-        </label>
+        </Label>
        
         {formik.touched.password && formik.errors.password ? (
           <p>{formik.errors.password}</p>
         ) : null}
 
-              <button type="submit">Sign in</button>
-              <NavLink to="/register">Sign up</NavLink>
+          <SignInBtn type="submit">Sign in</SignInBtn>
+          <SignUpBtn>
+            
+          <NavLink to="/register">
+            Sign Up
+          </NavLink>
+     </SignUpBtn>
+
+    
+        
    
-        </form>
-        </div>
-    </div>
+        </Form>
+        </FormBg>
+    </FormWrapper>
   );
 };
 
