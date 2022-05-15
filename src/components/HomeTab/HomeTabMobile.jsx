@@ -1,34 +1,45 @@
 import './HomeTabMobile.css';
 
-function HomeTabMobile() {
+function HomeTabMobile({data}) {
+  const costsClass = 'mobile__item_costs'
+  const incomeClass = 'mobile__item_income'
+
+  const tableCosts = 'home_mobile__card home_mobile__card_spend';
+  const tableIncome = 'home_mobile__card home_mobile__card_income';
   return (
-    /*тимчасова hardcode розмітка, коли будуть данні з redux буде логіка та map по розмітці */
-    <div className="table_mobile">
-      <div className="table__card">
-        <p className="table__item">Дата</p>
-        <p className="table__item_value">04.01.19</p>
+    /*змінив div та p, на ul-li бо не стилізувалось норм  */
+  <>
+    {data.map(({id, date, type, category, commentary, moneyAmount, balance, createdAt}) => (
+      <div key={id} className={type === true ? tableIncome : tableCosts}>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Дата</li>
+            <li className="home_mobile__item_value">{date}</li>
+          </ul>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Тип</li>
+            <li className="home_mobile__item_value">{type === true ? '+' : '-'}</li>
+          </ul>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Категория</li>
+            <li className="home_mobile__item_value">{category}</li>
+          </ul>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Комментарий</li>
+            <li className="home_mobile__item_value">{commentary}</li>
+          </ul>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Сумма</li>
+            <li className={type === '+' ? incomeClass : costsClass}>
+              {moneyAmount}
+            </li>
+          </ul>
+          <ul className="home_mobile__group">
+            <li className="home_mobile__item">Баланс</li>
+            <li className="home_mobile__item_value">{balance}</li>
+          </ul>
       </div>
-      <div className="table__card">
-        <p className="table__item">Тип</p>
-        <p className="table__item_value">-</p>
-      </div>
-      <div className="table__card">
-        <p className="table__item">Категория</p>
-        <p className="table__item_value">Разное</p>
-      </div>
-      <div className="table__card">
-        <p className="table__item">Комментарий</p>
-        <p className="table__item_value">Подарок жене</p>
-      </div>
-      <div className="table__card">
-        <p className="table__item">Сума</p>
-        <p className="table__item_value table__item_costs">300</p>
-      </div>
-      <div className="table__card">
-        <p className="table__item">Баланс</p>
-        <p className="table__item_value">6 900.00</p>
-      </div>
-    </div>
+    ) )}
+  </>
   );
 }
 

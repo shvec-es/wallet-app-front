@@ -16,7 +16,7 @@
   display: block;
   padding: 0px 20px 15px 20px;
   font-size: 16px;
-  background-color: #e7eaf2;  /*тимчасовий колір щоб відтінити*/
+  /* background-color: #e7eaf2;  тимчасовий колір щоб відтінити */
 }
 .table__row {
   display: flex;
