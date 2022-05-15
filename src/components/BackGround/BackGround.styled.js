@@ -15,6 +15,7 @@ export const TopEllipse = styled.svg`
   right: 0;
   width: 368px;
   height: 383px;
+  color: var(--color-ellipse-top);
 
   @media (min-width: 1280px) {
     width: 552px;
@@ -28,4 +29,5 @@ export const BottomEllipse = styled.svg`
   left: 0;
   width: 496px;
   height: 322px;
+  color: var(--color-ellipse-bottom);
 `;
