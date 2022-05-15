@@ -3,13 +3,13 @@ import HomeTab from "components/HomeTab";
 
 export default function DashboardPage() {
 
-    return (
-      <>
-       {/*Header???*/}
-        <HomeTab />
-        {/*Curency????*/}
-        {/*Diagram??*/}
-        {/* <ButtonAddTransactions/> */}
-      </>
-    )
-  }
+  return (
+    <>
+      {/*Header???*/}
+      <HomeTab />
+      {/*Curency????*/}
+      {/*Diagram??*/}
+      {/* <ButtonAddTransactions /> */}
+    </>
+  )
+}
