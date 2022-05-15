@@ -1,3 +1,6 @@
+
+import StatsSelect from 'components/StatsSelects';
+
 import {
   Table,
   TableData,
@@ -18,8 +21,23 @@ function StatsTable({ expences }) {
 
   const totalExpences = caclulateExpences(expences);
 
+  const months = [
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  const years = [
+    "1998",
+    "1999",
+    "2000"
+  ]
+
   return (
     <div>
+      <StatsSelect options={months} buttonTitle='Month'/>
+      <StatsSelect options={years} buttonTitle='Year'/>
       <Table>
         <TableHeader>
           <TableRow>
