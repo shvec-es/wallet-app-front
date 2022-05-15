@@ -11,6 +11,7 @@ import {
   ExpenceType,
   TotalTableData,
   TotalAmount,
+  SelectsWrapper,
 } from './StatsTable.styled';
 
 function StatsTable({ expences }) {
@@ -36,9 +37,11 @@ function StatsTable({ expences }) {
 
   return (
     <div>
+      <SelectsWrapper>
       <StatsSelect options={months} buttonTitle='Month'/>
       <StatsSelect options={years} buttonTitle='Year'/>
-      <Table>
+      </SelectsWrapper>
+        <Table>
         <TableHeader>
           <TableRow>
             <HeadCell>Category</HeadCell>

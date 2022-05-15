@@ -4,7 +4,9 @@ export const DropdownWrapper = styled.div`
 position: relative;
 `
 export const ToggleButton = styled.button`
-display: block;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
 padding-left: 16px;
 padding-right: 20px;
 padding-top: 13px;
@@ -16,6 +18,10 @@ border: 1px solid #000000;
 background-color: transparent;
 
 @media (min-width: 768px) {
+width: 160px;
+  }
+
+  @media (min-width: 1280px) {
 max-width: 182px;
   }
 `
@@ -29,9 +35,10 @@ top: 100%;
 left: 0;
 width: 100%;
 
-background: rgba(255, 255, 255, 0.7);
+background-color: rgba(255, 255, 255, 0.7);
 box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(50px);
+z-index: 1000;
 `
 export const OptionButton = styled.button`
 display: block;
