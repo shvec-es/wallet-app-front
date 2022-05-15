@@ -93,13 +93,13 @@
       ></path>
     </symbol>
     <symbol id="plus-btn" viewBox="0 0 32 32">
-<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 0v32"></path>
-<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M0 16h32"></path>
-</symbol>
-<symbol id="close" viewBox="0 0 32 32">
-<path stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778" d="M1.778 1.778l28.444 28.444"></path>
-<path stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778" d="M1.778 30.222l28.444-28.444"></path>
-</symbol>
+      <path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 0v32"></path>
+      <path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M0 16h32"></path>
+    </symbol>
+    <symbol id="close" viewBox="0 0 32 32">
+      <path stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778" d="M1.778 1.778l28.444 28.444"></path>
+      <path stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778" d="M1.778 30.222l28.444-28.444"></path>
+    </symbol>
     <symbol id="timeline" viewBox="0 0 32 32">
       <path
         fill="currentColor"
@@ -123,6 +123,12 @@
         fill="var(--color-primary)"
         d="M31.414 16.926c-0.18-0.164-0.392-0.289-0.629-0.371-0.183-0.061-0.377-0.096-0.582-0.096h-10.712c-0.992 0-1.797 0.799-1.797 1.783v3.968c0 0.984 0.805 1.783 1.797 1.783h10.712c0.205 0 0.399-0.036 0.582-0.096 0.237-0.078 0.449-0.207 0.629-0.371 0.359-0.324 0.586-0.795 0.586-1.316v-3.968c0-0.52-0.226-0.991-0.586-1.316zM23.243 20.581c0 0.492-0.402 0.891-0.898 0.891h-0.596c-0.496 0-0.898-0.399-0.898-0.891v-0.592c0-0.285 0.133-0.538 0.345-0.699 0.155-0.118 0.345-0.193 0.553-0.193h0.596c0.496 0 0.898 0.399 0.898 0.891v0.592z"
       ></path>
+    </symbol>
+    <symbol id="bg-top" viewBox="0 0 31 32">
+      <path fill="#ffd8d0" d="M46.129 22.271c-7.358 10.303-20.68 11.612-31.934 7.663-12.91-5.201-17.085-19.758-12.185-31.92 4.546-11.283 18.067-6.878 29.615-7.181 21.37-0.39 28.445 13.301 14.503 31.439z"></path>
+    </symbol>
+    <symbol id="bg-bottom" viewBox="0 0 49 32">
+      <path fill="#c5baff" d="M42.271 35.955c-7.608 12.942-23.206 15.886-36.912 12.405-15.794-4.787-22.254-21.542-17.744-36.422 4.184-13.804 20.616-10.021 34.225-11.592 25.199-2.705 34.993 12.723 20.432 35.609z"></path>
     </symbol>
   </defs>
 </svg>
