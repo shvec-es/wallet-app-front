@@ -6,11 +6,10 @@ export default function DashboardPage() {
 
     return (
       <>
-       {/*Header???*/}
+        {/*Header???*/}
+        
         <HomeTab />
         <DiagramTab/>
-        {/*Curency????*/}
-        {/*Diagram??*/}
         {/* <ButtonAddTransactions/> */}
       </>
     )

@@ -1,12 +1,27 @@
-import Container from 'components/Container';
+import { Suspense, lazy } from 'react';
+import Media from 'react-media';
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from 'components/LoginPage/LoginPage';
+import { BackGround, Container } from 'components';
 import DashboardPage from 'pages/dashboardPage';
 
 function App() {
   return (
-    <Container>
-      <h1>Wallet</h1>
-      <DashboardPage />
-    </Container>
+    <>
+      <Media query="(min-width: 768px)">
+        <BackGround />
+      </Media>
+
+      <Container>
+        <h1>Wallet</h1>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Routes>
+            <Route path="/" element={<LoginPage />}></Route>
+          </Routes>
+          <DashboardPage />
+        </Suspense>
+      </Container>
+    </>
   );
 }
 
