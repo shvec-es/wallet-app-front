@@ -14,6 +14,10 @@ width: 100%;
 border-radius: 30px;
 border: 1px solid #000000;
 background-color: transparent;
+
+@media (min-width: 768px) {
+max-width: 182px;
+  }
 `
 export const ToggleIcon = styled.svg`
 
