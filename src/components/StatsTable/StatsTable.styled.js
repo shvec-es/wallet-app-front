@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const ContentWrapper = styled.div`
+padding-top: 65px;
+`
+
 export const SelectsWrapper = styled.div`
   & div:not(:last-child) {
     margin-bottom: 20px;

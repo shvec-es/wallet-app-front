@@ -17,7 +17,7 @@ function Chart({ expences, total }) {
             },
           }}
               />
-        <Total>{total}</Total>
+        <Total>₴ {total}</Total>
       </ChartWrapper>
     </>
   );

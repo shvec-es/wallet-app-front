@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const DropdownWrapper = styled.div`
 position: relative;
 `
@@ -26,7 +27,8 @@ max-width: 182px;
   }
 `
 export const ToggleIcon = styled.svg`
-
+  width: 18px;
+  height: 9px;
 `
 
 export const DropdownOptions = styled.div`

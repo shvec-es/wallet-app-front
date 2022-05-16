@@ -2,6 +2,7 @@
 import StatsSelect from 'components/StatsSelects';
 
 import {
+  ContentWrapper,
   Table,
   TableData,
   TableHeader,
@@ -36,7 +37,7 @@ function StatsTable({ expences }) {
   ]
 
   return (
-    <div>
+    <ContentWrapper>
       <SelectsWrapper>
       <StatsSelect options={months} buttonTitle='Month'/>
       <StatsSelect options={years} buttonTitle='Year'/>
@@ -69,7 +70,7 @@ function StatsTable({ expences }) {
           </TableRow>
         </TableBody>
       </Table>
-    </div>
+    </ContentWrapper>
   );
 }
 

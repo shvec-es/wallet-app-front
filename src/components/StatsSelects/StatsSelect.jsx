@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import sprite from 'images/sprite.svg';
 
 import {
   SelectsWrapper,
@@ -36,6 +37,9 @@ function StatsSelect({ options, buttonTitle }) {
     <DropdownWrapper onBlur={onOutsideClick}>
       <ToggleButton onClick={dropDownToggle}>
         {selectedValue ? selectedValue : buttonTitle}
+        <ToggleIcon>
+          <use href={`${sprite}#check`}/>
+        </ToggleIcon>
       </ToggleButton>
       {open && (
         <DropdownOptions>

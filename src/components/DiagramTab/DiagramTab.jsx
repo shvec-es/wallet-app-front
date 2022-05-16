@@ -25,13 +25,14 @@ function DiagramTab() {
         }],
     }
     const total = expences.reduce((a, expence) => a + expence.amount,0)
-    return (
-        <TabSection>
+  return (
+        
+    <TabSection>
+        <div>
         <TabTitle>Statistics</TabTitle>
-        <ContentWrapper>
-        <Chart expences={chartData} total={total}/>
+        <Chart expences={chartData} total={total} />
+        </div>
           <StatsTable expences={expences} />
-          </ContentWrapper>
         </TabSection>
      )
 }
