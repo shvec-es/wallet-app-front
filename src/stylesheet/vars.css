@@ -11,6 +11,8 @@
   --color-ellipse-bottom: #c5baff;
   --color-background: rgba(255, 255, 255, 0.4);
   --color-blur: #e7eaf2;
+  --color-border: #dcdcdf;
+  --color-white: #ffffff;
 
   --border-radius: 20px;
   --backdrop-filter: blur(50px);
