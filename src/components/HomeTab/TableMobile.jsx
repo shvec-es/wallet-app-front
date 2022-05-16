@@ -1,6 +1,6 @@
-import { MobileCard, MobileCardGroup, MobileCardItem, MobileCardItemValue, MobileCardItemColor } from './HomeTabMobile.styled';
+import { MobileCard, MobileCardGroup, MobileCardItem, MobileCardItemValue, MobileCardItemColor } from './TableMobile.styled';
 
-function HomeTabMobile({data}) {
+function TableMobile({data}) {
   return (
   <>
     {data.map(({id, date, type, category, commentary, moneyAmount, balance, createdAt}) => (
@@ -37,4 +37,4 @@ function HomeTabMobile({data}) {
   );
 }
 
-export default HomeTabMobile;
+export default TableMobile;

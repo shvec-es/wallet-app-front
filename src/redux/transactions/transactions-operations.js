@@ -15,9 +15,19 @@ const getTransactions = () => async dispatch => {
     }
 }
 
-//addTransaction треба звязати з кнопкою?
+//addTransaction (copilot edition)
+const addTransaction = (transaction) => async dispatch => {
+    dispatch(actions.addTransaction());
+    try {
+        const { data } = await axios.post("/transactions", transaction);
+        dispatch(actions.addTransactionSuccess(data));
+        console.log('додано успішно');
+    } catch (error) {
+        dispatch(actions.addTransactionFailure(error));
+        console.log(error);
+    }
+}
 
 
-
-export const operations = { getTransactions }
+export const operations = { getTransactions, addTransaction }
 
