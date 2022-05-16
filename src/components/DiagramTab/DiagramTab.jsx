@@ -6,6 +6,7 @@ import StatsTable from 'components/StatsTable';
 import {
   TabTitle,
   TabSection,
+  ContentWrapper,
 } from './DiagramTab.styled';
 
 function DiagramTab() {
@@ -27,8 +28,10 @@ function DiagramTab() {
     return (
         <TabSection>
         <TabTitle>Statistics</TabTitle>
+        <ContentWrapper>
         <Chart expences={chartData} total={total}/>
-        <StatsTable expences={expences}/>
+          <StatsTable expences={expences} />
+          </ContentWrapper>
         </TabSection>
      )
 }

@@ -13,6 +13,15 @@ line-height: 1.5em;
 margin-bottom: 20px;
   }
 `
+export const ContentWrapper = styled.div`
+
+
+  @media (min-width: 1280px) {
+   display:flex;
+   justify-content: space-between;
+    width: 676px;
+  }
+`
 
 export const TabSection = styled.section`
 max-width: 320px;

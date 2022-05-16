@@ -17,13 +17,23 @@ function StatsSelect({ options, buttonTitle }) {
     setOpen(prevState => !prevState);
   };
 
+  const dropDownClose = () => {
+    setOpen(false);
+  }
+
   const onOptionClick = (value) => {
     setSelectedValue(value);
     dropDownToggle();
   };
 
+  const onOutsideClick = (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      dropDownClose();
+    }
+  }
+
   return (
-    <DropdownWrapper>
+    <DropdownWrapper onBlur={onOutsideClick}>
       <ToggleButton onClick={dropDownToggle}>
         {selectedValue ? selectedValue : buttonTitle}
       </ToggleButton>

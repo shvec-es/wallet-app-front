@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const SelectsWrapper = styled.div`
+  & div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
