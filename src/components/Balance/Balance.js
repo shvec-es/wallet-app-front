@@ -15,16 +15,15 @@ export default function Balance() {
     .toFixed(2)
     .replace(/\d(?=(\d{3})+\.)/g, '$& ');
 
-  console.log(location);
-  console.log(isHome);
-
   return (
-    <BalanceWrapper>
-      <BalanceLabel>Your balance</BalanceLabel>
-      <BalanceSumm>
-        <BalanceCurrenceSymbol>&#8372;&nbsp;</BalanceCurrenceSymbol>
-        {formattedBalance}
-      </BalanceSumm>
-    </BalanceWrapper>
+    isHome && (
+      <BalanceWrapper>
+        <BalanceLabel>Your balance</BalanceLabel>
+        <BalanceSumm>
+          <BalanceCurrenceSymbol>&#8372;&nbsp;</BalanceCurrenceSymbol>
+          {formattedBalance}
+        </BalanceSumm>
+      </BalanceWrapper>
+    )
   );
 }
