@@ -8,7 +8,7 @@ export const MobileCard = styled.div`
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   background-color: var( --color-white); 
-  border-left: 5px solid color: ${props => (props.type === 'income' ? 'var(--color-secondary)' : 'var(--color-tertiary)')};
+  border-left: 5px solid ${props => (props.type === 'income' ? 'var(--color-secondary)' : 'var(--color-tertiary)')};
   &:not(:last-child) {
     margin-bottom: 7px;
   } 
@@ -27,12 +27,6 @@ font-weight: 700;
 `;
 export const MobileCardItemValue = styled.p`
 text-align: right;
-`;
-export const MobileCardCosts = styled.div`
-border-left: 5px solid var(--color-tertiary);
-`;
-export const MobileCardIncome = styled.div`
-border-left: 5px solid var(--color-secondary);
 `;
 export const MobileCardItemColor = styled.p`
 color: ${props => (props.type === 'income' ? 'var(--color-secondary)' : 'var(--color-tertiary)')};`
