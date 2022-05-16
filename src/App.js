@@ -14,7 +14,7 @@ function App() {
       </Media>
 
       <Container>
-      <HeaderPage />
+        <HeaderPage />
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>

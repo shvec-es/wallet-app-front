@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import Indicator from './indicator';
 import icons from 'images/sprite.svg';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 /**
  * LoginFormikComponents Component
@@ -76,7 +77,8 @@ const Title = styled('h1')`
   font-size: 22.5px;
   line-height: 33.75px;
 `;
-const registrationPage = () => {
+const RegistrationPage = () => {
+  const { t } = useTranslation();
   const initialValues = {
     email: '',
     password: '',
@@ -132,7 +134,7 @@ const registrationPage = () => {
             <svg style={{ display: 'block' }} width="40" height="40">
               <use href={`${icons}#wallet`}></use>
             </svg>
-            <Title style={{ display: 'block' }}>Wallet</Title>
+            <Title style={{ display: 'block' }}>{t('app_name')}</Title>
           </Wrap>
           <div>
             <Label htmlFor="email" style={{ display: 'block' }}>
@@ -142,7 +144,7 @@ const registrationPage = () => {
               <Input
                 type="email"
                 id="email"
-                placeholder="E-mail"
+                placeholder={t('email')}
                 value={values.email}
                 onChange={handleChange}
               />
@@ -158,7 +160,7 @@ const registrationPage = () => {
               <Input
                 type="password"
                 id="password"
-                placeholder="Password"
+                placeholder={t('pass')}
                 name="password"
                 value={values.password}
                 onChange={handleChange}
@@ -175,7 +177,7 @@ const registrationPage = () => {
                 name="confirmPassword"
                 type="password"
                 id="confirmPassword"
-                placeholder="Confirm password"
+                placeholder={t('pass_confirm')}
                 value={values.confirmPassword}
                 onChange={handleChange}
               />
@@ -193,7 +195,7 @@ const registrationPage = () => {
                 name="name"
                 type="name"
                 id="name"
-                placeholder="Your name"
+                placeholder={t('name')}
                 value={values.name}
                 onChange={handleChange}
               />
@@ -206,10 +208,10 @@ const registrationPage = () => {
               onClick={handleSubmit}
               style={{ display: 'block' }}
             >
-              Registration
+              {t('register')}
             </Button>
             <Button primary type="submit" style={{ display: 'block' }}>
-              LogIn
+              {t('login')}
             </Button>
           </div>
         </Forma>
@@ -217,4 +219,4 @@ const registrationPage = () => {
     </Formik>
   );
 };
-export default registrationPage;
+export default RegistrationPage;

@@ -1,13 +1,15 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
-import {logIn} from '../../redux/auth/auth-operations'
+import { logIn } from '../../redux/auth/auth-operations';
 import * as Yup from 'yup';
 import icons from 'images/sprite.svg';
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -23,10 +25,10 @@ const LoginForm = () => {
         .required('Password is required'),
     }),
 
-      onSubmit: (values, { resetForm }) => {
-          const { email, password } = values;
-            dispatch(logIn(email, password));
-          
+    onSubmit: (values, { resetForm }) => {
+      const { email, password } = values;
+      dispatch(logIn(email, password));
+
       console.log('Form data:', values);
       resetForm();
     },
@@ -36,9 +38,9 @@ const LoginForm = () => {
       <svg width="40" height="40">
         <use href={`${icons}#wallet`}></use>
       </svg>
-      <h1>Wallet</h1>
+      <h1>{t('app_name')}</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">{t('email')}</label>
         <input
           id="email"
           name="email"
@@ -50,7 +52,7 @@ const LoginForm = () => {
         {formik.touched.email && formik.errors.email ? (
           <p>{formik.errors.email}</p>
         ) : null}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('pass')}</label>
         <input
           id="password"
           name="password"
@@ -58,18 +60,17 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          autoComplete="off"
         />
         {formik.touched.password && formik.errors.password ? (
           <p>{formik.errors.password}</p>
         ) : null}
 
-              <button type="submit">Sign in</button>
-              <NavLink to="/register">Sign up</NavLink>
-   
+        <button type="submit">{t('login')}</button>
+        <NavLink to="/register">{t('register')}</NavLink>
       </form>
     </>
   );
 };
-
 
 export default LoginForm;
