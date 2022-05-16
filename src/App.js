@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from 'components/LoginPage/LoginPage';
 import { BackGround, Container } from 'components';
 import DashboardPage from 'pages/dashboardPage';
+import HeaderPage from 'pages/headerPage';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       </Media>
 
       <Container>
-        <h1>Wallet</h1>
+      <HeaderPage />
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>
