@@ -1,43 +1,37 @@
-import './HomeTabMobile.css';
+import { MobileCard, MobileCardGroup, MobileCardItem, MobileCardItemValue, MobileCardItemColor } from './HomeTabMobile.styled';
 
 function HomeTabMobile({data}) {
-  const costsClass = 'mobile__item_costs'
-  const incomeClass = 'mobile__item_income'
-
-  const tableCosts = 'home_mobile__card home_mobile__card_spend';
-  const tableIncome = 'home_mobile__card home_mobile__card_income';
   return (
-    /*змінив div та p, на ul-li бо не стилізувалось норм  */
   <>
     {data.map(({id, date, type, category, commentary, moneyAmount, balance, createdAt}) => (
-      <div key={id} className={type === true ? tableIncome : tableCosts}>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Дата</li>
-            <li className="home_mobile__item_value">{date}</li>
-          </ul>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Тип</li>
-            <li className="home_mobile__item_value">{type === true ? '+' : '-'}</li>
-          </ul>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Категория</li>
-            <li className="home_mobile__item_value">{category}</li>
-          </ul>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Комментарий</li>
-            <li className="home_mobile__item_value">{commentary}</li>
-          </ul>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Сумма</li>
-            <li className={type === '+' ? incomeClass : costsClass}>
+      <MobileCard key={id} type={type === true ? "income" : "costs"}>
+          <MobileCardGroup>
+            <MobileCardItem>Дата</MobileCardItem>
+            <MobileCardItemValue>{date}</MobileCardItemValue>
+          </MobileCardGroup>
+          <MobileCardGroup>
+            <MobileCardItem>Тип</MobileCardItem>
+            <MobileCardItemValue>{type === true ? '+' : '-'}</MobileCardItemValue>
+          </MobileCardGroup>
+          <MobileCardGroup>
+            <MobileCardItem>Категория</MobileCardItem>
+            <MobileCardItemValue>{category}</MobileCardItemValue>
+          </MobileCardGroup>
+          <MobileCardGroup>
+            <MobileCardItem>Комментарий</MobileCardItem>
+            <MobileCardItemValue>{commentary}</MobileCardItemValue>
+          </MobileCardGroup>
+          <MobileCardGroup>
+            <MobileCardItem>Сумма</MobileCardItem>
+            <MobileCardItemColor  type={type === true ? "income" : "costs"}>
               {moneyAmount}
-            </li>
-          </ul>
-          <ul className="home_mobile__group">
-            <li className="home_mobile__item">Баланс</li>
-            <li className="home_mobile__item_value">{balance}</li>
-          </ul>
-      </div>
+            </MobileCardItemColor>
+          </MobileCardGroup>
+          <MobileCardGroup>
+            <MobileCardItem>Баланс</MobileCardItem>
+            <MobileCardItemValue>{balance}</MobileCardItemValue>
+          </MobileCardGroup>
+      </MobileCard>
     ) )}
   </>
   );
