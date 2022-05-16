@@ -17,7 +17,7 @@ export const BalanceSumm = styled.p`
   color: #000000;
 `;
 
-export const BalanceCurrenceSymbol = styled.span`
+export const BalanceCurrencySymbol = styled.span`
   font-weight: 400;
 `;
 
@@ -37,9 +37,4 @@ export const BalanceWrapper = styled.div`
   @media (min-width: 1280px) {
     width: 355px;
   }
-`;
-
-export const BalanceTextBlock = styled.div`
-  margin-left: 28px;
-  margin-top: 8px;
 `;

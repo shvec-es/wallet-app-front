@@ -3,7 +3,7 @@ import {
   BalanceLabel,
   BalanceSumm,
   BalanceWrapper,
-  BalanceCurrenceSymbol,
+  BalanceCurrencySymbol,
 } from './Balance.styled';
 
 export default function Balance() {
@@ -20,7 +20,7 @@ export default function Balance() {
       <BalanceWrapper>
         <BalanceLabel>Your balance</BalanceLabel>
         <BalanceSumm>
-          <BalanceCurrenceSymbol>&#8372;&nbsp;</BalanceCurrenceSymbol>
+          <BalanceCurrencySymbol>&#8372;&nbsp;</BalanceCurrencySymbol>
           {formattedBalance}
         </BalanceSumm>
       </BalanceWrapper>
