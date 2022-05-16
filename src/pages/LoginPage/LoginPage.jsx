@@ -4,16 +4,16 @@
 
 import LoginForm from '../../components/LoginForm/LoginForm';
 import loginImg from '../../images/loginImg.svg'
-import {Section, ImgWrapper} from './LoginPage.styled'
+import {Section, Img} from './LoginPage.styled'
 
 
 
 function LoginPage() { 
     return (
         <Section>
-            <ImgWrapper>
-                <img src={loginImg} alt="loginImg" width='435px' height='420px' />
-</ImgWrapper>
+          
+                <Img src={loginImg} alt="loginImg" width='435px' height='420px' />
+
             <LoginForm/>
         </Section>
      )

@@ -1,136 +1,182 @@
-
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
-// width:731px;
-// height:720px;
-padding: 120px 100px;
-display:flex;
- justify-content: center;
- margin:0;
-background: rgba(255, 255, 255, 0.4);
-backdrop-filter: blur(50px);
-`
+  width: 320px;
+  padding: 107px 20px;
+  margin: 0;
 
-export const FormBg = styled.div`
+  @media(min-width: 768px){
+
 width: 533px;
 height: 468px;
-    padding:60px;
-background: #FFFFFF;
-border-radius: 20px;
-`
+
+  }
+
+  @media (min-width: 1280px) {
+    width: 731px;
+    display: flex;
+    justify-content: center;
+    padding: 120px 100px;
+    background: var(--color-blur);
+    backdrop-filter: blur(50px);
+  }
+`;
+
+export const FormBg = styled.div`
+ 
+
+
+
+  @media (min-width: 1280px) {
+
+  }
+`;
 
 export const AppTitleWrapper = styled.div`
-display:flex;
-justify-content:center;
-// padding-top:40px;
-`
+  display: flex;
+  justify-content: center;
+    margin-bottom: 60px;
+  @media (min-width: 1280px);
+`;
 
 export const AppTitle = styled.h1`
-margin:0;
-margin-left:20px;
-margin-bottom:60px;
+  margin: 0;
+  margin-left: 20px;
 
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 1.5;
-display: flex;
-align-items: center;
 
-color: #000000;
-`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  @media (min-width: 1280px);
+`;
 
 export const Form = styled.form`
+  width: 280px;
+
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
+    @media(min-width: 768px){
+
+width: 533px;
+height: 468px;
+ border-radius: 20px;
+
+  }
+
+  @media (min-width: 1280px) {
+  }
 `;
 
 export const Label = styled.label`
-  display: flex;
- border-bottom: 1px solid #E0E0E0;
+  width: 280px;
+  height: 32px;
+  position: relative;
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-gray-light);
 
+  @media (min-width: 1280px) {
+    display: flex;
+    width: 410px;
+  }
 `;
 
 export const Input = styled.input`
   display: block;
-  width: 410px;
-  height:32px;
-margin-left:20px;
+  margin-left: 50px;
   outline: 0;
-
+  font-size: 18px;
+  font-weight: bold;
   color: #212529;
   background-color: #fff;
   border: 0;
 
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &::placeholder {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+  }
 
-  &::placeholder{
-
-
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 1.5;
-
-
-
+  @media (min-width: 1280px) {
+    font-size: 26px;
+    font-weight: bold;
   }
 `;
 
 export const InputIcon = styled.svg`
-padding-left:10px;
-color: #E0E0E0
-`
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  padding-left: 10px;
+  color: var(--color-gray-light);
+
+  @media (min-width: 1280px) {
+    top: 7px;
+  }
+`;
 
 export const SignInBtn = styled.button`
-width: 300px;
-height: 50px;
-margin-top:35px;
+  width: 280px;
+  height: 50px;
+  margin-top: 20px;
 
-background: #24CCA7;
-border-radius: 20px;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 1.5;
-text-align: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-border:transparent;
- cursor: pointer;
+  background: var(--color-secondary);
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: transparent;
+  cursor: pointer;
 
-color: #FFFFFF;
-`
+  color: #ffffff;
+
+  @media (min-width: 1280px) {
+    width: 300px;
+    margin-top: 35px;
+  }
+`;
 
 export const SignUpBtn = styled.div`
-width: 300px;
-height: 50px;
-// padding-top:13px;
-margin-top:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-background: #FFFFFF;
-border: 1px solid #4A56E2;
-border-radius: 20px;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 1.5;
+  width: 280px;
+  height: 50px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--color-primary);
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
 
-letter-spacing: 0.1em;
-text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-color: #4A56E2;
- cursor: pointer;
-`
+  color: var(--color-primary);
+  cursor: pointer;
 
-export const LinkText = styled.span`
+  @media (min-width: 1280px) {
+    width: 300px;
+  }
+`;
 
-`
+export const ErrorText = styled.p`
+  font-size: 12px;
+  font-weight: bold;
+  color: #ff0000;
+`;

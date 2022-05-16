@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useFormik } from 'formik';
 import { logIn } from '../../redux/auth/auth-operations'
-import {FormWrapper, FormBg,AppTitleWrapper, AppTitle, Label, Input, Form, InputIcon,SignInBtn, SignUpBtn, LinkText } from './LoginForm.styled';
+import {FormWrapper, FormBg,AppTitleWrapper, AppTitle, Label, Input, Form, InputIcon,SignInBtn, SignUpBtn, ErrorText } from './LoginForm.styled';
 import * as Yup from 'yup';
 import icons from 'images/sprite.svg';
 
@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
    
     <FormWrapper>
-      <FormBg>
+     
         <AppTitleWrapper>
            <svg width="40" height="40">
         <use href={`${icons}#wallet`}></use>
@@ -71,7 +71,7 @@ const LoginForm = () => {
           
        
         {formik.touched.email && formik.errors.email ? (
-          <p>{formik.errors.email}</p>
+          <ErrorText>{formik.errors.email}</ErrorText>
         ) : null}
           <Label >
               <InputIcon width="24" height="24">
@@ -90,7 +90,7 @@ const LoginForm = () => {
         </Label>
        
         {formik.touched.password && formik.errors.password ? (
-          <p>{formik.errors.password}</p>
+          <ErrorText>{formik.errors.password}!</ErrorText>
         ) : null}
 
           <SignInBtn type="submit">Sign in</SignInBtn>
@@ -105,7 +105,7 @@ const LoginForm = () => {
         
    
         </Form>
-        </FormBg>
+       
     </FormWrapper>
   );
 };
