@@ -11,7 +11,6 @@ export default function HomeTab() {
   const {getTransactions} = operations;
   let transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
-console.log(transactions);
 
   // transactions.map(({id, date, type, category, commentary, moneyAmount, balance, createdAt}) => {
   //   let parsedType

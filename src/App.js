@@ -13,7 +13,6 @@ function App() {
       </Media>
 
       <Container>
-        <h1>Wallet</h1>
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>
