@@ -1,5 +1,5 @@
 import Media from 'react-media';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import icons from 'images/sprite.svg';
 import {
     MainHeader,
