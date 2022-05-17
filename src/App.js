@@ -7,6 +7,7 @@ import DashboardPage from 'pages/dashboardPage';
 import HeaderPage from 'pages/headerPage';
 import Navigation from 'components/Navigation';
 import Balance from 'components/Balance';
+import Header from './components/Header'
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-
+      <Header />
       <Container>
-        <HeaderPage />
+        {/* <HeaderPage /> */}
         <Navigation />
         <Balance />
         <Suspense fallback={<p>Loading...</p>}>
