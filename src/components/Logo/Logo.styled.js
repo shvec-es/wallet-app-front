@@ -7,13 +7,6 @@ export const Link = styled(NavLink)`
   align-items: center;
   width: fit-content;
   cursor: pointer;
-
-  transition: transform 250ms var(--cubic-bezier);
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
 `;
 
 export const Icon = styled.svg`
@@ -25,6 +18,13 @@ export const Icon = styled.svg`
     width: 40px;
     height: 40px;
     margin-right: 20px;
+  }
+
+  transition: transform 250ms var(--cubic-bezier);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
   }
 `;
 
