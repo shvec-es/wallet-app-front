@@ -5,6 +5,7 @@ import {
   OptionButton,
   DropdownWrapper,
   ToggleButton,
+  ToggleIcon,
   DropdownOptions,
 } from './StatsSelect.styled';
 
