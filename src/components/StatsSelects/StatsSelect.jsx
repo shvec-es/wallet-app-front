@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
 import {
-  SelectsWrapper,
   OptionButton,
   DropdownWrapper,
   ToggleButton,
   DropdownOptions,
-  ToggleIcon,
 } from './StatsSelect.styled';
 
 function StatsSelect({options, buttonTitle}) {
