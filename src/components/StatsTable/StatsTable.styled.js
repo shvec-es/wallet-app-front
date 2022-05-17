@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 
+export const ContentWrapper = styled.div`
+padding-top: 65px;
+`
+
+export const SelectsWrapper = styled.div`
+  & div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    width: 336px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 395px;
+  }
+`
+
 export const Table = styled.table`
   width: 280px;
   border-collapse: collapse;
@@ -7,7 +27,6 @@ export const Table = styled.table`
 
   font-family: 'Circe';
   font-style: normal;
-  // background-color: blue;
 
   @media (min-width: 768px) {
     width: 336px;

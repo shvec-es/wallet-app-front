@@ -2,6 +2,7 @@
 import StatsSelect from 'components/StatsSelects';
 
 import {
+  ContentWrapper,
   Table,
   TableData,
   TableHeader,
@@ -11,9 +12,10 @@ import {
   ExpenceType,
   TotalTableData,
   TotalAmount,
+  SelectsWrapper,
 } from './StatsTable.styled';
 
-function StatsTable({ expences }) {
+function StatsTable({ expences, month, year, updateMonth, updateYear }) {
 
   const caclulateExpences = (expences) => {
     return expences.reduce((acc, expence) => acc + expence.amount, 0);
@@ -35,10 +37,12 @@ function StatsTable({ expences }) {
   ]
 
   return (
-    <div>
-      <StatsSelect options={months} buttonTitle='Month'/>
-      <StatsSelect options={years} buttonTitle='Year'/>
-      <Table>
+    <ContentWrapper>
+      <SelectsWrapper>
+        <StatsSelect options={months} sendSelectedValue={updateMonth} startValue={month}  />
+        <StatsSelect options={years} sendSelectedValue={updateYear} startValue={year} />
+      </SelectsWrapper>
+        <Table>
         <TableHeader>
           <TableRow>
             <HeadCell>Category</HeadCell>
@@ -66,7 +70,7 @@ function StatsTable({ expences }) {
           </TableRow>
         </TableBody>
       </Table>
-    </div>
+    </ContentWrapper>
   );
 }
 

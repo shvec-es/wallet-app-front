@@ -4,10 +4,14 @@ import Chart from 'components/Chart';
 import StatsTable from 'components/StatsTable';
 import { useTranslation } from 'react-i18next';
 
-import { TabTitle, TabSection } from './DiagramTab.styled';
+import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
 
 function DiagramTab() {
-  const { t } = useTranslation();
+    const { t } = useTranslation();
+  const [month, setMonth] = useState(
+    new Date().toLocaleString('en-us', { month: 'long' }),
+  );
+  const [year, setYear] = useState(new Date().getFullYear());
   const [expences, setExpences] = useState([
     { type: 'main expences', amount: 100, color: '#FFDD33' },
     { type: 'housing', amount: 86, color: '#FF5E33' },
@@ -27,9 +31,18 @@ function DiagramTab() {
   const total = expences.reduce((a, expence) => a + expence.amount, 0);
   return (
     <TabSection>
-      <TabTitle>{t('statistics')}</TabTitle>
-      <Chart expences={chartData} total={total} />
-      <StatsTable expences={expences} />
+      <div>
+        <TabTitle>{t('statistics')}</TabTitle>
+        <Chart expences={chartData} total={total} />
+      </div>
+      <StatsTable
+        expences={expences}
+        month={month}
+        year={year}
+        updateMonth={setMonth}
+        updateYear={setYear}
+      />
+
     </TabSection>
   );
 }
