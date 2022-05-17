@@ -16,13 +16,13 @@ const LoginForm = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string('Enter your email')
-        .email('Invalid email address')
-        .required('Email is required'),
-      password: Yup.string('Enter your password')
-        .min(6, 'Password must be at least 6 characters long')
+      email: Yup.string(t('email_string'))
+        .email(t('email_error'))
+        .required(t('email_require')),
+      password: Yup.string(t('pass_string'))
+        .min(6, t('pass_error'))
         .max(12)
-        .required('Password is required'),
+        .required(t('pass_require')),
     }),
 
     onSubmit: (values, { resetForm }) => {
