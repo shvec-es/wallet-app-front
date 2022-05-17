@@ -2,12 +2,10 @@ import { useState } from 'react';
 import sprite from 'images/sprite.svg';
 
 import {
-  SelectsWrapper,
   OptionButton,
   DropdownWrapper,
   ToggleButton,
   DropdownOptions,
-  ToggleIcon,
 } from './StatsSelect.styled';
 
 function StatsSelect({ startValue, options, sendSelectedValue }) {

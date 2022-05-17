@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 import Chart from 'components/Chart';
 import StatsTable from 'components/StatsTable';
+import { useTranslation } from 'react-i18next';
 
 import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
 
 function DiagramTab() {
+    const { t } = useTranslation();
   const [month, setMonth] = useState(
     new Date().toLocaleString('en-us', { month: 'long' }),
   );
@@ -30,7 +32,7 @@ function DiagramTab() {
   return (
     <TabSection>
       <div>
-        <TabTitle>Statistics</TabTitle>
+        <TabTitle>{t('statistics')}</TabTitle>
         <Chart expences={chartData} total={total} />
       </div>
       <StatsTable
@@ -40,6 +42,7 @@ function DiagramTab() {
         updateMonth={setMonth}
         updateYear={setYear}
       />
+
     </TabSection>
   );
 }

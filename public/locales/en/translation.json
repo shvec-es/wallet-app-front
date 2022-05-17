@@ -1,0 +1,17 @@
+{
+  "app_name": "wallet",
+
+  "register": "sign up",
+  "login": "sign in",
+  "email": "email address",
+  "pass": "password",
+  "pass_confirm": "confirm password",
+  "logout": "logout",
+  "name": "your name",
+
+  "ccy": "currency",
+  "buy": "buy",
+  "sale": "sale",
+
+  "statistics": "statistics"
+}

@@ -1,6 +1,6 @@
 import HomeTab from "components/HomeTab";
 import DiagramTab from "components/DiagramTab";
-// import ButtonAddTransactions from "components/ButtonAddTransactions";
+import ButtonAddTransactions from "components/ButtonAddTransactions";
 
 export default function DashboardPage() {
 
@@ -10,7 +10,7 @@ export default function DashboardPage() {
         
         <HomeTab />
         <DiagramTab/>
-        {/* <ButtonAddTransactions/> */}
+        <ButtonAddTransactions/>
       </>
     )
   }

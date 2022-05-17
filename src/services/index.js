@@ -1,3 +1,4 @@
-import Currency from './currency';
+import i18next from './i18n';
+import getCurrency from './prvat-bank-api';
 
-export default Currency;
+export { i18next, getCurrency };

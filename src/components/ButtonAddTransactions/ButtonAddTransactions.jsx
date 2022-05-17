@@ -3,6 +3,7 @@ import sprite from 'images/sprite.svg';
 import { Button } from './ButtonAddTransactions.styled';
 import ModalWindow from 'components/ModalWindow';
 import ModalAddTransaction from 'components/ModalAddTransaction';
+// import ButonPlus from 'components/ButtonPlus';
 
 const ButtonAddTransactions = () => {
     const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] = useState(false);
@@ -14,6 +15,7 @@ const ButtonAddTransactions = () => {
                     <ModalAddTransaction closeModal={setIsModalAddTransactionOpen}/>
                 </ModalWindow>)
             }
+            {/* <ButonPlus setModal={setIsModalAddTransactionOpen}/> */}
             < Button onClick={() => {
                 setIsModalAddTransactionOpen(true);
                 }}>
