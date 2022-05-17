@@ -10,9 +10,9 @@ import {
   ToggleIcon,
 } from './StatsSelect.styled';
 
-function StatsSelect({ options, buttonTitle }) {
+function StatsSelect({ startValue, options, sendSelectedValue }) {
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(startValue);
 
   const dropDownToggle = () => {
     setOpen(prevState => !prevState);
@@ -24,7 +24,8 @@ function StatsSelect({ options, buttonTitle }) {
 
   const onOptionClick = (value) => {
     setSelectedValue(value);
-    dropDownToggle();
+    sendSelectedValue(value);
+    dropDownClose()
   };
 
   const onOutsideClick = (e) => {
@@ -36,7 +37,7 @@ function StatsSelect({ options, buttonTitle }) {
   return (
     <DropdownWrapper onBlur={onOutsideClick}>
       <ToggleButton onClick={dropDownToggle}>
-        {selectedValue ? selectedValue : buttonTitle}
+        {selectedValue}
         <ToggleIcon>
           <use href={`${sprite}#check`}/>
         </ToggleIcon>

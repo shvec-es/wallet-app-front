@@ -15,7 +15,7 @@ import {
   SelectsWrapper,
 } from './StatsTable.styled';
 
-function StatsTable({ expences }) {
+function StatsTable({ expences, month, year, updateMonth, updateYear }) {
 
   const caclulateExpences = (expences) => {
     return expences.reduce((acc, expence) => acc + expence.amount, 0);
@@ -39,8 +39,8 @@ function StatsTable({ expences }) {
   return (
     <ContentWrapper>
       <SelectsWrapper>
-      <StatsSelect options={months} buttonTitle='Month'/>
-      <StatsSelect options={years} buttonTitle='Year'/>
+        <StatsSelect options={months} sendSelectedValue={updateMonth} startValue={month}  />
+        <StatsSelect options={years} sendSelectedValue={updateYear} startValue={year} />
       </SelectsWrapper>
         <Table>
         <TableHeader>

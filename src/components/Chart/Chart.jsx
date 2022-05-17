@@ -12,6 +12,7 @@ function Chart({ expences, total }) {
         <Doughnut
           data={expences}
           options={{
+             maintainAspectRatio: false, 
             layout: {
               padding: 0,
             },
