@@ -11,13 +11,14 @@ import {
   TableData,
   TableFooter,
 } from './Currency.styled';
+import { useTranslation } from 'react-i18next';
 
 const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const [status, setStatus] = useState('idle');
+  const { t } = useTranslation();
 
   useEffect(() => {
-    //
     const localCurrency = JSON.parse(localStorage.getItem('currency'));
     const currencyTime = JSON.parse(localStorage.getItem('currency_time'));
 
@@ -29,7 +30,7 @@ const Currency = () => {
 
         if (response.ok) {
           const data = await response.json();
-          //
+
           localStorage.setItem('currency', JSON.stringify(data));
           localStorage.setItem('currency_time', Date.now());
 
@@ -46,13 +47,12 @@ const Currency = () => {
     const condition = () => {
       setStatus('pending');
 
-      if (localCurrency && currencyTime) {
-        if (Date.now() - currencyTime < 3600000) {
-          setCurrency(localCurrency);
-          setStatus('success');
-        } else {
-          fetchCurrency();
-        }
+      if (
+        (localCurrency && currencyTime) ||
+        Date.now() - currencyTime < 3600000
+      ) {
+        setCurrency(localCurrency);
+        setStatus('success');
       } else {
         fetchCurrency();
       }
@@ -68,9 +68,9 @@ const Currency = () => {
         <CurrencyTable>
           <TableHeader>
             <TableRow>
-              <HeadCell>Currency</HeadCell>
-              <HeadCell>Buy</HeadCell>
-              <HeadCell>Sale</HeadCell>
+              <HeadCell>{t('ccy')}</HeadCell>
+              <HeadCell>{t('buy')}</HeadCell>
+              <HeadCell>{t('sale')}</HeadCell>
             </TableRow>
           </TableHeader>
           <TableBody>

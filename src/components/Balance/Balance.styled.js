@@ -6,7 +6,7 @@ export const BalanceLabel = styled.span`
   font-weight: 400;
   font-size: 12px;
   text-transform: uppercase;
-  color: #a6a6a6;
+  color: var(--color-balance-label);
 `;
 
 export const BalanceSumm = styled.p`
@@ -14,7 +14,7 @@ export const BalanceSumm = styled.p`
   font-weight: 700;
   font-size: 30px;
   margin-top: 10px;
-  color: #000000;
+  color: var(--color-black);
 `;
 
 export const BalanceCurrencySymbol = styled.span`
@@ -22,7 +22,7 @@ export const BalanceCurrencySymbol = styled.span`
 `;
 
 export const BalanceWrapper = styled.div`
-  background-color: #ffffff;
+  background-color: var(--color-white);
   width: 252px;
   height: 80px;
   border-radius: 30px;
