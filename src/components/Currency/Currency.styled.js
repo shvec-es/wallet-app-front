@@ -36,6 +36,7 @@ export const HeadCell = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  text-transform: capitalize;
 
   @media (min-width: 1280px) {
     padding: 18px;

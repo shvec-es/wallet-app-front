@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useFormik } from 'formik';
@@ -7,9 +6,11 @@ import { logIn } from '../../redux/auth/auth-operations'
 import {FormWrapper, FormBg,AppTitleWrapper, AppTitle, Label, Input, Form, InputIcon,SignInBtn, SignUpBtn, ErrorText } from './LoginForm.styled';
 import * as Yup from 'yup';
 import icons from 'images/sprite.svg';
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -46,16 +47,16 @@ const LoginForm = () => {
            <svg width="40" height="40">
         <use href={`${icons}#wallet`}></use>
       </svg>
-      <AppTitle>Wallet</AppTitle>
+      <AppTitle>{t('app_name')}</AppTitle>
         </AppTitleWrapper>
       */}
       <Form onSubmit={formik.handleSubmit}>
-          <Label >
+          <Label >{t('email')}
               <InputIcon width="24" height="24">
         <use href={`${icons}#email`}></use>
       </InputIcon>
                <Input
-                    
+          id="email"
           name="email"
             type="email"
               placeholder='E-mail'
@@ -73,12 +74,12 @@ const LoginForm = () => {
         {formik.touched.email && formik.errors.email ? (
           <ErrorText>{formik.errors.email}</ErrorText>
         ) : null}
-          <Label >
+          <Label >{t('pass')}
               <InputIcon width="24" height="24">
         <use href={`${icons}#lock`}></use>
       </InputIcon>
              <Input
-         
+          id="password"
           name="password"
             type="password"
             placeholder='Password'
@@ -92,23 +93,17 @@ const LoginForm = () => {
         {formik.touched.password && formik.errors.password ? (
           <ErrorText>{formik.errors.password}!</ErrorText>
         ) : null}
-
-          <SignInBtn type="submit">Sign in</SignInBtn>
+          <SignInBtn type="submit">{t('login')}</SignInBtn>
           <SignUpBtn>
             
           <NavLink to="/register">
-            Sign Up
+            {t('register')}
           </NavLink>
      </SignUpBtn>
-
-    
-        
-   
         </Form>
        {/* </FormBg> */}
     </FormWrapper>
   );
 };
-
 
 export default LoginForm;

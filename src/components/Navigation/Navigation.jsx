@@ -1,52 +1,30 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import s from './Navigation.module.css';
 import Icon from './NavigationIcons';
 import Media from 'react-media';
-import styled from 'styled-components';
-
-// export const StyledNav = styled.nav`
-//   display: flex;
-//   justify-content: space-between;
-
-//   &:hover {
-//     color: orange;
-//     fill: yellow;
-//   }
-// `;
+import { MainNav, StyledLink, NavItemTitle } from './Navigation.styled';
 
 export default function Navigation() {
   return (
-    <nav className={s.mainNavigation}>
-      <NavLink
-        to="/home"
-        className={navData => (navData.isActive ? s.active : '')}
-      >
+    <MainNav>
+      <StyledLink to="/home">
         <Icon name="home" />
-        <span>Home</span>
-      </NavLink>
-      <NavLink
-        to="/diagram"
-        className={navData => (navData.isActive ? s.active : '')}
-      >
+        <NavItemTitle>Home</NavItemTitle>
+      </StyledLink>
+      <StyledLink to="/diagram">
         <Icon name="timeline" />
-        <span>Statistics</span>
-      </NavLink>
+        <NavItemTitle>Statistics</NavItemTitle>
+      </StyledLink>
 
       <Media
         query="(max-width: 768px)"
         render={() => (
           <>
-            <NavLink
-              to="/currency"
-              className={navData => (navData.isActive ? s.active : '')}
-            >
+            <StyledLink to="/currency">
               <Icon name="finance" />
-              <span>Currency</span>
-            </NavLink>
+            </StyledLink>
           </>
         )}
       />
-    </nav>
+    </MainNav>
   );
 }
