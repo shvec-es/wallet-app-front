@@ -41,14 +41,14 @@ const LoginForm = () => {
   return (
    
     <FormWrapper>
-     
-        <AppTitleWrapper>
+     {/* <FormBg> */}
+        {/* <AppTitleWrapper>
            <svg width="40" height="40">
         <use href={`${icons}#wallet`}></use>
       </svg>
       <AppTitle>Wallet</AppTitle>
         </AppTitleWrapper>
-     
+      */}
       <Form onSubmit={formik.handleSubmit}>
           <Label >
               <InputIcon width="24" height="24">
@@ -105,7 +105,7 @@ const LoginForm = () => {
         
    
         </Form>
-       
+       {/* </FormBg> */}
     </FormWrapper>
   );
 };

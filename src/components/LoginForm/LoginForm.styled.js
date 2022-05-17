@@ -2,20 +2,23 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   width: 320px;
-  padding: 107px 20px;
-  margin: 0;
+  padding: 107px 0px;
 
-  @media(min-width: 768px){
-
-width: 533px;
-height: 468px;
-
+  @media (min-width: 768px)and(max-width:1279px) {
+    width: 533px;
+    height: 468px;
+    position:absolute;
+    top:350px;
+    left:80px;
+    padding:0;
+    // padding: 361px 112px 195px 123px;
   }
 
   @media (min-width: 1280px) {
     width: 731px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     padding: 120px 100px;
     background: var(--color-blur);
     backdrop-filter: blur(50px);
@@ -23,36 +26,46 @@ height: 468px;
 `;
 
 export const FormBg = styled.div`
- 
+width:280px;
 
-
+  @media (min-width: 768px) {
+    width: 533px;
+    height: 468px;
+    background: #ffffff;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   flex-direction: column;
+    border-radius: 20px;
+  }
 
   @media (min-width: 1280px) {
-
   }
 `;
 
 export const AppTitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-    margin-bottom: 60px;
-  @media (min-width: 1280px);
+  //   display: flex;
+  //   justify-content: center;
+  margin-bottom: 60px;
+  @media (min-width: 1280px) {
+  }
 `;
 
 export const AppTitle = styled.h1`
   margin: 0;
   margin-left: 20px;
 
-
+  text-align: center;
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
   line-height: 1.5;
-  display: flex;
-  align-items: center;
+  //   display: flex;
+  //   align-items: center;
 
   color: #000000;
-  @media (min-width: 1280px);
+  @media (min-width: 1280px) {
+  }
 `;
 
 export const Form = styled.form`
@@ -64,12 +77,10 @@ export const Form = styled.form`
   align-items: center;
   flex-direction: column;
 
-    @media(min-width: 768px){
-
-width: 533px;
-height: 468px;
- border-radius: 20px;
-
+  @media (min-width: 768px) {
+    width: 533px;
+    height: 468px;
+    border-radius: 20px;
   }
 
   @media (min-width: 1280px) {
