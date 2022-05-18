@@ -9,7 +9,7 @@ import {
 export default function Balance() {
   const location = useLocation();
   const balance = 23581;
-  const isHome = location.pathname === '/home';
+  const isHome = location.pathname === '/home' || '/diagram';
 
   const formattedBalance = (+balance)
     .toFixed(2)
