@@ -53,6 +53,7 @@ export const StyledSvg = styled.svg`
 
 export const NavItemTitle = styled.span`
   display: none;
+  text-transform: capitalize;
 
   @media (min-width: 768px) {
     display: block;
