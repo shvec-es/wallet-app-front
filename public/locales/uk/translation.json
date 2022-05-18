@@ -1,5 +1,6 @@
 {
   "app_name": "гаманець",
+  "app_title": "фінансовий застосунок",
 
   "register": "реєстрація",
   "login": "вхід",
@@ -11,7 +12,6 @@
   "sale": "продаж",
 
   "home": "домівка",
-  "statistic": "статистика",
 
   "email": "електронна пошта",
   "email_string": "введіть вашу електронну пошту",
@@ -40,10 +40,18 @@
   "transaction_string": "не правильний формат",
   "sum_require": "Введіть суму",
   "date_require": "Вкажіть дату",
-  "transaction_add": "додати транзакцію",
-  "income": "дохід",
-  "expense": "витрата",
+  "transaction_add": "додати платіж",
+  "income": "прибутки",
+  "expense": "витрати",
   "description": "опис",
   "add": "додати",
-  "cancel": "скасувати"
+  "cancel": "скасувати",
+
+  "statistic": "статистика",
+  "category": "категорія",
+  "amount": "сума",
+  "balance": "ваш баланс",
+  "date": "дата",
+  "month": "місяць",
+  "year": "рік"
 }
