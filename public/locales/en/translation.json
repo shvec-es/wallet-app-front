@@ -23,5 +23,27 @@
   "pass_confirm": "confirm password",
   "pass_string": "Enter your password",
   "pass_error": "Password must be at least 6 characters long",
-  "pass_require": "Password is required"
+  "pass_require": "Password is required",
+
+  "transaction_options": [
+    "Basic",
+    "Food",
+    "Car",
+    "Selfcare",
+    "Children",
+    "Household goods",
+    "Education",
+    "Leisure",
+    "Others"
+  ],
+  "transaction_choose": "choose category",
+  "transaction_string": "Format is not correct",
+  "sum_require": "Sum is required",
+  "date_require": "Please choose a date",
+  "transaction_add": "add transaction",
+  "income": "income",
+  "expense": "expense",
+  "description": "add comment",
+  "add": "add",
+  "cancel": "cancel"
 }
