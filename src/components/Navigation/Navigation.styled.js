@@ -8,7 +8,7 @@ export const MainNav = styled.nav`
 
   @media (min-width: 768px) {
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-top: 40px;
 
     & a {
       font-size: 18px;
