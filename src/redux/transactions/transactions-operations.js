@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios";
 import * as actions from "./transactions-actions";
 
@@ -28,8 +29,16 @@ const addTransaction = (transaction) => async dispatch => {
     }
 }
 
+const fetchTransactionsStatistics = createAsyncThunk( 
+    'transactions/fetchTransactionStatistics',
+    async (dateInfo, rejectWithValue) => {
+        try {
+            
+        } catch (error) {
+            rejectWithValue(error)
+        }
+    }
+)
 
-
-
-export const operations = { getTransactions, addTransaction }
+export const operations = { getTransactions, addTransaction, fetchTransactionsStatistics }
 
