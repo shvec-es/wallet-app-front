@@ -26,4 +26,4 @@ const error = createReducer(null, {
   [operations.fetchTransactionsStatistics.rejected]: () => true,
 });
 
-export default combineReducers({ result, transactionsStatistics });
+export default combineReducers({ result, transactionsStatistics,  transactionsStatisticsIsLoading, error});

@@ -31,9 +31,10 @@ const addTransaction = (transaction) => async dispatch => {
 
 const fetchTransactionsStatistics = createAsyncThunk( 
     'transactions/fetchTransactionStatistics',
-    async (dateInfo, rejectWithValue) => {
+    async ({month, year}, rejectWithValue) => {
         try {
-            
+            const { data } = await axios.get(`/wallet/stats?month=${month}&year=${year}`);
+            return data.payload;
         } catch (error) {
             rejectWithValue(error)
         }
