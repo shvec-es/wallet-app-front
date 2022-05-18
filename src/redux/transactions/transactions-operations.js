@@ -29,5 +29,7 @@ const addTransaction = (transaction) => async dispatch => {
 }
 
 
+
+
 export const operations = { getTransactions, addTransaction }
 
