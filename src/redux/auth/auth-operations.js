@@ -17,7 +17,7 @@ export const logIn = createAsyncThunk(
       try {
         
       const { data } = await axios.post(
-     
+     "wallet-codewriters.herokuapp.com/api/auth/login",
         credentials
       );
       token.set(data.token);
@@ -30,7 +30,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk("auth/logout", async () => {
   try {
-    await axios.post();
+    await axios.post("wallet-codewriters.herokuapp.com/api/auth/logout");
     token.unset();
   } catch (error) {}
 });
