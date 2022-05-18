@@ -1,15 +1,16 @@
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { balance as balanceSelector } from '../../redux/balance/balance-selectors';
-import React, { useEffect } from 'react';
+
 import {
   BalanceLabel,
   BalanceSumm,
   BalanceWrapper,
   BalanceCurrencySymbol,
 } from './Balance.styled';
-import { fetchBalance } from 'redux/balance/balance-operations';
-//import { getAllTransactions } from 'redux/transactions/transactions-selectors.js';
+import { fetchBalance } from '../../redux/balance/balance-operations';
+//import { getAllTransactions } from 'redux/transactions/transactions-selectors';
 
 export default function Balance() {
   const location = useLocation();
@@ -18,15 +19,15 @@ export default function Balance() {
   const dispatch = useDispatch();
   //--------------------------------
   const isHome = location.pathname === '/home';
-  // const ReduxTransations = useSelector(getAllTransactions);
+  //const allTransations = useSelector(getAllTransactions);
   //--------------------------------
   useEffect(
     () => {
       dispatch(fetchBalance);
     },
-    [
-      //dispatch, ReduxTransations
-    ],
+    //[
+    //dispatch, allTransations
+    //],
   );
   //--------------------------------
   const formattedBalance = (+balance)
