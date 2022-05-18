@@ -8,6 +8,7 @@ import {
   Header,
   Navigation,
   LoginPage,
+  Balance,
 } from 'components';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Container>
         <Navigation />
+        <Balance />
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="/" element={<LoginPage />}></Route>
