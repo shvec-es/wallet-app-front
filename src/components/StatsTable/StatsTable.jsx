@@ -1,4 +1,3 @@
-
 import StatsSelect from 'components/StatsSelects';
 
 import {
@@ -14,33 +13,34 @@ import {
   TotalAmount,
   SelectsWrapper,
 } from './StatsTable.styled';
+import { useTranslation } from 'react-i18next';
 
 function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
+  const { t } = useTranslation();
 
-    const months = [
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+  const months = ['September', 'October', 'November', 'December'];
 
-  const years = [
-    "1998",
-    "1999",
-    "2000"
-  ]
+  const years = ['1998', '1999', '2000'];
 
   return (
     <ContentWrapper>
       <SelectsWrapper>
-        <StatsSelect options={months} sendSelectedValue={updateMonth} startValue={month}  />
-        <StatsSelect options={years} sendSelectedValue={updateYear} startValue={year} />
+        <StatsSelect
+          options={months}
+          sendSelectedValue={updateMonth}
+          startValue={month}
+        />
+        <StatsSelect
+          options={years}
+          sendSelectedValue={updateYear}
+          startValue={year}
+        />
       </SelectsWrapper>
-        <Table>
+      <Table>
         <TableHeader>
           <TableRow>
-            <HeadCell>Category</HeadCell>
-            <HeadCell>Amount</HeadCell>
+            <HeadCell>{t('category')}</HeadCell>
+            <HeadCell>{t('amount')}</HeadCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -55,12 +55,16 @@ function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, u
             </TableRow>
           ))}
           <TableRow>
-            <TotalTableData>Expences:</TotalTableData>
-            <TotalTableData><TotalAmount type={"expence"}>{balance.consumption}</TotalAmount></TotalTableData>
+            <TotalTableData>{t('expense')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'expence'}>{balance.consumption}</TotalAmount>
+            </TotalTableData>
           </TableRow>
           <TableRow>
-            <TotalTableData>Income:</TotalTableData>
-            <TotalTableData><TotalAmount type={"income"}>{balance.income}</TotalAmount></TotalTableData>
+            <TotalTableData>{t('income')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'income'}>{balance.income}</TotalAmount>
+            </TotalTableData>
           </TableRow>
         </TableBody>
       </Table>

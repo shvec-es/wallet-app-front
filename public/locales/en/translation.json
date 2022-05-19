@@ -1,5 +1,6 @@
 {
   "app_name": "wallet",
+  "app_title": "finance app",
 
   "register": "sign up",
   "login": "sign in",
@@ -11,7 +12,6 @@
   "sale": "sale",
 
   "home": "home",
-  "statistic": "statistics",
 
   "email": "email address",
   "email_string": "Enter your email",
@@ -45,5 +45,13 @@
   "expense": "expense",
   "description": "add comment",
   "add": "add",
-  "cancel": "cancel"
+  "cancel": "cancel",
+
+  "statistic": "statistics",
+  "category": "category",
+  "amount": "amount",
+  "balance": "your balance",
+  "date": "date",
+  "month": "month",
+  "year": "year"
 }

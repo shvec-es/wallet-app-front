@@ -10,9 +10,8 @@ import { getTransactionsStatistics } from 'redux/transactions/transactions-selec
 
 import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
 
-
 function DiagramTab() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const [month, setMonth] = useState(setDefaultMonth());
   const [year, setYear] = useState(String(new Date().getFullYear()));
   const [expences, setExpences] = useState([
@@ -34,8 +33,7 @@ console.log(statistics)
     const month = new Date().getMonth();
     const normalizedMonth = String(month + 1);
     if (normalizedMonth.length < 2) {
-
-      return `0${normalizedMonth}`
+      return `0${normalizedMonth}`;
     }
     return normalizedMonth;
   }
@@ -54,7 +52,7 @@ console.log(statistics)
   return (
     <TabSection>
       <div>
-        <TabTitle>{t('statistics')}</TabTitle>
+        <TabTitle>{t('statistic')}</TabTitle>
         <Chart expences={chartData} total={total} />
       </div>
       {Object.keys(statistics).length > 0 &&
