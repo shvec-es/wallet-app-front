@@ -26,9 +26,9 @@ function App() {
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
           <Routes>
-            <Route path="/" element={<LoginPage />}></Route>
+            {/* <Route path="/" element={<LoginPage />}></Route> */}
           </Routes>
-          {/* <DashboardPage /> */}
+          <DashboardPage />
         </Container>
       </Suspense>
     </>

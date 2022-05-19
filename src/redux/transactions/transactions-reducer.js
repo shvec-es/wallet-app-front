@@ -8,7 +8,18 @@ const result = createReducer({}, {
     [getTransactionsSuccess]: (_, {payload}) => payload,
 });
 
-const transactionsStatistics = createReducer([],{
+const transactionsStatistics = createReducer({
+  sortingTransactions: [
+    { name: 'main expences', sum: 100, color: '#FFDD33' },
+    { name: 'housing', sum: 86, color: '#FF5E33' },
+    { name: 'products', sum: 40, color: '#2BF956' },
+  ],
+  balance: {
+    income: '',
+    consumption: '',
+   balance: '',
+}
+},{
     [operations.fetchTransactionsStatistics.fulfilled]: (state, { payload }) => {
         return payload;
 }}

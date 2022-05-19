@@ -17,18 +17,25 @@ import { useTranslation } from 'react-i18next';
 
 function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
   const { t } = useTranslation();
+  
+  
+  const getMonthName = (monthNumber) => {
+    const date = new Date(1, monthNumber, 1); 
+    return date.toLocaleString('en-us', { month: 'long' }); 
+  }
 
   const months = ['September', 'October', 'November', 'December'];
 
   const years = ['1998', '1999', '2000'];
 
+  const displayMonth = getMonthName(month)
   return (
     <ContentWrapper>
       <SelectsWrapper>
         <StatsSelect
           options={months}
           sendSelectedValue={updateMonth}
-          startValue={month}
+          startValue={displayMonth}
         />
         <StatsSelect
           options={years}

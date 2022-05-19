@@ -95,6 +95,7 @@ export const TableData = styled.td`
 
 export const TotalTableData = styled.td`
   padding-top: 14px;
+  text-transform: capitalize;
 
   &:first-child {
     padding-left: 20px;
