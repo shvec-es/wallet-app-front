@@ -28,7 +28,7 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<LoginPage />}></Route> */}
           </Routes>
-          <DashboardPage />
+          {/* <DashboardPage /> */}
         </Container>
       </Suspense>
     </>
