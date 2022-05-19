@@ -1,52 +1,33 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import s from './Navigation.module.css';
 import Icon from './NavigationIcons';
 import Media from 'react-media';
-import styled from 'styled-components';
-
-// export const StyledNav = styled.nav`
-//   display: flex;
-//   justify-content: space-between;
-
-//   &:hover {
-//     color: orange;
-//     fill: yellow;
-//   }
-// `;
+import { MainNav, StyledLink, NavItemTitle } from './Navigation.styled';
+import { useTranslation } from 'react-i18next';
 
 export default function Navigation() {
+  const { t } = useTranslation();
+
   return (
-    <nav className={s.mainNavigation}>
-      <NavLink
-        to="/home"
-        className={navData => (navData.isActive ? s.active : '')}
-      >
+    <MainNav>
+      <StyledLink to="/home">
         <Icon name="home" />
-        <span>Home</span>
-      </NavLink>
-      <NavLink
-        to="/diagram"
-        className={navData => (navData.isActive ? s.active : '')}
-      >
+        <NavItemTitle>{t('home')}</NavItemTitle>
+      </StyledLink>
+      <StyledLink to="/diagram">
         <Icon name="timeline" />
-        <span>Statistics</span>
-      </NavLink>
+        <NavItemTitle>{t('statistic')}</NavItemTitle>
+      </StyledLink>
 
       <Media
         query="(max-width: 768px)"
         render={() => (
           <>
-            <NavLink
-              to="/currency"
-              className={navData => (navData.isActive ? s.active : '')}
-            >
+            <StyledLink to="/currency">
               <Icon name="finance" />
-              <span>Currency</span>
-            </NavLink>
+            </StyledLink>
           </>
         )}
       />
-    </nav>
+    </MainNav>
   );
 }

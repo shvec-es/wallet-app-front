@@ -1,7 +1,7 @@
-
 import StatsSelect from 'components/StatsSelects';
 
 import {
+  ContentWrapper,
   Table,
   TableData,
   TableHeader,
@@ -11,38 +11,41 @@ import {
   ExpenceType,
   TotalTableData,
   TotalAmount,
+  SelectsWrapper,
 } from './StatsTable.styled';
+import { useTranslation } from 'react-i18next';
 
-function StatsTable({ expences }) {
-
-  const caclulateExpences = (expences) => {
+function StatsTable({ expences, month, year, updateMonth, updateYear }) {
+  const { t } = useTranslation();
+  const caclulateExpences = expences => {
     return expences.reduce((acc, expence) => acc + expence.amount, 0);
-  }
+  };
 
   const totalExpences = caclulateExpences(expences);
 
-  const months = [
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+  const months = ['September', 'October', 'November', 'December'];
 
-  const years = [
-    "1998",
-    "1999",
-    "2000"
-  ]
+  const years = ['1998', '1999', '2000'];
 
   return (
-    <div>
-      <StatsSelect options={months} buttonTitle='Month'/>
-      <StatsSelect options={years} buttonTitle='Year'/>
+    <ContentWrapper>
+      <SelectsWrapper>
+        <StatsSelect
+          options={months}
+          sendSelectedValue={updateMonth}
+          startValue={month}
+        />
+        <StatsSelect
+          options={years}
+          sendSelectedValue={updateYear}
+          startValue={year}
+        />
+      </SelectsWrapper>
       <Table>
         <TableHeader>
           <TableRow>
-            <HeadCell>Category</HeadCell>
-            <HeadCell>Amount</HeadCell>
+            <HeadCell>{t('category')}</HeadCell>
+            <HeadCell>{t('amount')}</HeadCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -57,16 +60,20 @@ function StatsTable({ expences }) {
             </TableRow>
           ))}
           <TableRow>
-            <TotalTableData>Expences:</TotalTableData>
-            <TotalTableData><TotalAmount type={"expence"}>Income</TotalAmount></TotalTableData>
+            <TotalTableData>{t('expense')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'expence'}>Income</TotalAmount>
+            </TotalTableData>
           </TableRow>
           <TableRow>
-            <TotalTableData>Income:</TotalTableData>
-            <TotalTableData><TotalAmount type={"income"}>{totalExpences}</TotalAmount></TotalTableData>
+            <TotalTableData>{t('income')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'income'}>{totalExpences}</TotalAmount>
+            </TotalTableData>
           </TableRow>
         </TableBody>
       </Table>
-    </div>
+    </ContentWrapper>
   );
 }
 

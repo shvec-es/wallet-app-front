@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios";
 import * as actions from "./transactions-actions";
 
@@ -15,9 +16,30 @@ const getTransactions = () => async dispatch => {
     }
 }
 
-//addTransaction треба звязати з кнопкою?
+//addTransaction (copilot edition)
+const addTransaction = (transaction) => async dispatch => {
+    dispatch(actions.addTransaction());
+    try {
+        const { data } = await axios.post("/transactions", transaction);
+        dispatch(actions.addTransactionSuccess(data));
+        console.log('додано успішно');
+    } catch (error) {
+        dispatch(actions.addTransactionFailure(error));
+        console.log(error);
+    }
+}
 
+const fetchTransactionsStatistics = createAsyncThunk( 
+    'transactions/fetchTransactionStatistics',
+    async ({month, year}, rejectWithValue) => {
+        try {
+            const { data } = await axios.get(`/wallet/stats?month=${month}&year=${year}`);
+            return data.payload;
+        } catch (error) {
+            rejectWithValue(error)
+        }
+    }
+)
 
-
-export const operations = { getTransactions }
+export const operations = { getTransactions, addTransaction, fetchTransactionsStatistics }
 

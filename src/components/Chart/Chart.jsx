@@ -12,12 +12,13 @@ function Chart({ expences, total }) {
         <Doughnut
           data={expences}
           options={{
+             maintainAspectRatio: false, 
             layout: {
               padding: 0,
             },
           }}
               />
-        <Total>{total}</Total>
+        <Total>₴ {total}</Total>
       </ChartWrapper>
     </>
   );

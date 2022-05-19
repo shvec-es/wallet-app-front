@@ -24,7 +24,8 @@ export const CurrencyTable = styled.table`
   }
 
   @media (min-width: 1280px) {
-    min-width: 393px;
+    width: 393px;
+    margin-top: 32px;
   }
 `;
 
@@ -36,6 +37,7 @@ export const HeadCell = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  text-transform: capitalize;
 
   @media (min-width: 1280px) {
     padding: 18px;

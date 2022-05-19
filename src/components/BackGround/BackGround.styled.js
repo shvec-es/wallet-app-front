@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   z-index: -100;
   backdrop-filter: blur(50px);
   background: var(--color-background);
+ 
 `;
 
 export const TopEllipse = styled.svg`

@@ -45,7 +45,7 @@ const logIn = createAsyncThunk(
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post();
+    await axios.post("wallet-codewriters.herokuapp.com/api/auth/logout");
     token.unset();
   } catch (error) {}
 });
