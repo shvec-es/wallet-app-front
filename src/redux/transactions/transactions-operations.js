@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios";
 import * as actions from "./transactions-actions";
 
-axios.defaults.baseURL = "https://61e83932e32cd90017acc131.mockapi.io/api/v1";
+import ApiServices from "services/ApiServices";
+
+// axios.defaults.baseURL = "https://61e83932e32cd90017acc131.mockapi.io/api/v1";
 
 const getTransactions = () => async dispatch => {
     dispatch(actions.getTransactions());
@@ -31,10 +33,9 @@ const addTransaction = (transaction) => async dispatch => {
 
 const fetchTransactionsStatistics = createAsyncThunk( 
     'transactions/fetchTransactionStatistics',
-    async ({month, year}, rejectWithValue) => {
+    async ({month, year, token}, rejectWithValue) => {
         try {
-            const { data } = await axios.get(`/wallet/stats?month=${month}&year=${year}`);
-            return data.payload;
+            return ApiServices.getStats({month, year}, token)
         } catch (error) {
             rejectWithValue(error)
         }

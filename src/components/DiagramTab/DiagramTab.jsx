@@ -20,13 +20,15 @@ function DiagramTab() {
     { type: 'housing', amount: 86, color: '#FF5E33' },
     { type: 'products', amount: 40, color: '#2BF956' },
   ]);
-  // const statistics = useSelector(getTransactionsStatistics);
-  // const dispatch = useDispatch();
+  const statistics = useSelector(getTransactionsStatistics);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
-  //   fetchStatistics({month: '05', year: '2022'})
-  // }, [dispatch])
+console.log(statistics)
+
+  useEffect(() => {
+    const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
+    fetchStatistics({month: '05', year: '2022', token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MjkzMDc5MywiZXhwIjoxNjUyOTM0MzkzfQ.fgzZQ0Xb6x5RoWro-kPj_15w7br_axUoGC_G6X4N6a8"})
+  }, [dispatch])
 
   function setDefaultMonth() {
     const month = new Date().getMonth();
@@ -55,13 +57,15 @@ function DiagramTab() {
         <TabTitle>{t('statistics')}</TabTitle>
         <Chart expences={chartData} total={total} />
       </div>
+      {Object.keys(statistics).length > 0 &&
       <StatsTable
-        expences={expences}
+        categoriesStatistics={statistics.sortingTransactions}
+        balance={statistics.balance}
         month={month}
         year={year}
         updateMonth={setMonth}
         updateYear={setYear}
-      />
+      />}
 
     </TabSection>
   );

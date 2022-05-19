@@ -15,15 +15,9 @@ import {
   SelectsWrapper,
 } from './StatsTable.styled';
 
-function StatsTable({ expences, month, year, updateMonth, updateYear }) {
+function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
 
-  const caclulateExpences = (expences) => {
-    return expences.reduce((acc, expence) => acc + expence.amount, 0);
-  }
-
-  const totalExpences = caclulateExpences(expences);
-
-  const months = [
+    const months = [
     "September",
     "October",
     "November",
@@ -50,23 +44,23 @@ function StatsTable({ expences, month, year, updateMonth, updateYear }) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {expences.map(expence => (
-            <TableRow key={expence.type}>
+          {categoriesStatistics.map(category => (
+            <TableRow key={category.name}>
               <TableData>
-                <ExpenceType markColor={expence.color}>
-                  {expence.type}
+                <ExpenceType markColor={category.color}>
+                  {category.name}
                 </ExpenceType>
               </TableData>
-              <TableData>{expence.amount}</TableData>
+              <TableData>{category.sum}</TableData>
             </TableRow>
           ))}
           <TableRow>
             <TotalTableData>Expences:</TotalTableData>
-            <TotalTableData><TotalAmount type={"expence"}>Income</TotalAmount></TotalTableData>
+            <TotalTableData><TotalAmount type={"expence"}>{balance.consumption}</TotalAmount></TotalTableData>
           </TableRow>
           <TableRow>
             <TotalTableData>Income:</TotalTableData>
-            <TotalTableData><TotalAmount type={"income"}>{totalExpences}</TotalAmount></TotalTableData>
+            <TotalTableData><TotalAmount type={"income"}>{balance.income}</TotalAmount></TotalTableData>
           </TableRow>
         </TableBody>
       </Table>

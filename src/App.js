@@ -16,14 +16,14 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-      {/* <Header /> */}
+      <Header />
       <Container>
         {/* <Navigation /> */}
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
-            {/* <Route path="/" element={<LoginPage />}></Route> */}
+            <Route path="/" element={<LoginPage />}></Route>
           </Routes>
-          {/* <DashboardPage /> */}
+          <DashboardPage />
         </Suspense>
    </Container>
      

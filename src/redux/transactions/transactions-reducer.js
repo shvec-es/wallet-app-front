@@ -2,9 +2,9 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import { getTransactions, getTransactionsSuccess, getTransactionsFailure } from "./transactions-actions";
 
-import {operations} from './transactions-operations'
+import { operations } from './transactions-operations';
 
-const result = createReducer([], {
+const result = createReducer({}, {
     [getTransactionsSuccess]: (_, {payload}) => payload,
 });
 
