@@ -17,9 +17,6 @@ root.render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <App />
-          <Suspense fallback="Loading...">
-            <App />
-          </Suspense>
         </BrowserRouter>
       </PersistGate>
     </Provider>
