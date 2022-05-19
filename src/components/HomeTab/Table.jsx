@@ -2,7 +2,7 @@ import {TableMain, TableHeader, TableBody, TableRow, TableHeadCell, TableCell, T
 
 /*компонент отримує масив для рендеру як по ТЗ*/
 
-function Table({data}) {
+function Table({data, balance}) {
     return ( 
       <TableMain>
         <TableHeader>
@@ -16,14 +16,14 @@ function Table({data}) {
           </TableRow>
         </TableHeader>
         <TableBody>
-         {data.map(({id, date, type, category, commentary, moneyAmount, balance}) => (
-          <TableRow key ={id}>
+         {data.map(({_id, date, typeTransaction, category, description, sum}) => (
+          <TableRow key ={_id}>
             <TableCell>{date}</TableCell>
-            <TableCell>{type === true ? '+' : '-'}</TableCell>
+            <TableCell>{typeTransaction === true ? '+' : '-'}</TableCell>
             <TableCell>{category}</TableCell>
-            <TableCell>{commentary}</TableCell>
-            <TableCellColor type={type === true ? "income" : "costs"}>{moneyAmount}</TableCellColor>
-            <TableCell>{balance}</TableCell>
+            <TableCell>{description}</TableCell>
+            <TableCellColor type={typeTransaction === true ? "income" : "costs"}>{sum}</TableCellColor>
+            <TableCell>{typeTransaction === true ? balance+sum : balance-sum}</TableCell>
           </TableRow>
            ))}
         </TableBody>
