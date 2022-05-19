@@ -46,11 +46,11 @@ export const TableCell = styled.td`
   margin-right: 20px; 
   }
 &:nth-child(3) {
-    width: 130px;
+    width: 120px;
     text-align: start;
   }
 &:nth-child(4) {
-    width: 140px;
+    width: 120px;
     text-align: start;
   }
 &:last-child {
