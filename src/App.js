@@ -1,14 +1,15 @@
 import { Suspense } from 'react';
 import Media from 'react-media';
 import { Routes, Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import DashboardPage from 'pages/dashboardPage';
 import {
   BackGround,
   Container,
   Header,
-  Navigation,
   LoginPage,
 } from 'components';
+
 
 function App() {
   return (
@@ -16,16 +17,19 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-      <Header />
+      {/* <Header /> */}
       <Container>
-        <Navigation />
+        {/* <Navigation /> */}
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
-            <Route path="/" element={<LoginPage />}></Route>
+            {/* <Route path="/" element={<LoginPage />}></Route> */}
           </Routes>
-          <DashboardPage />
+          {/* <DashboardPage /> */}
         </Suspense>
-      </Container>
+   </Container>
+     
+
+    
     </>
   );
 }
