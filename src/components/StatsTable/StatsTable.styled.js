@@ -6,13 +6,16 @@ padding-top: 65px;
 
 export const SelectsWrapper = styled.div`
   & div:not(:last-child) {
+    @media (max-width: 767px) {
     margin-bottom: 20px;
+    }
   }
 
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
     width: 336px;
+    margin-bottom: 20px;
   }
 
   @media (min-width: 1280px) {
@@ -92,6 +95,7 @@ export const TableData = styled.td`
 
 export const TotalTableData = styled.td`
   padding-top: 14px;
+  text-transform: capitalize;
 
   &:first-child {
     padding-left: 20px;

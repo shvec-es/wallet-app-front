@@ -24,7 +24,8 @@ export const CurrencyTable = styled.table`
   }
 
   @media (min-width: 1280px) {
-    min-width: 393px;
+    width: 393px;
+    margin-top: 32px;
   }
 `;
 

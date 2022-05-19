@@ -8,14 +8,14 @@ i18next
   .use(HttpApi)
   .use(LanguageDetector)
   .init({
-    lng: 'en',
+    // lng: 'en',
     supportedLngs: ['en', 'uk'],
     nonExplicitSupportedLngs: true,
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
-    debug: process.env.NODE_ENV === 'development',
+    // debug: process.env.NODE_ENV === 'development',
   });
 
 export default i18next;

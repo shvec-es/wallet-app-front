@@ -7,66 +7,41 @@ export const size = {
 };
 
 export const MainHeader = styled.div`
-    display: flex;
-    justify-content: center;
-    background-color: var(--color-white);
-    `
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-white);
+`;
+
 export const StyledHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 60px;
-    padding: 15px 20px;
-    ${size.tablet}{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  padding: 15px 20px;
+
+  ${size.tablet} {
     height: 80px;
     width: 768px;
-      padding: 20px 32px;
-    }
-    ${size.desktop}{
-     width: 1280px;
-      padding: 20px 16px;   
-    }
-`
-
-export const Logo = styled.div`
-  display: flex;
-  cursor: pointer;
-  justify-content: ${props => props.justify || 'center'} ;
-  align-items: ${props=> props.align || 'center'};
-`
-
-export const Title =  styled.div`
-  font-family: Poppins;
-  font-size: 25px;
-  font-weight: 700;
- 
-
-  ${size.tablet}{
-    font-size: 30px;
-    line-height: 1.5;
+    padding: 20px 32px;
   }
-`
-export const LogoIcon = styled.svg`
-  width:30px ;
-  height: 30px;
-  margin-right: 15px;
-  ${size.tablet}{
-    width:40px ;
-  height: 40px;
-  margin-right: 20px;  
-}
- `
+
+  ${size.desktop} {
+    width: 1280px;
+    padding: 20px 16px;
+  }
+`;
 
 export const UserInfo = styled.div`
-  display: flex ;
+  display: flex;
   justify-content: ${props => props.justify || 'center'};
-  align-items: ${props=> props.align || 'center'};
+  align-items: ${props => props.align || 'center'};
   font-famile: Circle;
 
   font-size: 18px;
   line-height: 1.47;
-  color: ${props => props.color || 'var(--color-gray)'};  
-`
+  color: ${props => props.color || 'var(--color-gray)'};
+`;
+
 export const LogoutBtn = styled.button`
   cursor: pointer;
   display: flex;
@@ -75,20 +50,27 @@ export const LogoutBtn = styled.button`
   background-color: transparent;
   border: none;
   padding-left: 12px;
-  ${size.tablet}{
-  border: none; 
-}
-`
-export const ExitIcon = styled.svg` 
+
+  ${size.tablet} {
+    border: none;
+  }
+`;
+
+export const ExitIcon = styled.svg`
   width: 18px;
   height: 18px;
-  margin-right: ${props => props.mRight || '8px'}
-`
+  margin-right: ${props => props.mRight || '8px'};
+`;
 
 export const UserName = styled.p`
   color: var(--color-gray);
-  ${size.tablet}
-  {padding: 0px 12px 6px 0;
+
+  ${size.tablet} {
+    padding: 0px 12px 6px 0;
     border-right: 1px solid;
   }
-`
+`;
+
+export const Logout = styled.span`
+  text-transform: capitalize;
+`;

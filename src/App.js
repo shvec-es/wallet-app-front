@@ -1,13 +1,16 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, Fragment, lazy } from 'react';
 import Media from 'react-media';
 import { Routes, Route } from 'react-router-dom';
-import LoginPage from 'components/LoginPage/LoginPage';
-import { BackGround, Container } from 'components';
 import DashboardPage from 'pages/dashboardPage';
-import HeaderPage from 'pages/headerPage';
-import Navigation from 'components/Navigation';
-import Balance from 'components/Balance';
-import Header from './components/Header'
+import {
+  BackGround,
+  Container,
+  Header,
+  LoginPage,
+  Navigation,
+} from 'components';
+
+const RegistrationPage = lazy(() => import('pages/registrationPage'));
 
 function App() {
   return (
@@ -15,18 +18,19 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-      <Header />
-      <Container>
-        {/* <HeaderPage /> */}
-        <Navigation />
-        <Balance />
-        <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<p>Loading...</p>}>
+        {/* <Header /> */}
+        <Container>
+          {/* <Navigation /> */}
           <Routes>
-            <Route path="/" element={<LoginPage />}></Route>
+            <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
-          <DashboardPage />
-        </Suspense>
-      </Container>
+          <Routes>
+            {/* <Route path="/" element={<LoginPage />}></Route> */}
+          </Routes>
+          {/* <DashboardPage /> */}
+        </Container>
+      </Suspense>
     </>
   );
 }

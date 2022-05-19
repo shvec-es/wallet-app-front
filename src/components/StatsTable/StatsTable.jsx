@@ -1,4 +1,3 @@
-
 import StatsSelect from 'components/StatsSelects';
 
 import {
@@ -14,59 +13,65 @@ import {
   TotalAmount,
   SelectsWrapper,
 } from './StatsTable.styled';
+import { useTranslation } from 'react-i18next';
 
-function StatsTable({ expences, month, year, updateMonth, updateYear }) {
-
-  const caclulateExpences = (expences) => {
-    return expences.reduce((acc, expence) => acc + expence.amount, 0);
+function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
+  const { t } = useTranslation();
+  
+  
+  const getMonthName = (monthNumber) => {
+    const date = new Date(1, monthNumber, 1); 
+    return date.toLocaleString('en-us', { month: 'long' }); 
   }
 
-  const totalExpences = caclulateExpences(expences);
+  const months = ['September', 'October', 'November', 'December'];
 
-  const months = [
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+  const years = ['1998', '1999', '2000'];
 
-  const years = [
-    "1998",
-    "1999",
-    "2000"
-  ]
-
+  const displayMonth = getMonthName(month)
   return (
     <ContentWrapper>
       <SelectsWrapper>
-        <StatsSelect options={months} sendSelectedValue={updateMonth} startValue={month}  />
-        <StatsSelect options={years} sendSelectedValue={updateYear} startValue={year} />
+        <StatsSelect
+          options={months}
+          sendSelectedValue={updateMonth}
+          startValue={displayMonth}
+        />
+        <StatsSelect
+          options={years}
+          sendSelectedValue={updateYear}
+          startValue={year}
+        />
       </SelectsWrapper>
-        <Table>
+      <Table>
         <TableHeader>
           <TableRow>
-            <HeadCell>Category</HeadCell>
-            <HeadCell>Amount</HeadCell>
+            <HeadCell>{t('category')}</HeadCell>
+            <HeadCell>{t('amount')}</HeadCell>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {expences.map(expence => (
-            <TableRow key={expence.type}>
+          {categoriesStatistics.map(category => (
+            <TableRow key={category.name}>
               <TableData>
-                <ExpenceType markColor={expence.color}>
-                  {expence.type}
+                <ExpenceType markColor={category.color}>
+                  {category.name}
                 </ExpenceType>
               </TableData>
-              <TableData>{expence.amount}</TableData>
+              <TableData>{category.sum}</TableData>
             </TableRow>
           ))}
           <TableRow>
-            <TotalTableData>Expences:</TotalTableData>
-            <TotalTableData><TotalAmount type={"expence"}>Income</TotalAmount></TotalTableData>
+            <TotalTableData>{t('expense')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'expence'}>{balance.consumption}</TotalAmount>
+            </TotalTableData>
           </TableRow>
           <TableRow>
-            <TotalTableData>Income:</TotalTableData>
-            <TotalTableData><TotalAmount type={"income"}>{totalExpences}</TotalAmount></TotalTableData>
+            <TotalTableData>{t('income')}:</TotalTableData>
+            <TotalTableData>
+              <TotalAmount type={'income'}>{balance.income}</TotalAmount>
+            </TotalTableData>
           </TableRow>
         </TableBody>
       </Table>

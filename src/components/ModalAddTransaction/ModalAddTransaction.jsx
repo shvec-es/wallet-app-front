@@ -17,18 +17,20 @@ import {
   ModalInputComment,
   ModalButtonAdd,
   ModalButtonCancel,
-  ErrorMesage
+  ErrorMesage,
 } from './ModalAddTransaction.styled';
 import sprite from 'images/sprite.svg';
 import Checkbox from 'components/Checkbox';
 import SelectCategory from 'components/SelectCategory';
 import DateTime from 'helpers/DateTime';
 import { operations } from 'redux/transactions/transactions-operations';
+import { useTranslation } from 'react-i18next';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [categ, setCateg] = useState('');
   const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
     const formik = useFormik({
         initialValues: {
@@ -40,8 +42,8 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
         },
         validationSchema: Yup.object({
             typeTransaction: Yup.boolean().required(),
-            sum: Yup.string().matches(/^\d+(\.\d\d)?$/, 'Format is not correct').required('Sum is required'),
-            date: Yup.string().required('Please choose a date'),
+            sum: Yup.string().matches(/^\d+(\.\d\d)?$/, t('transaction_string')).required(t('sum_require')),
+            date: Yup.string().required(t('date_require')),
             description: Yup.string(),
             category: Yup.string(),
         }),
@@ -52,8 +54,13 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             setModal(false);
         },
   });
-  const { values: { typeTransaction, sum, date, description, category }, handleChange, handleSubmit } = formik;
-  
+
+  const {
+    values: { typeTransaction, sum, date, description, category },
+    handleChange,
+    handleSubmit,
+  } = formik;
+
   const handleCancel = () => {
     setModal(false);
   };
@@ -66,12 +73,12 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
         </svg>
       </ModalBtn>
       <ModalContainer>
-        <ModalTitle>Add transaction</ModalTitle>
+        <ModalTitle>{t('transaction_add')}</ModalTitle>
         <ModalForm onSubmit={handleSubmit}>
         <CheckboxContainer>
-            {typeTransaction ? <CheckboxTextPlus>Income</CheckboxTextPlus> : <CheckboxText>Income</CheckboxText>}
+            {typeTransaction ? <CheckboxTextPlus>{t('income')}</CheckboxTextPlus> : <CheckboxText>{t('income')}</CheckboxText>}
             <Checkbox value={typeTransaction} onChange={ handleChange}/>
-            {typeTransaction ? <CheckboxText>Expense</CheckboxText> : <CheckboxTextMinus>Expense</CheckboxTextMinus>}
+            {typeTransaction ? <CheckboxText>{t('expense')}</CheckboxText> : <CheckboxTextMinus>{t('expense')}</CheckboxTextMinus>}
         </CheckboxContainer>
           {!typeTransaction && <SelectCategory value={category} values={formik.values} set={setCateg}><input
         type="text"
@@ -86,8 +93,7 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             value={sum}
             type="number"
             onChange={handleChange}
-              placeholder='0.00'
-              autocomplete='off'
+            placeholder='0.00'
           />
           {formik.touched.sum && formik.errors.sum ? (
           <ErrorMesage>{formik.errors.sum}</ErrorMesage>
@@ -101,12 +107,12 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             name="description"
             value={description}
             type="text"
-            placeholder="Add comment"
+            placeholder={t('description')}
             onChange={handleChange}
           />
-          <ModalButtonAdd type="submit">Add</ModalButtonAdd>
+          <ModalButtonAdd type="submit">{t('add')}</ModalButtonAdd>
           <ModalButtonCancel type="button" onClick={handleCancel}>
-            Cancel
+            {t('cancel')}
           </ModalButtonCancel>
         </ModalForm>
       </ModalContainer>
