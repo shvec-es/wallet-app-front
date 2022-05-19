@@ -72,5 +72,5 @@ class ApiServices {
 
 }
 
-export default new ApiServices
+export default new ApiServices()
 

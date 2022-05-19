@@ -3,6 +3,8 @@ import axios from "axios";
 import * as actions from "./transactions-actions";
 import { toast } from 'react-toastify';
 
+import ApiServices from 'services/ApiServices';
+
 axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 
  const getTransactions = () => async dispatch => {
@@ -58,10 +60,12 @@ axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 
 const fetchTransactionsStatistics = createAsyncThunk( 
     'transactions/fetchTransactionStatistics',
-    async ({month, year}, rejectWithValue) => {
+    async ({month, year, token}, rejectWithValue) => {
         try {
-            const { data } = await axios.get(`/wallet/stats?month=${month}&year=${year}`);
-            return data.payload;
+            const data = await ApiServices.getStats({ month, year }, token);
+            console.log(data)
+            console.log('month', month)
+            return data
         } catch (error) {
             rejectWithValue(error)
         }
