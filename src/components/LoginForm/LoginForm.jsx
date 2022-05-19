@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { logIn } from '../../redux/auth/auth-operations';
+import authOperations from '../../redux/auth/auth-operations';
 import { Logo } from 'components';
 import {
   FormWrapper,
@@ -38,7 +38,7 @@ const LoginForm = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-      dispatch(logIn({ email, password }));
+      dispatch(authOperations.logIn({ email, password }));
 
       console.log('Form data:', values);
       resetForm();
