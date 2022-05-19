@@ -28,9 +28,9 @@ const LoginForm = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string('Enter your email')
-        .email('Invalid email address')
-        .required('Email is required'),
+      email: Yup.string(t('email string'))
+        .email(t('email error'))
+        .required(t('Email is required')),
       password: Yup.string('Enter your password')
         .min(6, 'Password must be at least 6 characters long')
         .max(12)
@@ -40,7 +40,7 @@ const LoginForm = () => {
       const { email, password } = values;
       dispatch(authOperations.logIn({ email, password }));
 
-      console.log('Form data:', values);
+    
       resetForm();
     },
   });

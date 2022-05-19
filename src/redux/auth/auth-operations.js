@@ -34,7 +34,8 @@ const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(credentials);
+      const { data } = await axios.post('https://wallet-codewriters.herokuapp.com/api/auth/login', credentials);
+      console.log(data)
       token.set(data.token);
       return data;
     } catch (error) {
@@ -45,7 +46,7 @@ const logIn = createAsyncThunk(
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post("wallet-codewriters.herokuapp.com/api/auth/logout");
+    await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/logout");
     token.unset();
   } catch (error) {}
 });

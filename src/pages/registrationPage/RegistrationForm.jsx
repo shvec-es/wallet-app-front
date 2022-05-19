@@ -29,7 +29,7 @@ const RegistrationForm = () => {
     name: '',
   };
   const onSubmit = ({ email, password, name }, { resetForm }) => {
-    console.log(email, password, name);
+   
     dispatch(authOperations.register({ email, password, name }));
     resetForm();
   };
