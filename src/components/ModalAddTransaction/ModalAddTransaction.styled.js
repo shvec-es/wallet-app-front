@@ -114,19 +114,6 @@ export const ModalInput = styled.input`
   }
 `;
 
-export const DateInput = styled.div`
-  position: relative;
-`;
-
-export const DateIcon = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  outline: none;
-`;
-
 export const ModalInputComment = styled.textarea`
   height: 84px;
   margin-top: 20px;

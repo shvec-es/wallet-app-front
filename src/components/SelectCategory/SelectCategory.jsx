@@ -12,7 +12,7 @@ import {
 import sprite from 'images/sprite.svg';
 import { useTranslation } from 'react-i18next';
 
-const SelectCategory = ({ value, onChange: handleChange }) => {
+const SelectCategory = ({ value, set }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const { t } = useTranslation();
@@ -23,6 +23,7 @@ const SelectCategory = ({ value, onChange: handleChange }) => {
 
   const chooseItem = item => {
     setSelectedCategory(item);
+    set(item);
     setOpen(false);
   };
 
@@ -53,13 +54,13 @@ const SelectCategory = ({ value, onChange: handleChange }) => {
           ))}
         </SelectList>
       )}
-      <input
+      {/* <input
         type="text"
         name="category"
         value={selectedCategory}
-        onChange={handleChange}
-        style={{ display: 'none' }}
-      />
+        onChange={()=>set(selectedCategory)}
+        hidden
+      /> */}
     </SelectWrapper>
   );
 };

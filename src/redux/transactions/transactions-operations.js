@@ -45,18 +45,43 @@ axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 //     }
 // }
 
-//addTransaction (copilot edition)
- const addTransaction = (transaction) => async dispatch => {
-    dispatch(actions.addTransaction());
+const addTransaction = createAsyncThunk(
+  'transactions/ADD_TRANSACTION',
+  async (
+    { typeTransaction, sum, date, description, category },
+    { rejectWithValue },
+  ) => {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY0YThhNGQ1MDg2N2Q5OTUyMGUzYyIsImlhdCI6MTY1Mjk4ODY5MCwiZXhwIjoxNjUyOTkyMjkwfQ.Sl1sdoWK5rjn-DrU79FVW742vWU1fbom02r52m5_RVE';
     try {
-        const { data } = await axios.post("/wallet/transaction", transaction);
-        dispatch(actions.addTransactionSuccess(data));
-        console.log('додано успішно');
+      if (typeTransaction) {
+        const { data } = await axios.post(
+          '/wallet/transaction',
+          { typeTransaction, sum, date, description },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        return data.payload;
+      } else {
+        const { data } = await axios.post(
+          '/wallet/transaction',
+          { typeTransaction, sum, date, description, category },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        return data.payload;
+      }
     } catch (error) {
-        dispatch(actions.addTransactionFailure(error));
-        console.log(error);
+      return rejectWithValue(error.message);
     }
-}
+  },
+);
 
 const fetchTransactionsStatistics = createAsyncThunk( 
     'transactions/fetchTransactionStatistics',
@@ -72,5 +97,4 @@ const fetchTransactionsStatistics = createAsyncThunk(
     }
 )
 
-export const operations = { getTransactions, addTransaction, fetchTransactionsStatistics }
-
+export const operations = { getTransactions, addTransaction, fetchTransactionsStatistics };
