@@ -1,9 +1,12 @@
 import { Suspense, lazy } from 'react';
 import Media from 'react-media';
 import { Routes, Route } from 'react-router-dom';
-import LoginPage from 'components/LoginPage/LoginPage';
+// import LoginPage from 'components/LoginPage/LoginPage';
+// import RegistrationPage from 'pages/registrationPage';
 import { BackGround, Container } from 'components';
 import DashboardPage from 'pages/dashboardPage';
+
+const RegistrationPage = lazy(() => import('pages/registrationPage'));
 
 function App() {
   return (
@@ -13,12 +16,14 @@ function App() {
       </Media>
 
       <Container>
-        <h1>Wallet</h1>
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
-            <Route path="/" element={<LoginPage />}></Route>
+            <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
-          <DashboardPage />
+          {/* <Routes>
+            <Route path="/" element={<LoginPage />}></Route>
+          </Routes> */}
+          {/* <DashboardPage /> */}
         </Suspense>
       </Container>
     </>

@@ -3,6 +3,15 @@ import Container from './Container';
 import HomeTab from './HomeTab';
 import ButtonAddTransactions from './ButtonAddTransactions';
 import Currency from './Currency';
-import Chart from './Chart'
+import Chart from './Chart';
+import LogoForm from './LogoForm';
 
-export { BackGround, Container, HomeTab, ButtonAddTransactions, Currency, Chart };
+export {
+  BackGround,
+  Container,
+  HomeTab,
+  ButtonAddTransactions,
+  Currency,
+  Chart,
+  LogoForm,
+};
