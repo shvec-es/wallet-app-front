@@ -3,6 +3,8 @@ import axios from "axios";
 import * as actions from "./transactions-actions";
 import { toast } from 'react-toastify';
 
+import ApiServices from 'services/ApiServices';
+
 axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 
  const getTransactions = () => async dispatch => {
