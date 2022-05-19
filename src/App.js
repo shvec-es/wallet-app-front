@@ -15,7 +15,10 @@ import {
   LoginPage,
 } from 'components';
 
+
 const RegistrationPage = lazy(() => import('pages/registrationPage'));
+
+
 
 function App() {
   return (
