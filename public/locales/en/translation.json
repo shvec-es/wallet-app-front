@@ -1,11 +1,9 @@
 {
   "app_name": "wallet",
+  "app_title": "finance app",
 
   "register": "sign up",
   "login": "sign in",
-  "email": "email address",
-  "pass": "password",
-  "pass_confirm": "confirm password",
   "logout": "logout",
   "name": "your name",
 
@@ -13,5 +11,47 @@
   "buy": "buy",
   "sale": "sale",
 
-  "statistics": "statistics"
+  "home": "home",
+
+  "email": "email address",
+  "email_string": "Enter your email",
+  "email_error": "Enter a valid email address",
+  "email_require": "Email is required",
+  "email_exists": "This email is already registered",
+
+  "pass": "password",
+  "pass_confirm": "confirm password",
+  "pass_string": "Enter your password",
+  "pass_error": "Password must be at least 6 characters long",
+  "pass_require": "Password is required",
+
+  "transaction_options": [
+    "Basic",
+    "Food",
+    "Car",
+    "Selfcare",
+    "Children",
+    "Household goods",
+    "Education",
+    "Leisure",
+    "Others"
+  ],
+  "transaction_choose": "choose category",
+  "transaction_string": "Format is not correct",
+  "sum_require": "Sum is required",
+  "date_require": "Please choose a date",
+  "transaction_add": "add transaction",
+  "income": "income",
+  "expense": "expense",
+  "description": "add comment",
+  "add": "add",
+  "cancel": "cancel",
+
+  "statistic": "statistics",
+  "category": "category",
+  "amount": "amount",
+  "balance": "your balance",
+  "date": "date",
+  "month": "month",
+  "year": "year"
 }

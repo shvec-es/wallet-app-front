@@ -7,7 +7,7 @@ import Chart from './Chart';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 import Navigation from './Navigation';
-import LoginPage from './LoginPage';
+import LoginPage from '../pages/LoginPage';
 import Header from './Header';
 import Balance from './Balance';
 

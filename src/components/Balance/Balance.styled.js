@@ -36,5 +36,6 @@ export const BalanceWrapper = styled.div`
 
   @media (min-width: 1280px) {
     width: 355px;
+    margin-top: 28px;
   }
 `;

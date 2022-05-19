@@ -3,7 +3,13 @@ import Media from 'react-media';
 import { Routes, Route } from 'react-router-dom';
 import React, { Fragment } from 'react';
 import DashboardPage from 'pages/dashboardPage';
-import { BackGround, Container, Header, LoginPage } from 'components';
+import {
+  BackGround,
+  Container,
+  Header,
+  LoginPage,
+} from 'components';
+
 
 function App() {
   return (
@@ -20,7 +26,10 @@ function App() {
           </Routes>
           {/* <DashboardPage /> */}
         </Suspense>
-      </Container>
+   </Container>
+     
+
+    
     </>
   );
 }

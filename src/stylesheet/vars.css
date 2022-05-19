@@ -9,9 +9,9 @@
   --color-gray-light: #e0e0e0;
   --color-ellipse-top: #ffd8d0;
   --color-ellipse-bottom: #c5baff;
-  --color-background: rgba(255, 255, 255, 0.4);
+  --color-background:  #e7eaf2;
   --color-background-select: rgba(255, 255, 255, 0.7);
-  --color-blur: #e7eaf2;
+  --color-blur: rgba(255, 255, 255, 0.4);
   --color-border: #dcdcdf;
   --color-white: #ffffff;
   --color-black: #000000;
