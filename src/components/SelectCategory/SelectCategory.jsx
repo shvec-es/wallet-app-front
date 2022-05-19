@@ -19,10 +19,9 @@ const options = [
   'Child care',
   'Household products',
   'Education',
-  'Others',
 ];
 
-const SelectCategory = ({ value, onChange: handleChange }) => {
+const SelectCategory = ({ value, set }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -32,6 +31,7 @@ const SelectCategory = ({ value, onChange: handleChange }) => {
 
   const chooseItem = item => {
     setSelectedCategory(item);
+    set(item);
     setOpen(false);
   };
 
@@ -62,13 +62,13 @@ const SelectCategory = ({ value, onChange: handleChange }) => {
           ))}
         </SelectList>
       )}
-      <input
+      {/* <input
         type="text"
         name="category"
         value={selectedCategory}
-        onChange={handleChange}
-        style={{ display: 'none' }}
-      />
+        onChange={()=>set(selectedCategory)}
+        hidden
+      /> */}
     </SelectWrapper>
   );
 };

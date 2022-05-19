@@ -1,8 +1,8 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import Datetime from 'react-datetime';
-import "react-datetime/css/react-datetime.css";
-// import moment from 'moment';
 import * as Yup from 'yup';
+import moment from 'moment';
 import {
   ModalContainer,
   ModalBtn,
@@ -13,9 +13,7 @@ import {
   CheckboxTextPlus,
   CheckboxTextMinus,
   ModalInputWrapper,
-  DateInput,
   ModalInput,
-  DateIcon,
   ModalInputComment,
   ModalButtonAdd,
   ModalButtonCancel,
@@ -24,15 +22,21 @@ import {
 import sprite from 'images/sprite.svg';
 import Checkbox from 'components/Checkbox';
 import SelectCategory from 'components/SelectCategory';
+import DateTime from 'helpers/DateTime';
+import { operations } from 'redux/transactions/transactions-operations';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
+  const [categ, setCateg] = useState('');
+  const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
+  const dispatch = useDispatch();
+
     const formik = useFormik({
         initialValues: {
             typeTransaction: false,
             sum: '',
-            date: '',
+            date: dt,
             description: '',
-            category: '',
+            category: categ,
         },
         validationSchema: Yup.object({
             typeTransaction: Yup.boolean().required(),
@@ -42,40 +46,21 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             category: Yup.string(),
         }),
         onSubmit: values => {
-            // const { typeTransaction, sum, date, description, category } = values;
+          values = { ...values, category: categ, date: dt, sum: +sum }
+          dispatch(operations.addTransaction(values));
             console.log(values);
             setModal(false);
         },
   });
-    const { values: { typeTransaction, sum, date, description, category }, handleChange, handleSubmit } = formik;
-
-  const renderInput = (props, openCalendar, closeCalendar) => {
-    
-    return (
-      <DateInput>
-        <ModalInput
-            {...props}
-            // name="date"
-            // value={props.value}
-            // type="text"
-            // onChange={handleChange}
-            // placeholder={moment().format('DD.MM.YYYY')}
-            />
-        <DateIcon onClick={openCalendar}>
-          <svg width="24" height="24">
-            <use href={`${sprite}#date`} />
-          </svg>
-        </DateIcon>
-      </DateInput>
-    );
-  };
+  const { values: { typeTransaction, sum, date, description, category }, handleChange, handleSubmit } = formik;
+  
   const handleCancel = () => {
     setModal(false);
-    };
+  };
 
   return (
     <>
-      <ModalBtn onClick={handleCancel}>
+      <ModalBtn type='button' onClick={handleCancel}>
         <svg width="16" height="16">
           <use href={`${sprite}#close`} />
         </svg>
@@ -88,24 +73,30 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             <Checkbox value={typeTransaction} onChange={ handleChange}/>
             {typeTransaction ? <CheckboxText>Expense</CheckboxText> : <CheckboxTextMinus>Expense</CheckboxTextMinus>}
         </CheckboxContainer>
-          {!typeTransaction && <SelectCategory value={category} onChange={handleChange}/>}
+          {!typeTransaction && <SelectCategory value={category} values={formik.values} set={setCateg}><input
+        type="text"
+        name="category"
+        value={categ}
+        onChange={handleChange}
+        hidden
+      /></SelectCategory>}
           <ModalInputWrapper>
             <ModalInput
             name="sum"
             value={sum}
-            type="text"
+            type="number"
             onChange={handleChange}
-            placeholder='0.00'
+              placeholder='0.00'
+              autocomplete='off'
           />
           {formik.touched.sum && formik.errors.sum ? (
           <ErrorMesage>{formik.errors.sum}</ErrorMesage>
             ) : null}
-          <Datetime renderInput={renderInput} timeFormat={false}/>  
-          {formik.touched.date && formik.errors.date ? (
+            <DateTime date={date} setDt={setDt}/>
+            {formik.touched.date && formik.errors.date ? (
           <ErrorMesage>{formik.errors.date}</ErrorMesage>
         ) : null}
-          </ModalInputWrapper>
-          
+          </ModalInputWrapper>  
           <ModalInputComment
             name="description"
             value={description}
