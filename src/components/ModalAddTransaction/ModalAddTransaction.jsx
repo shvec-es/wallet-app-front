@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
+import 'moment/locale/uk';
 import {
   ModalContainer,
   ModalBtn,
@@ -34,6 +35,8 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const currentLang = localStorage.getItem('i18nextLng');
+  moment.locale(currentLang);
 
   const formik = useFormik({
     initialValues: {
