@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   height: 100%;
   width: 100vw;
   z-index: -100;
-  backdrop-filter: blur(50px);
-  background: var(--color-background);
- 
+  // filter: blur(50px);  
+  background-color: var(--color-background);
 `;
 
 export const TopEllipse = styled.svg`
+
   position: absolute;
   top: 0;
   right: 0;
@@ -27,10 +27,12 @@ export const TopEllipse = styled.svg`
 `;
 
 export const BottomEllipse = styled.svg`
-  position: absolute;
+
+position: absolute;
   bottom: 0;
   left: 0;
   width: 496px;
   height: 322px;
   color: var(--color-ellipse-bottom);
-`;
+
+  `;

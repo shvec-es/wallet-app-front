@@ -27,7 +27,7 @@ export const BalanceWrapper = styled.div`
   height: 80px;
   border-radius: 30px;
   padding-left: 28px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @media (min-width: 768px) {
     width: 326px;
@@ -36,6 +36,6 @@ export const BalanceWrapper = styled.div`
 
   @media (min-width: 1280px) {
     width: 355px;
-    margin-top: 28px;
+    // margin-top: 28px;
   }
 `;
