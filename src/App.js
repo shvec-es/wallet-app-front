@@ -31,14 +31,11 @@ function App() {
           {/* <Navigation /> */}
         
           <Routes>
+             {/* <Route path="*" element={<DashboardPage />}></Route> */}
              <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
 
-
-
-       
-          {/* <DashboardPage /> */}
 
         </Container>
       </Suspense>

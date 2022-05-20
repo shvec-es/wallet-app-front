@@ -1,14 +1,20 @@
 import styled from 'styled-components'
 
 export const ModalContainer = styled.div`
- width: 500px;
+
+@media(min-width:768px){
+   width: 500px;
+
+}
+  width:230px
   height: 200px;
+
+  padding: 25px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
-  padding: 25px;
 `
 
 export const CloseBtn = styled.button`
@@ -29,7 +35,7 @@ padding-top:30px;
   font-size: 25px;
   font-weight: 700;
   text-align:center;
-//   text-transform: capitalize;
+
 `
 
 export const BtnContainer = styled.div`
