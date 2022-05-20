@@ -87,6 +87,7 @@ export const ModalSelect = styled.select`
 `;
 
 export const ModalInputWrapper = styled.div`
+  position: relative;
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -187,11 +188,12 @@ export const ModalButtonCancel = styled(ModalButton)`
 `;
 
 export const ErrorMesage = styled.p`
-  margin-top: -10px;
-  padding: 0;
-  font-family: 'Circe';
-  font-weight: 400;
-  font-size: 10px;
+  position: absolute;
+  width: 100%;
+  top: 55px;
+
+  font-size: 12px;
+  font-weight: bold;
   color: var(--color-error);
 
   @media (min-width: 768px) {

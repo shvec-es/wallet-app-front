@@ -8,17 +8,3 @@ export const getTransactionsSuccess = createAction(
 export const getTransactionsFailure = createAction(
   'transactions/GET_TRANSACTIONS_FAILURE',
 );
-
-//add для додавання даних на сервер
-export const addTransaction = createAction(
-  'transactions/ADD_TRANSACTION',
-  value => ({
-    payload: { newTransaction: { value } },
-  }),
-);
-export const addTransactionSuccess = createAction(
-  'transactions/ADD_TRANSACTION_SUCCESS',
-);
-export const addTransactionFailure = createAction(
-  'transactions/ADD_TRANSACTION_FAILURE',
-);

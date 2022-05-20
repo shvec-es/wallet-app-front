@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -25,41 +25,59 @@ import SelectCategory from 'components/SelectCategory';
 import DateTime from 'helpers/DateTime';
 import { operations } from 'redux/transactions/transactions-operations';
 import { useTranslation } from 'react-i18next';
+import ApiServices from 'services/ApiServices';
+import { toast } from 'react-toastify';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [categ, setCateg] = useState('');
   const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
+  const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-    const formik = useFormik({
-        initialValues: {
-            typeTransaction: false,
-            sum: '',
-            date: dt,
-            description: '',
-            category: categ,
-        },
-        validationSchema: Yup.object({
-            typeTransaction: Yup.boolean().required(),
-            sum: Yup.string().matches(/^\d+(\.\d\d)?$/, t('transaction_string')).required(t('sum_require')),
-            date: Yup.string().required(t('date_require')),
-            description: Yup.string(),
-            category: Yup.string(),
-        }),
-        onSubmit: values => {
-          values = { ...values, category: categ, date: dt, sum: +sum }
-          dispatch(operations.addTransaction(values));
-            console.log(values);
-            setModal(false);
-        },
+  const formik = useFormik({
+    initialValues: {
+      typeTransaction: false,
+      sum: '',
+      date: dt,
+      description: '',
+      category: categ,
+    },
+    validationSchema: Yup.object({
+      typeTransaction: Yup.boolean().required(),
+      sum: Yup.string()
+        .matches(/^\d+(\.\d\d)?$/, t('transaction_string'))
+        .required(t('sum_require')),
+      date: Yup.string().required(t('date_require')),
+      description: Yup.string(),
+      category: Yup.string(),
+    }),
+    onSubmit: values => {
+      values = { ...values, category: categ, date: dt, sum: +sum };
+      dispatch(operations.addTransaction(values));
+      setModal(false);
+    },
   });
 
   const {
-    values: { typeTransaction, sum, date, description, category },
+    values: { typeTransaction, sum, date, description },
     handleChange,
     handleSubmit,
   } = formik;
+
+  useEffect(() => {
+    const getAllCategories = async () => {
+      const token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY0YThhNGQ1MDg2N2Q5OTUyMGUzYyIsImlhdCI6MTY1MzA1MzYyMywiZXhwIjoxNjUzMDU3MjIzfQ.LkTWMm7I6GE2ZETwEmcscI-b7zsSg_RoRVXeCLPll_s';
+      try {
+        const data = await ApiServices.getCategories(token);
+        setOptions(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    getAllCategories();
+  }, []);
 
   const handleCancel = () => {
     setModal(false);
@@ -67,7 +85,7 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
 
   return (
     <>
-      <ModalBtn type='button' onClick={handleCancel}>
+      <ModalBtn type="button" onClick={handleCancel}>
         <svg width="16" height="16">
           <use href={`${sprite}#close`} />
         </svg>
@@ -75,34 +93,47 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
       <ModalContainer>
         <ModalTitle>{t('transaction_add')}</ModalTitle>
         <ModalForm onSubmit={handleSubmit}>
-        <CheckboxContainer>
-            {typeTransaction ? <CheckboxTextPlus>{t('income')}</CheckboxTextPlus> : <CheckboxText>{t('income')}</CheckboxText>}
-            <Checkbox value={typeTransaction} onChange={ handleChange}/>
-            {typeTransaction ? <CheckboxText>{t('expense')}</CheckboxText> : <CheckboxTextMinus>{t('expense')}</CheckboxTextMinus>}
-        </CheckboxContainer>
-          {!typeTransaction && <SelectCategory value={category} values={formik.values} set={setCateg}><input
-        type="text"
-        name="category"
-        value={categ}
-        onChange={handleChange}
-        hidden
-      /></SelectCategory>}
+          <CheckboxContainer>
+            {typeTransaction ? (
+              <CheckboxTextPlus>{t('income')}</CheckboxTextPlus>
+            ) : (
+              <CheckboxText>{t('income')}</CheckboxText>
+            )}
+            <Checkbox value={typeTransaction} onChange={handleChange} />
+            {typeTransaction ? (
+              <CheckboxText>{t('expense')}</CheckboxText>
+            ) : (
+              <CheckboxTextMinus>{t('expense')}</CheckboxTextMinus>
+            )}
+          </CheckboxContainer>
+          {!typeTransaction && (
+            <SelectCategory options={options} set={setCateg}>
+              <input
+                type="text"
+                name="category"
+                value={categ}
+                onChange={handleChange}
+                hidden
+              />
+            </SelectCategory>
+          )}
           <ModalInputWrapper>
             <ModalInput
-            name="sum"
-            value={sum}
-            type="number"
-            onChange={handleChange}
-            placeholder='0.00'
-          />
-          {formik.touched.sum && formik.errors.sum ? (
-          <ErrorMesage>{formik.errors.sum}</ErrorMesage>
+              name="sum"
+              value={sum}
+              type="number"
+              onChange={handleChange}
+              placeholder="0.00"
+              autoComplete="off"
+            />
+            {formik.touched.sum && formik.errors.sum ? (
+              <ErrorMesage>{formik.errors.sum}</ErrorMesage>
             ) : null}
-            <DateTime date={date} setDt={setDt}/>
+            <DateTime date={date} setDt={setDt} />
             {formik.touched.date && formik.errors.date ? (
-          <ErrorMesage>{formik.errors.date}</ErrorMesage>
-        ) : null}
-          </ModalInputWrapper>  
+              <ErrorMesage>{formik.errors.date}</ErrorMesage>
+            ) : null}
+          </ModalInputWrapper>
           <ModalInputComment
             name="description"
             value={description}
