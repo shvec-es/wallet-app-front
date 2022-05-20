@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
+import {register} from '../../redux/auth/auth-operations';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import Indicator from './indicator';
@@ -29,8 +29,8 @@ const RegistrationForm = () => {
     name: '',
   };
   const onSubmit = ({ email, password, name }, { resetForm }) => {
-    console.log(email, password, name);
-    dispatch(authOperations.register({ email, password, name }));
+   
+    dispatch(register({ email, password, name }));
     resetForm();
   };
 

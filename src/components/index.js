@@ -13,6 +13,8 @@ import Navigation from './Navigation';
 import LoginPage from '../pages/LoginPage';
 import Header from './Header';
 import Balance from './Balance';
+import ModalWindow from './ModalWindow';
+import LogoutContent from './LogoutContent';
 
 
 export {
@@ -29,5 +31,6 @@ export {
   LoginPage,
   Header,
   Balance,
-
+  ModalWindow,
+LogoutContent
 };

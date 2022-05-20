@@ -75,6 +75,7 @@ export const Input = styled.input`
   display: block;
   margin-left: 50px;
   outline: 0;
+ 
   font-size: 18px;
   font-weight: bold;
   color: #212529;
@@ -111,6 +112,7 @@ export const SignInBtn = styled.button`
   margin-bottom:20px;
   background: var(--color-secondary);
   border-radius: 20px;
+    font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -136,6 +138,7 @@ export const SignUpBtn = styled.div`
   background: var(--color-white);
   border: 1px solid var(--color-primary);
   border-radius: 20px;
+    font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
