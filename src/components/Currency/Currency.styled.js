@@ -25,7 +25,7 @@ export const CurrencyTable = styled.table`
 
   @media (min-width: 1280px) {
     width: 393px;
-    margin-top: 32px;
+    // margin-top: 32px;
   }
 `;
 

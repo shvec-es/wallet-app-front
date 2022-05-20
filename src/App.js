@@ -13,22 +13,20 @@ import {
 function App() {
   return (
     <>
-      <Media query="(min-width: 768px)">
+      {/* <Media query="(min-width: 768px)"> */}
         <BackGround />
-      </Media>
-      {/* <Header /> */}
+      {/* </Media> */}
+      <Header />
       <Container>
         {/* <Navigation /> */}
         <Suspense fallback={<p>Loading...</p>}>
-          <Routes>
+          {/* <Routes> */}
             {/* <Route path="/" element={<LoginPage />}></Route> */}
-          </Routes>
-          {/* <DashboardPage /> */}
+            
+          {/* </Routes> */}
+         <DashboardPage />
         </Suspense>
    </Container>
-     
-
-    
     </>
   );
 }
