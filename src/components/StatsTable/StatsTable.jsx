@@ -1,5 +1,9 @@
 import StatsSelect from 'components/StatsSelects';
 
+import {useSelector } from 'react-redux';
+
+import { getYears, getMonths } from 'redux/transactions/transactions-selectors';
+
 import {
   ContentWrapper,
   Table,
@@ -18,27 +22,27 @@ import { useTranslation } from 'react-i18next';
 function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
   const { t } = useTranslation();
   
+  const statsMonths = useSelector(getMonths);
+  const statsYears = useSelector(getYears);
   
   const getMonthName = (monthNumber) => {
     const date = new Date(1, monthNumber, 1); 
     return date.toLocaleString('en-us', { month: 'long' }); 
   }
 
-  const months = ['September', 'October', 'November', 'December'];
-
-  const years = ['1998', '1999', '2000'];
+  
 
   const displayMonth = getMonthName(month)
   return (
     <ContentWrapper>
       <SelectsWrapper>
         <StatsSelect
-          options={months}
+          options={statsMonths}
           sendSelectedValue={updateMonth}
           startValue={displayMonth}
         />
         <StatsSelect
-          options={years}
+          options={statsYears}
           sendSelectedValue={updateYear}
           startValue={year}
         />

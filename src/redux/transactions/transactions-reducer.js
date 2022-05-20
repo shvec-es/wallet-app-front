@@ -27,6 +27,7 @@ const transactionsStatistics = createReducer(
       consumption: '',
       balance: '',
     },
+    date:[],
   },
   {
     [operations.fetchTransactionsStatistics.fulfilled]: (

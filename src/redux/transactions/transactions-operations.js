@@ -78,10 +78,7 @@ const fetchTransactionsStatistics = createAsyncThunk(
   'transactions/fetchTransactionStatistics',
   async ({ month, year, token }, rejectWithValue) => {
     try {
-      const data = await ApiServices.getStats({ month, year }, token);
-      console.log(data);
-      console.log('month', month);
-      return data;
+      return await ApiServices.getStats({ month, year }, token);
     } catch (error) {
       rejectWithValue(error);
     }

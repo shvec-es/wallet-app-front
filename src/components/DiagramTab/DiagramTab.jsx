@@ -6,7 +6,7 @@ import StatsTable from 'components/StatsTable';
 import { useTranslation } from 'react-i18next';
 
 import { operations } from 'redux/transactions/transactions-operations';
-import { getTransactionsStatistics } from 'redux/transactions/transactions-selectors';
+import { getTransactionsStatistics} from 'redux/transactions/transactions-selectors';
 
 import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
 
@@ -15,25 +15,24 @@ function DiagramTab() {
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(String(new Date().getFullYear()));
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const statistics = useSelector(getTransactionsStatistics);
 
   const { sortingTransactions, balance } = statistics;
 
-  // useEffect(() => {
-  //    const setNormalizedMonth = (month) => {
-  //   const normalizedMonth = String(month + 1);
-  //   if (normalizedMonth.length < 2) {
-  //     return `0${normalizedMonth}`;
-  //   }
-  //   return normalizedMonth;
-  //   }
+  useEffect(() => {
+     const setNormalizedMonth = (month) => {
+    const normalizedMonth = String(month + 1);
+    if (normalizedMonth.length < 2) {
+      return `0${normalizedMonth}`;
+    }
+    return normalizedMonth;
+    }
 
-  //   const normalizedMonth = setNormalizedMonth(month);
-  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
-  //   fetchStatistics({month:normalizedMonth, year, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1Mjk4Njk0MCwiZXhwIjoxNjUyOTkwNTQwfQ.BWM4jjiUmh97Xt9pLqZ6ndjyzGdwS1qXKXiRMjmAhX4"})
-  // }, [dispatch, month, year])
-
+    const normalizedMonth = setNormalizedMonth(month);
+    const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
+    fetchStatistics({month:normalizedMonth, year, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzA3NTA0NiwiZXhwIjoxNjUzMDc4NjQ2fQ.961VqvJIApA2-vF_FLxeoOLqEaubhCg251Q5k--MDUY"})
+  }, [dispatch, month, year])
 
 
   const chartData = {
