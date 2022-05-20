@@ -14,19 +14,24 @@ export default function HomeTab() {
   const {getTransactions} = operations;
   let transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     dispatch(getTransactions());
   }, [dispatch, getTransactions]);
 
   //костиль з балансом
-  let balance = 0
+  const balance = transactions.reduce((acc, item) => {
+    if (item.typeTransaction === true) {
+      return acc + item.sum;
+    } else {
+      return acc - item.sum;
+    }
+  }, 0);
 
-  transactions.forEach(item => {
-    // console.log('sum',item.sum);
-    item.typeTransaction === true ? balance = item.sum + balance : balance = balance - item.sum;
-  })
+  //сортування за датою транзакції від новіших до старіших
+  const sortedTransactions = [...transactions].sort((a, b) => {
+    return a.date.localeCompare(b.date);
+  });
 
   return (
     /*логіку роботи Media потрібно буде винести в Dashboard */
@@ -37,7 +42,7 @@ export default function HomeTab() {
       >
         {({isMobile}) => (
           <div>
-              {isMobile ? <TableMobile data={transactions} balance={balance} /> : <Table data={transactions} balance={balance} />}
+              {isMobile ? <TableMobile data={sortedTransactions} balance={balance} /> : <Table data={sortedTransactions} balance={balance} />}
           </div>
         )}
       </Media>
