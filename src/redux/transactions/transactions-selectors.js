@@ -1,6 +1,11 @@
-// import { createSelector } from "reselect";
+const getAllTransactions = state => state.transactions.transactionsList;
 
-const getAllTransactions = state => state.transactions.result;
+const filtredTransactions = state => {
+    const { transactionsList } = state.transactions;
+     transactionsList.sort((a, b) => {
+        return a.date.localeCompare(b.date);
+})}
+
 const getTransactionsStatistics = state =>
   state.transactions.transactionsStatistics;
 const getTransactionsIsLoading = state =>
@@ -9,6 +14,7 @@ const getError = state => state.transactions.error;
 
 export {
   getAllTransactions,
+  filtredTransactions,
   getTransactionsStatistics,
   getTransactionsIsLoading,
   getError,
