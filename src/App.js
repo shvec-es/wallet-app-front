@@ -1,5 +1,8 @@
 import { Suspense, Fragment, lazy } from 'react';
 import Media from 'react-media';
+import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/dashboardPage';
 import {
@@ -15,6 +18,7 @@ const RegistrationPage = lazy(() => import('pages/registrationPage'));
 function App() {
   return (
     <>
+      <ToastContainer autoClose={2000} theme="colored" />
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
@@ -28,7 +32,7 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<LoginPage />}></Route> */}
           </Routes>
-          {/* <DashboardPage /> */}
+          <DashboardPage />
         </Container>
       </Suspense>
     </>
