@@ -1,8 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
-import authOperations from '../../redux/auth/auth-operations';
+import { logIn } from '../../redux/auth/auth-operations';
+
+
 import { Logo } from 'components';
 import {
   FormWrapper,
@@ -22,15 +24,17 @@ import { useTranslation } from 'react-i18next';
 const LoginForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string('Enter your email')
-        .email('Invalid email address')
-        .required('Email is required'),
+      email: Yup.string(t('email string'))
+        .email(t('email error'))
+        .required(t('Email is required')),
       password: Yup.string('Enter your password')
         .min(6, 'Password must be at least 6 characters long')
         .max(12)
@@ -38,9 +42,7 @@ const LoginForm = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-      dispatch(authOperations.logIn({ email, password }));
-
-      console.log('Form data:', values);
+      dispatch(logIn({ email, password }));
       resetForm();
     },
   });
@@ -49,7 +51,7 @@ const LoginForm = () => {
       <FormBg>
         <Logo />
         <Form onSubmit={formik.handleSubmit}>
-          <Label>
+          <Label >
             <InputIcon width="24" height="24">
               <use href={`${icons}#email`}></use>
             </InputIcon>
@@ -57,7 +59,7 @@ const LoginForm = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="E-mail"
+              placeholder={t('email')}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -76,7 +78,7 @@ const LoginForm = () => {
               id="password"
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('pass')}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}

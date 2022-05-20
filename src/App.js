@@ -9,10 +9,12 @@ import {
   BackGround,
   Container,
   Header,
-  LoginPage,
   Navigation,
+ 
 } from 'components';
-
+const LoginPage = lazy(() =>
+  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
+);
 const RegistrationPage = lazy(() => import('pages/registrationPage'));
 
 function App() {
@@ -22,17 +24,19 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
+
       <Suspense fallback={<p>Loading...</p>}>
-        {/* <Header /> */}
+        <Header />
         <Container>
           {/* <Navigation /> */}
+        
           <Routes>
+             {/* <Route path="*" element={<DashboardPage />}></Route> */}
+             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
-          <Routes>
-            {/* <Route path="/" element={<LoginPage />}></Route> */}
-          </Routes>
-          <DashboardPage />
+
+
         </Container>
       </Suspense>
     </>

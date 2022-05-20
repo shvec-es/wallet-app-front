@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ToastContainer, toast } from 'react-toastify';
 
 // axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com/';
 
@@ -12,7 +13,7 @@ const token = {
   },
 };
 
-const register = createAsyncThunk(
+export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     console.log(credentials);
@@ -30,24 +31,26 @@ const register = createAsyncThunk(
   },
 );
 
-const logIn = createAsyncThunk(
+export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(credentials);
+      const { data } = await axios.post('https://wallet-codewriters.herokuapp.com/api/auth/login', credentials);
+      console.log(data)
       token.set(data.token);
       return data;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   },
 );
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async ({rejectWithValue}) => {
   try {
-    await axios.post("wallet-codewriters.herokuapp.com/api/auth/logout");
+    await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/logout");
     token.unset();
-  } catch (error) {}
+  } catch (error) {
+ return rejectWithValue(error.message);
+  }
 });
-const authOperations = { register, logIn, logOut };
-export default authOperations;
+

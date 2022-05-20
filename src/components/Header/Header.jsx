@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import Media from 'react-media';
 import icons from 'images/sprite.svg';
-import { Logo, LanguageSwitcher } from 'components';
+import { Logo, LanguageSwitcher, ModalWindow, LogoutContent } from 'components';
 import { useTranslation } from 'react-i18next';
 import {
   MainHeader,
@@ -14,8 +15,9 @@ import {
 
 const Header = () => {
   const { t } = useTranslation();
+    const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
 
-  const handleClick = () => {};
+
 
   return (
     <MainHeader>
@@ -25,7 +27,7 @@ const Header = () => {
 
         <UserInfo>
           <UserName>{'user' || 'User'} </UserName>
-          <LogoutBtn type="button" onClick={handleClick}>
+          <LogoutBtn type="button" onClick={()=>{setModalLogoutOpen(true)}}>
             <ExitIcon>
               <use href={`${icons}#exit`}></use>
             </ExitIcon>
@@ -35,7 +37,12 @@ const Header = () => {
             />
           </LogoutBtn>
         </UserInfo>
-        {/* {isModalLogoutOpen && <ModalLogout/>} */}
+        {modalLogoutOpen &&
+          <ModalWindow closeModal={setModalLogoutOpen}>
+            <LogoutContent setOpenModal={setModalLogoutOpen}/>
+    </ModalWindow>
+    }
+     
       </StyledHeader>
     </MainHeader>
   );
