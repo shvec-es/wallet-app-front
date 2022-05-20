@@ -34,9 +34,9 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
-  const currentLang = localStorage.getItem('i18nextLng');
-  moment.locale(currentLang);
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language.slice(0, 2);
+  moment.locale(currentLng);
 
   const formik = useFormik({
     initialValues: {
