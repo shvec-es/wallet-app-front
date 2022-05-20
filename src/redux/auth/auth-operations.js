@@ -1,36 +1,56 @@
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ToastContainer, toast } from 'react-toastify';
 
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+// axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com/';
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = "";
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
-export const logIn = createAsyncThunk(
-  "auth/login",
+export const register = createAsyncThunk(
+  'auth/register',
   async (credentials, { rejectWithValue }) => {
-      try {
-        
+    console.log(credentials);
+    try {
       const { data } = await axios.post(
-     "wallet-codewriters.herokuapp.com/api/auth/login",
-        credentials
+        'https://wallet-codewriters.herokuapp.com/api/auth/signup',
+        credentials,
       );
+      token.set(data.token);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('https://wallet-codewriters.herokuapp.com/api/auth/login', credentials);
+      console.log(data)
       token.set(data.token);
       return data;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
-export const logOut = createAsyncThunk("auth/logout", async () => {
+export const logOut = createAsyncThunk('auth/logout', async ({rejectWithValue}) => {
   try {
-    await axios.post("wallet-codewriters.herokuapp.com/api/auth/logout");
+    await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/logout");
     token.unset();
-  } catch (error) {}
+  } catch (error) {
+ return rejectWithValue(error.message);
+  }
 });
+

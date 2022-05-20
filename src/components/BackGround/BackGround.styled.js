@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: absolute;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100vw;
   z-index: -100;
   // filter: blur(50px);  

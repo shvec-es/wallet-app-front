@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-// import moment from 'moment';
 import * as Yup from 'yup';
+import moment from 'moment';
+import 'moment/locale/uk';
 import {
   ModalContainer,
   ModalBtn,
@@ -13,9 +14,7 @@ import {
   CheckboxTextPlus,
   CheckboxTextMinus,
   ModalInputWrapper,
-  DateInput,
   ModalInput,
-  DateIcon,
   ModalInputComment,
   ModalButtonAdd,
   ModalButtonCancel,
@@ -24,18 +23,28 @@ import {
 import sprite from 'images/sprite.svg';
 import Checkbox from 'components/Checkbox';
 import SelectCategory from 'components/SelectCategory';
+import DateTime from 'helpers/DateTime';
+import { operations } from 'redux/transactions/transactions-operations';
 import { useTranslation } from 'react-i18next';
+import ApiServices from 'services/ApiServices';
+import { toast } from 'react-toastify';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
-  const { t } = useTranslation();
+  const [categ, setCateg] = useState('');
+  const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
+  const [options, setOptions] = useState([]);
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language.slice(0, 2);
+  moment.locale(currentLng);
 
   const formik = useFormik({
     initialValues: {
       typeTransaction: false,
       sum: '',
-      date: '',
+      date: dt,
       description: '',
-      category: '',
+      category: categ,
     },
     validationSchema: Yup.object({
       typeTransaction: Yup.boolean().required(),
@@ -47,43 +56,39 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
       category: Yup.string(),
     }),
     onSubmit: values => {
-      // const { typeTransaction, sum, date, description, category } = values;
-      console.log(values);
+      values = { ...values, category: categ, date: dt, sum: +sum };
+      dispatch(operations.addTransaction(values));
       setModal(false);
     },
   });
+
   const {
-    values: { typeTransaction, sum, date, description, category },
+    values: { typeTransaction, sum, date, description },
     handleChange,
     handleSubmit,
   } = formik;
 
-  const renderInput = (props, openCalendar, closeCalendar) => {
-    return (
-      <DateInput>
-        <ModalInput
-          {...props}
-          // name="date"
-          // value={props.value}
-          // type="text"
-          // onChange={handleChange}
-          // placeholder={moment().format('DD.MM.YYYY')}
-        />
-        <DateIcon onClick={openCalendar}>
-          <svg width="24" height="24">
-            <use href={`${sprite}#date`} />
-          </svg>
-        </DateIcon>
-      </DateInput>
-    );
-  };
+  useEffect(() => {
+    const getAllCategories = async () => {
+      const token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY0YThhNGQ1MDg2N2Q5OTUyMGUzYyIsImlhdCI6MTY1MzA1MzYyMywiZXhwIjoxNjUzMDU3MjIzfQ.LkTWMm7I6GE2ZETwEmcscI-b7zsSg_RoRVXeCLPll_s';
+      try {
+        const data = await ApiServices.getCategories(token);
+        setOptions(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    getAllCategories();
+  }, []);
+
   const handleCancel = () => {
     setModal(false);
   };
 
   return (
     <>
-      <ModalBtn onClick={handleCancel}>
+      <ModalBtn type="button" onClick={handleCancel}>
         <svg width="16" height="16">
           <use href={`${sprite}#close`} />
         </svg>
@@ -105,25 +110,33 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             )}
           </CheckboxContainer>
           {!typeTransaction && (
-            <SelectCategory value={category} onChange={handleChange} />
+            <SelectCategory options={options} set={setCateg}>
+              <input
+                type="text"
+                name="category"
+                value={categ}
+                onChange={handleChange}
+                hidden
+              />
+            </SelectCategory>
           )}
           <ModalInputWrapper>
             <ModalInput
               name="sum"
               value={sum}
-              type="text"
+              type="number"
               onChange={handleChange}
               placeholder="0.00"
+              autoComplete="off"
             />
             {formik.touched.sum && formik.errors.sum ? (
               <ErrorMesage>{formik.errors.sum}</ErrorMesage>
             ) : null}
-            <Datetime renderInput={renderInput} timeFormat={false} />
+            <DateTime date={date} setDt={setDt} />
             {formik.touched.date && formik.errors.date ? (
               <ErrorMesage>{formik.errors.date}</ErrorMesage>
             ) : null}
           </ModalInputWrapper>
-
           <ModalInputComment
             name="description"
             value={description}

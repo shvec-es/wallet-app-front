@@ -12,49 +12,50 @@ import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
 
 function DiagramTab() {
   const { t } = useTranslation();
-  const [month, setMonth] = useState(setDefaultMonth());
+  const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(String(new Date().getFullYear()));
-  const [expences, setExpences] = useState([
-    { type: 'main expences', amount: 100, color: '#FFDD33' },
-    { type: 'housing', amount: 86, color: '#FF5E33' },
-    { type: 'products', amount: 40, color: '#2BF956' },
-  ]);
-  // const statistics = useSelector(getTransactionsStatistics);
+
   // const dispatch = useDispatch();
+  const statistics = useSelector(getTransactionsStatistics);
+
+  const { sortingTransactions, balance } = statistics;
 
   // useEffect(() => {
-  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
-  //   fetchStatistics({month: '05', year: '2022'})
-  // }, [dispatch])
+  //    const setNormalizedMonth = (month) => {
+  //   const normalizedMonth = String(month + 1);
+  //   if (normalizedMonth.length < 2) {
+  //     return `0${normalizedMonth}`;
+  //   }
+  //   return normalizedMonth;
+  //   }
 
-  function setDefaultMonth() {
-    const month = new Date().getMonth();
-    const normalizedMonth = String(month + 1);
-    if (normalizedMonth.length < 2) {
-      return `0${normalizedMonth}`;
-    }
-    return normalizedMonth;
-  }
+  //   const normalizedMonth = setNormalizedMonth(month);
+  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
+  //   fetchStatistics({month:normalizedMonth, year, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1Mjk4Njk0MCwiZXhwIjoxNjUyOTkwNTQwfQ.BWM4jjiUmh97Xt9pLqZ6ndjyzGdwS1qXKXiRMjmAhX4"})
+  // }, [dispatch, month, year])
+
+
 
   const chartData = {
-    labels: expences.map(expence => expence.type),
+    labels: sortingTransactions.map(category => category.name),
     datasets: [
       {
-        data: expences.map(expence => expence.amount),
-        backgroundColor: expences.map(expence => expence.color),
+        data: sortingTransactions.map(category => category.sum),
+        backgroundColor: sortingTransactions.map(category => category.color),
         barThickness: 10,
       },
     ],
   };
-  const total = expences.reduce((a, expence) => a + expence.amount, 0);
+ 
   return (
     <TabSection>
       <div>
         <TabTitle>{t('statistic')}</TabTitle>
-        <Chart expences={chartData} total={total} />
+        <Chart expences={chartData} total={balance.consumption} />
       </div>
       <StatsTable
-        expences={expences}
+        categoriesStatistics={sortingTransactions}
+        balance={balance}
         month={month}
         year={year}
         updateMonth={setMonth}

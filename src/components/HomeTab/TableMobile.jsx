@@ -3,15 +3,15 @@ import { MobileCard, MobileCardGroup, MobileCardItem, MobileCardItemValue, Mobil
 function TableMobile({data}) {
   return (
   <>
-    {data.map(({id, date, type, category, commentary, moneyAmount, balance, createdAt}) => (
-      <MobileCard key={id} type={type === true ? "income" : "costs"}>
+    {data.map(({_id, date, typeTransaction, category, description, sum, balance}) => (
+      <MobileCard key={_id} type={typeTransaction === true ? "income" : "costs"}>
           <MobileCardGroup>
             <MobileCardItem>Дата</MobileCardItem>
             <MobileCardItemValue>{date}</MobileCardItemValue>
           </MobileCardGroup>
           <MobileCardGroup>
             <MobileCardItem>Тип</MobileCardItem>
-            <MobileCardItemValue>{type === true ? '+' : '-'}</MobileCardItemValue>
+            <MobileCardItemValue>{typeTransaction === true ? '+' : '-'}</MobileCardItemValue>
           </MobileCardGroup>
           <MobileCardGroup>
             <MobileCardItem>Категория</MobileCardItem>
@@ -19,12 +19,12 @@ function TableMobile({data}) {
           </MobileCardGroup>
           <MobileCardGroup>
             <MobileCardItem>Комментарий</MobileCardItem>
-            <MobileCardItemValue>{commentary}</MobileCardItemValue>
+            <MobileCardItemValue>{description}</MobileCardItemValue>
           </MobileCardGroup>
           <MobileCardGroup>
             <MobileCardItem>Сумма</MobileCardItem>
-            <MobileCardItemColor  type={type === true ? "income" : "costs"}>
-              {moneyAmount}
+            <MobileCardItemColor  type={typeTransaction === true ? "income" : "costs"}>
+              {sum}
             </MobileCardItemColor>
           </MobileCardGroup>
           <MobileCardGroup>

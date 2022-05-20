@@ -1,32 +1,44 @@
-import { Suspense } from 'react';
+import { Suspense, Fragment, lazy } from 'react';
 import Media from 'react-media';
+import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
-import React, { Fragment } from 'react';
 import DashboardPage from 'pages/dashboardPage';
 import {
   BackGround,
   Container,
   Header,
-  LoginPage,
+  Navigation,
+ 
 } from 'components';
+const LoginPage = lazy(() =>
+  import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
+);
+const RegistrationPage = lazy(() => import('pages/registrationPage'));
 
 function App() {
   return (
     <>
-      {/* <Media query="(min-width: 768px)"> */}
+      <ToastContainer autoClose={2000} theme="colored" />
+      <Media query="(min-width: 768px)">
         <BackGround />
-      {/* </Media> */}
-      <Header />
-      <Container>
-        {/* <Navigation /> */}
-        <Suspense fallback={<p>Loading...</p>}>
-          {/* <Routes> */}
-            {/* <Route path="/" element={<LoginPage />}></Route> */}
-            
-          {/* </Routes> */}
-         <DashboardPage />
-        </Suspense>
-   </Container>
+      </Media>
+
+      <Suspense fallback={<p>Loading...</p>}>
+        <Header />
+        <Container>
+          {/* <Navigation /> */}
+        
+          <Routes>
+             {/* <Route path="*" element={<DashboardPage />}></Route> */}
+             <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/register" element={<RegistrationPage />}></Route>
+          </Routes>
+
+
+        </Container>
+      </Suspense>
     </>
   );
 }

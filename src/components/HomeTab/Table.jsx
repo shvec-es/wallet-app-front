@@ -1,5 +1,5 @@
-import {TableMain, TableHeader, TableBody, TableRow, TableHeadCell, TableCell, TableCellColor } from './Table.styled'
-
+import {TableMain, TableHeader, TableBody, TableRow, TableHeadCell, TableCell, TableCellColor, ButtonDelete } from './Table.styled'
+import sprite from 'images/sprite.svg';
 /*компонент отримує масив для рендеру як по ТЗ*/
 
 function Table({data}) {
@@ -16,14 +16,17 @@ function Table({data}) {
           </TableRow>
         </TableHeader>
         <TableBody>
-         {data.map(({id, date, type, category, commentary, moneyAmount, balance}) => (
-          <TableRow key ={id}>
+         {data.map(({_id, date, typeTransaction, category, description, sum, balance}) => (
+          <TableRow key ={_id}>
             <TableCell>{date}</TableCell>
-            <TableCell>{type === true ? '+' : '-'}</TableCell>
+            <TableCell>{typeTransaction === true ? '+' : '-'}</TableCell>
             <TableCell>{category}</TableCell>
-            <TableCell>{commentary}</TableCell>
-            <TableCellColor type={type === true ? "income" : "costs"}>{moneyAmount}</TableCellColor>
+            <TableCell>{description}</TableCell>
+            <TableCellColor type={typeTransaction === true ? "income" : "costs"}>{sum}</TableCellColor>
             <TableCell>{balance}</TableCell>
+            <TableCell><ButtonDelete><svg width="16" height="16">
+          <use href={`${sprite}#close`} />
+        </svg></ButtonDelete></TableCell>
           </TableRow>
            ))}
         </TableBody>

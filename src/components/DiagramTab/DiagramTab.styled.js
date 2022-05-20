@@ -30,6 +30,7 @@ font-family: Poppins;
 font-size: 30px;
 font-weight: 400;
 line-height: 1.5em;
+text-transform: capitalize;
 
  @media (min-width: 768px) {
 // margin-bottom: 20px;

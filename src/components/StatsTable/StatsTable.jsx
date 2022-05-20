@@ -15,25 +15,27 @@ import {
 } from './StatsTable.styled';
 import { useTranslation } from 'react-i18next';
 
-function StatsTable({ expences, month, year, updateMonth, updateYear }) {
+function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, updateYear }) {
   const { t } = useTranslation();
-  const caclulateExpences = expences => {
-    return expences.reduce((acc, expence) => acc + expence.amount, 0);
-  };
-
-  const totalExpences = caclulateExpences(expences);
+  
+  
+  const getMonthName = (monthNumber) => {
+    const date = new Date(1, monthNumber, 1); 
+    return date.toLocaleString('en-us', { month: 'long' }); 
+  }
 
   const months = ['September', 'October', 'November', 'December'];
 
   const years = ['1998', '1999', '2000'];
 
+  const displayMonth = getMonthName(month)
   return (
     <ContentWrapper>
       <SelectsWrapper>
         <StatsSelect
           options={months}
           sendSelectedValue={updateMonth}
-          startValue={month}
+          startValue={displayMonth}
         />
         <StatsSelect
           options={years}
@@ -49,26 +51,26 @@ function StatsTable({ expences, month, year, updateMonth, updateYear }) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {expences.map(expence => (
-            <TableRow key={expence.type}>
+          {categoriesStatistics.map(category => (
+            <TableRow key={category.name}>
               <TableData>
-                <ExpenceType markColor={expence.color}>
-                  {expence.type}
+                <ExpenceType markColor={category.color}>
+                  {category.name}
                 </ExpenceType>
               </TableData>
-              <TableData>{expence.amount}</TableData>
+              <TableData>{category.sum}</TableData>
             </TableRow>
           ))}
           <TableRow>
             <TotalTableData>{t('expense')}:</TotalTableData>
             <TotalTableData>
-              <TotalAmount type={'expence'}>Income</TotalAmount>
+              <TotalAmount type={'expence'}>{balance.consumption}</TotalAmount>
             </TotalTableData>
           </TableRow>
           <TableRow>
             <TotalTableData>{t('income')}:</TotalTableData>
             <TotalTableData>
-              <TotalAmount type={'income'}>{totalExpences}</TotalAmount>
+              <TotalAmount type={'income'}>{balance.income}</TotalAmount>
             </TotalTableData>
           </TableRow>
         </TableBody>
