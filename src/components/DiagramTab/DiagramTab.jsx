@@ -22,8 +22,6 @@ function DiagramTab() {
   const dispatch = useDispatch();
   const statistics = useSelector(getTransactionsStatistics);
 
-  console.log('statistics', statistics);
-
   const { sortingTransactions, balance } = statistics;
 
   useEffect(() => {
