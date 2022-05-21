@@ -19,8 +19,6 @@ export default function HomeTab() {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
-
-
   return (
     <div>
       <Media query="(max-width: 767px">
