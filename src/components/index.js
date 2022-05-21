@@ -15,6 +15,8 @@ import Header from './Header';
 import Balance from './Balance';
 import ModalWindow from './ModalWindow';
 import LogoutContent from './LogoutContent';
+import PrivateRoute from './Routes/PrivateRoute';
+import PublicRoute from './Routes/PublicRoute';
 
 export {
   BackGround,
@@ -33,4 +35,6 @@ export {
   RegistrationForm,
   ModalWindow,
   LogoutContent,
+  PrivateRoute,
+  PublicRoute
 };

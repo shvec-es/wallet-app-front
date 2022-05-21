@@ -82,6 +82,7 @@ export const Input = styled.input`
   border: 0;
 
   &::placeholder {
+     font-family: 'Circe';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;

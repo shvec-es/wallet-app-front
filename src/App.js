@@ -5,10 +5,19 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/dashboardPage';
-import { Logo, LanguageSwitcher } from 'components';
-import { BackGround, Container, Header, Navigation } from 'components';
+import {
+  Logo,
+  LanguageSwitcher,
+  BackGround,
+  Container,
+  Header,
+  Navigation,
+  PublicRoute,
+  PrivateRoute
+} from 'components';
 
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+
 const LoginPage = lazy(() =>
   import('./pages/LoginPage' /* webpackChunkName: 'login-page' */),
 );
@@ -32,7 +41,11 @@ function App() {
 
           <Routes>
             <Route path="*" element={<DashboardPage />}></Route>
-            <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/login" element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+              }></Route>
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
         </Container>
