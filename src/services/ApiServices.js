@@ -47,11 +47,9 @@ class ApiServices {
     
   }
 
-  async getCategories(token) {
+  async getCategories() {
     try {
-      const req = await axios.get('/wallet/transaction/categories', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const req = await axios.get('/wallet/transaction/categories');
       return req.data.payload;
     } catch (e) {
       console.log(e.message);
@@ -60,9 +58,7 @@ class ApiServices {
 
   async getTransactions(token) {
     try {
-      const req = await axios.get('/wallet/transactions', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const req = await axios.get('/wallet/transactions');
       return req.data.payload;
     } catch (e) {
       console.log(e.message);
@@ -84,10 +80,20 @@ class ApiServices {
     }
 
     try {
-      const { data } = await axios.post('/wallet/transaction', userData, {
+      const { data } = await axios.post('/wallet/transaction', userData);
+      return data;
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  async deleteTransaction(token, id){
+    try {
+      const {data} = await axios.delete(`wallet/transaction/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return data;
+      console.log(data.payload)
+      return data.payload;
     } catch (e) {
       console.log(e.message);
     }

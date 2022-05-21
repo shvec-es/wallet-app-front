@@ -3,7 +3,11 @@ import { createReducer } from '@reduxjs/toolkit';
 import { operations } from './transactions-operations';
 
 const transactionsList = createReducer([], {
-  [operations.fetchTransactions.fulfilled]: (_, {payload}) => payload,
+  [operations.fetchTransactions.fulfilled]: (_, { payload }) => payload,
+  [operations.addTransaction.fulfilled]: (state, { payload }) => [
+    payload,
+    ...state,
+  ],
 });
 
 const transactionsListLoading = createReducer(false, {
@@ -13,9 +17,25 @@ const transactionsListLoading = createReducer(false, {
 });
 
 const transactionsListError = createReducer(null, {
-  [operations.fetchTransactions.fulfilled]: (_, {payload}) => null,
-  [operations.fetchTransactions.rejected]: (_, {payload}) => payload,
+  [operations.fetchTransactions.fulfilled]: (_, { payload }) => null,
+  [operations.fetchTransactions.rejected]: (_, { payload }) => payload,
 });
+
+const transactionDelete = createReducer(null, {
+  [operations.deleteTransaction.fulfilled]: (_, {payload}) => payload,
+});
+
+const transactionDeleteLoading = createReducer(false, {
+  [operations.deleteTransaction.pending]: () => true,
+  [operations.deleteTransaction.fulfilled]: () => false,
+  [operations.deleteTransaction.rejected]: () => false,
+});
+
+const transactionDeleteError = createReducer(null, {
+  [operations.deleteTransaction.fulfilled]: (_, {payload}) => null,
+  [operations.deleteTransaction.rejected]: (_, {payload}) => payload,
+});
+
 
 const transactionsStatistics = createReducer(
   {
@@ -25,7 +45,7 @@ const transactionsStatistics = createReducer(
       consumption: '',
       balance: '',
     },
-    date:[],
+    date: [],
   },
   {
     [operations.fetchTransactionsStatistics.fulfilled]: (
@@ -66,4 +86,7 @@ export default combineReducers({
   transactionsStatistics,
   transactionsStatisticsIsLoading,
   error,
+  transactionDelete,
+  transactionDeleteLoading,
+  transactionDeleteError,
 });
