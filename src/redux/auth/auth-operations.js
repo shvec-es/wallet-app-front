@@ -32,11 +32,8 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
-        'https://wallet-codewriters.herokuapp.com/api/auth/login',
-        credentials,
-      );
-      token.set(data.token);
+      const { data } = await axios.post( "https://wallet-codewriters.herokuapp.com/api/auth/login", credentials);
+      token.set(data.payload.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

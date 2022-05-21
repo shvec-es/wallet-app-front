@@ -58,9 +58,7 @@ class ApiServices {
 
   async getStats({ month, year }, token) {
     try {
-      const req = await axios.get(`wallet/stats?month=${month}&year=${year}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const req = await axios.get(`wallet/stats?month=${month}&year=${year}`);
       return req.data.payload;
     } catch (e) {
       console.log(e.message);

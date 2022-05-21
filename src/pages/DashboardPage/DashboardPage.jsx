@@ -1,22 +1,18 @@
 import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
-
-
 import DiagramTab from "components/DiagramTab";
 // import ButtonAddTransactions from "components/ButtonAddTransactions";
 import { Navigation, HomeTab, ButtonAddTransactions} from "components";
 import { Currency } from "components";
 
-import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './dashboardPage.styled'
+import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './DashboardPage.styled'
 import Balance from "components/Balance";
 
 export default function DashboardPage() {
-  return (
-    
+
+  return (  
     <>
-      {/* <Header /> */}
-      <MainWrap>
- 
+    <MainWrap>
         <SideBar>
           <MobSidebar>
             <Navigation />
@@ -39,18 +35,16 @@ export default function DashboardPage() {
 
         <TabWrap>
           <Routes>
-            {/* <Route index element={<HomeTab />}/> */}
-            <Route path="/home" element={<HomeTab/> } />
-            <Route path="/home" element={
+            <Route index element={<HomeTab />}/>           
+            <Route path="home" element={<HomeTab/> } />
+            <Route path="home" element={
             <>
-            
-            <Media
-            query="(max-width: 768px)"
+          <Media
+            query="(max-width: 767px)"
             render={() => <Balance />}
           />
           <HomeTabWrap>
             <HomeTab />
-          
           </HomeTabWrap>
           </>
           } />
@@ -76,7 +70,6 @@ export default function DashboardPage() {
             />
           </Routes>
         </TabWrap>
-    
       </MainWrap>
     </>    
   );
