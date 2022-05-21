@@ -1,9 +1,10 @@
 
 import { useDispatch, useSelector } from "react-redux";
+
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logOut } from '../../redux/auth/auth-operations'
-import { getIsError } from '../../redux/auth/auth-selectors'
+import { getIsError} from '../../redux/auth/auth-selectors'
 
 import { ModalContainer, CloseBtn, Title, BtnContainer, ConfirmBtn, CancelBtn } from "./LogoutContent.styled"
 
@@ -19,6 +20,7 @@ const LogoutModal = ({ setOpenModal }) => {
    
         dispatch(logOut());
         setOpenModal(false)
+     
     }
     return (
        

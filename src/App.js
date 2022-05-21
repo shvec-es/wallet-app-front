@@ -10,8 +10,11 @@ import {
   Container,
   Header,
   Navigation,
+  PublicRoute,
+  PrivateRoute
  
 } from 'components';
+
 const LoginPage = lazy(() =>
   import("./pages/LoginPage" /* webpackChunkName: 'login-page' */)
 );
@@ -32,7 +35,11 @@ function App() {
         
           <Routes>
              {/* <Route path="*" element={<DashboardPage />}></Route> */}
-             <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/login" element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+              }></Route>
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
 

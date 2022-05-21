@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error:null
  
 };
 
@@ -12,11 +13,11 @@ const authReducer = createReducer(initialState, {
  [register.fulfilled]: (state, {payload}) => {
     state.user = payload.user;
     state.token = payload.token;
-    state.isLoggedIn = true;
+
   },
   [logIn.fulfilled]: (state, {payload}) => {
-    state.user = payload.user;
-    state.token = payload.token;
+    state.user = payload.payload.user;
+    state.token = payload.payload.token;
     state.isLoggedIn = true;
   },
   [logOut.fulfilled]: (state, _) => {
@@ -24,9 +25,12 @@ const authReducer = createReducer(initialState, {
     state.token = null;
     state.isLoggedIn = false;
   },
+
 });
 
 const errorReducer = createReducer(null, {
+  [logIn.pending]: () => null,
+[logIn.rejected]:(_,{payload})=>payload,    
   [logOut.pending]: () => null,
   [logOut.rejected]: (_, { payload }) => payload
 })
@@ -35,3 +39,4 @@ export default combineReducers({
   authReducer,
   errorReducer
 });
+

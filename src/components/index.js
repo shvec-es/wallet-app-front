@@ -15,6 +15,8 @@ import Header from './Header';
 import Balance from './Balance';
 import ModalWindow from './ModalWindow';
 import LogoutContent from './LogoutContent';
+import PrivateRoute from './Routes/PrivateRoute';
+import PublicRoute from './Routes/PublicRoute';
 
 
 export {
@@ -32,5 +34,7 @@ export {
   Header,
   Balance,
   ModalWindow,
-LogoutContent
+  LogoutContent,
+  PrivateRoute,
+PublicRoute
 };
