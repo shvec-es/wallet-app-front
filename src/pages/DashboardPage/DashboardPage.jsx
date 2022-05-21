@@ -1,4 +1,4 @@
-import { Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
 
 
@@ -7,7 +7,7 @@ import DiagramTab from "components/DiagramTab";
 import { Navigation, HomeTab, ButtonAddTransactions} from "components";
 import { Currency } from "components";
 
-import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './dashboardPage.styled'
+import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './DashboardPage.styled'
 import Balance from "components/Balance";
 
 export default function DashboardPage() {

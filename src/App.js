@@ -1,17 +1,14 @@
 import { Suspense, Fragment, lazy } from 'react';
 import Media from 'react-media';
-import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
-import DashboardPage from 'pages/dashboardPage';
+import DashboardPage from 'pages/DashboardPage';
 import {
-  Logo,
   LanguageSwitcher,
   BackGround,
   Container,
   Header,
-  Navigation,
   PublicRoute,
   PrivateRoute,
 } from 'components';
@@ -29,15 +26,21 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-
+      <Header />
+      <DashboardPage />
       <Suspense fallback={<p>Loading...</p>}>
-        <Header />
         <LanguageSwitcher />
         <Container>
-          {/* <Navigation /> */}
-
           <Routes>
-            <Route path="*" element={<DashboardPage />}></Route>
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  {/* <Header />
+                  <DashboardPage /> */}
+                </PrivateRoute>
+              }
+            ></Route>
             <Route
               path="/login"
               element={
