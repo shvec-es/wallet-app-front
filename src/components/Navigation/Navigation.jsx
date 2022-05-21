@@ -9,11 +9,11 @@ export default function Navigation() {
 
   return (
     <MainNav>
-      <StyledLink to="/home">
+      <StyledLink to="home">
         <Icon name="home" />
         <NavItemTitle>{t('home')}</NavItemTitle>
       </StyledLink>
-      <StyledLink to="/diagram">
+      <StyledLink to="diagram">
         <Icon name="timeline" />
         <NavItemTitle>{t('statistic')}</NavItemTitle>
       </StyledLink>
@@ -22,7 +22,7 @@ export default function Navigation() {
         query="(max-width: 768px)"
         render={() => (
           <>
-            <StyledLink to="/currency">
+            <StyledLink to="currency">
               <Icon name="finance" />
             </StyledLink>
           </>

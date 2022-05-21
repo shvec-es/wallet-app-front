@@ -8,33 +8,58 @@ import { useTranslation } from 'react-i18next';
 import { operations } from 'redux/transactions/transactions-operations';
 import { getTransactionsStatistics } from 'redux/transactions/transactions-selectors';
 
-import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
+import { TabTitle, TabSection } from './DiagramTab.styled';
 
 function DiagramTab() {
   const { t } = useTranslation();
-  const [month, setMonth] = useState(new Date().getMonth());
-  const [year, setYear] = useState(String(new Date().getFullYear()));
+  const [month, setMonth] = useState(() => setDefaultMonth(new Date().getMonth()));
+  const [year, setYear] = useState(() => setDefaultYear(String(new Date().getFullYear())));
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const statistics = useSelector(getTransactionsStatistics);
 
   const { sortingTransactions, balance } = statistics;
 
   // useEffect(() => {
-  //    const setNormalizedMonth = (month) => {
-  //   const normalizedMonth = String(month + 1);
-  //   if (normalizedMonth.length < 2) {
-  //     return `0${normalizedMonth}`;
-  //   }
-  //   return normalizedMonth;
-  //   }
+  //   const fetchStatistics = data =>
+  //     dispatch(operations.fetchTransactionsStatistics(data));
+  //   fetchStatistics({
+  //     month: month.value,
+  //     year: year.value,
+  //     token:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzExNzc1NSwiZXhwIjoxNjUzMTIxMzU1fQ.oKxW_lfiRArqfYdqQ_QYXbuLyAw7hgLKR9b00zLtQr0',
+  //   });
+  // }, [dispatch, month, year]);
 
-  //   const normalizedMonth = setNormalizedMonth(month);
-  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
-  //   fetchStatistics({month:normalizedMonth, year, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1Mjk4Njk0MCwiZXhwIjoxNjUyOTkwNTQwfQ.BWM4jjiUmh97Xt9pLqZ6ndjyzGdwS1qXKXiRMjmAhX4"})
-  // }, [dispatch, month, year])
+  function setNormalizedMonth (month) {
+    const normalizedMonth = String(month + 1);
+    if (normalizedMonth.length < 2) {
+      return `0${normalizedMonth}`;
+    }
+    return normalizedMonth;
+  };
 
+  function getMonthName(monthNumber, location) {
+    const date = new Date(1, monthNumber, 1);
+    const locationOpt = location === 'eng' ? 'en-us' : 'uk-UA';
+    return date.toLocaleString(locationOpt, { month: 'long' });
+  }
 
+  function setDefaultMonth(month) {
+    return {
+      value: setNormalizedMonth(month),
+      displayValueEng: getMonthName(month, 'eng'),
+      displayValueUkr: getMonthName(month, 'ukr'),
+    };
+  }
+
+  function setDefaultYear(year) {
+    return {
+      value: year,
+      displayValueEng: year,
+      displayValueUkr: year,
+    }
+  }
 
   const chartData = {
     labels: sortingTransactions.map(category => category.name),
@@ -46,7 +71,7 @@ function DiagramTab() {
       },
     ],
   };
- 
+
   return (
     <TabSection>
       <div>

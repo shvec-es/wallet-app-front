@@ -9,7 +9,7 @@ import {
   DropdownOptions,
 } from './StatsSelect.styled';
 
-function StatsSelect({ startValue, options, sendSelectedValue }) {
+function StatsSelect({ type, startValue, options, sendSelectedValue }) {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(startValue);
 
@@ -36,7 +36,7 @@ function StatsSelect({ startValue, options, sendSelectedValue }) {
   return (
     <DropdownWrapper onBlur={onOutsideClick}>
       <ToggleButton onClick={dropDownToggle}>
-        {selectedValue}
+        {selectedValue.displayValueEng}
         <ToggleIcon>
           <use href={`${sprite}#check`}/>
         </ToggleIcon>
@@ -44,7 +44,7 @@ function StatsSelect({ startValue, options, sendSelectedValue }) {
       {open && (
         <DropdownOptions>
           {options.map(option => (
-            <OptionButton onClick={() => onOptionClick(option)} key={option}>{option}</OptionButton>
+            <OptionButton onClick={() => onOptionClick(option)} key={option.value}>{option.displayValueEng}</OptionButton>
           ))}
         </DropdownOptions>
       )}

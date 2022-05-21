@@ -1,4 +1,5 @@
 
+
 import { useDispatch, useSelector } from "react-redux";
 
 import {  toast } from "react-toastify";
@@ -38,5 +39,6 @@ const LogoutModal = ({ setOpenModal }) => {
       
     )
 }
+
 
 export default LogoutModal;

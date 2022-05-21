@@ -11,28 +11,15 @@ import ButtonAddTransactions from '../ButtonAddTransactions'
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function HomeTab() {
-  const {getTransactions} = operations;
-  let transactions = useSelector(getAllTransactions);
+  const {fetchTransactions} = operations;
+  const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTransactions());
-  }, [dispatch, getTransactions]);
+    dispatch(fetchTransactions());
+  }, [dispatch, fetchTransactions]);
 
-  //костиль з балансом
-  const balance = transactions.reduce((acc, item) => {
-    if (item.typeTransaction === true) {
-      return acc + item.sum;
-    } else {
-      return acc - item.sum;
-    }
-  }, 0);
-
-  //сортування за датою транзакції від новіших до старіших
-  const sortedTransactions = [...transactions].sort((a, b) => {
-    return a.date.localeCompare(b.date);
-  });
-
+ 
   return (
     /*логіку роботи Media потрібно буде винести в Dashboard */
     <div>
@@ -42,7 +29,7 @@ export default function HomeTab() {
       >
         {({isMobile}) => (
           <div>
-              {isMobile ? <TableMobile data={sortedTransactions} balance={balance} /> : <Table data={sortedTransactions} balance={balance} />}
+              {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
           </div>
         )}
       </Media>
