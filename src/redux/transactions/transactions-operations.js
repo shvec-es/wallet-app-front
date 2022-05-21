@@ -9,9 +9,7 @@ axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 
 const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
-  async () => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyOTcyOSwiZXhwIjoxNjUzMTMzMzI5fQ.sw-ELZZov4aO3N93gv8PWOZBXDyB9mKROXSZTc5FjR8';
+  async (token) => {
     try {
         return await ApiServices.getTransactions(token)
     } catch (error) {
@@ -31,7 +29,7 @@ const addTransaction = createAsyncThunk(
     { rejectWithValue },
   ) => {
     const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyODI0MiwiZXhwIjoxNjUzMTMxODQyfQ.E07-z7KKBua9hmKvljJAC71KPqK8lP9NQLEVmkFqTnM';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzE1MDA0NywiZXhwIjoxNjUzMTUzNjQ3fQ.dfaguj912lUdqSRi4wUmbeLElXUHlVV-9Oy5oCsDDzk';
     try {
       if (typeTransaction || category === '') {
         const data = await ApiServices.createTransaction(
@@ -55,6 +53,22 @@ const addTransaction = createAsyncThunk(
   },
 );
 
+const deleteTransaction = createAsyncThunk('transactions/deleteTransaction', async (id, token) => {
+  try {
+    const { data } = await axios.delete(`/wallet/transaction/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return data.payload.deletedTransaction; 
+  } catch (error) {
+    toast(`${error.message}`, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      });
+  }
+});
+
 const fetchTransactionsStatistics = createAsyncThunk(
   'transactions/fetchTransactionStatistics',
   async ({ month, year, token }, rejectWithValue) => {
@@ -69,5 +83,6 @@ const fetchTransactionsStatistics = createAsyncThunk(
 export const operations = {
   fetchTransactions,
   addTransaction,
+  deleteTransaction,
   fetchTransactionsStatistics,
 };

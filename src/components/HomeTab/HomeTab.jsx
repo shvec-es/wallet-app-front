@@ -14,12 +14,15 @@ export default function HomeTab() {
   const {fetchTransactions} = operations;
   const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
+
  
+
   return (
     /*логіку роботи Media потрібно буде винести в Dashboard */
     <div>
