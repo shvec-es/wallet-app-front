@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
-import DashboardPage from 'pages/dashboardPage';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import {
   Logo,
   LanguageSwitcher,
