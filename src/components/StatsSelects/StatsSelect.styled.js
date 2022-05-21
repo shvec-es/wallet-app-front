@@ -18,6 +18,8 @@ border-radius: 30px;
 border: 1px solid #000000;
 background-color: transparent;
 
+text-transform: capitalize;
+
 @media (min-width: 768px) {
 width: 160px;
   }
@@ -55,4 +57,5 @@ font-weight: 400;
 line-height: 1.5em;
 text-align: left;
 background-color: transparent;
+text-transform: capitalize;
 `

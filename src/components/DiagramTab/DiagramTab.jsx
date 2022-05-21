@@ -20,16 +20,16 @@ function DiagramTab() {
 
   const { sortingTransactions, balance } = statistics;
 
-  // useEffect(() => {
-  //   const fetchStatistics = data =>
-  //     dispatch(operations.fetchTransactionsStatistics(data));
-  //   fetchStatistics({
-  //     month: month.value,
-  //     year: year.value,
-  //     token:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzExNzc1NSwiZXhwIjoxNjUzMTIxMzU1fQ.oKxW_lfiRArqfYdqQ_QYXbuLyAw7hgLKR9b00zLtQr0',
-  //   });
-  // }, [dispatch, month, year]);
+  useEffect(() => {
+    const fetchStatistics = data =>
+      dispatch(operations.fetchTransactionsStatistics(data));
+    fetchStatistics({
+      month: month.value,
+      year: year.value,
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzEyNDMzOSwiZXhwIjoxNjUzMTI3OTM5fQ.LRbsBWUB3EdNBMK4z_TZ67ixHaTkNt5RzZQ060lenOQ',
+    });
+  }, [dispatch, month, year]);
 
   function setNormalizedMonth (month) {
     const normalizedMonth = String(month + 1);
