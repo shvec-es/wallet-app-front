@@ -21,9 +21,14 @@ export default function HomeTab() {
 
  
   return (
-    /*логіку роботи Media потрібно буде винести в Dashboard */
     <div>
-      <Media  queries={{
+      <Media query="(max-width: 767px">
+        <TableMobile data={transactions} />
+      </Media>
+      <Media query="(min-width: 768px">
+      <Table data={transactions} /> 
+      </Media>
+      {/* <Media  queries={{
           isMobile: '(max-width: 767px)',
         }}
       >
@@ -32,7 +37,7 @@ export default function HomeTab() {
               {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
           </div>
         )}
-      </Media>
+      </Media> */}
       <ButtonAddTransactions/>
       <ToastContainer />
     </div>
