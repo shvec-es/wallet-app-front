@@ -26,21 +26,12 @@ function App() {
       <Media query="(min-width: 768px)">
         <BackGround />
       </Media>
-      <Header />
-      <DashboardPage />
       <Suspense fallback={<p>Loading...</p>}>
         <LanguageSwitcher />
+        <Header />
         <Container>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  {/* <Header />
-                  <DashboardPage /> */}
-                </PrivateRoute>
-              }
-            ></Route>
+            <Route path="*" element={<DashboardPage />}></Route>
             <Route
               path="/login"
               element={
