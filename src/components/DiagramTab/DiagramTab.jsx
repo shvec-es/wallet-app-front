@@ -12,32 +12,36 @@ import { TabTitle, TabSection } from './DiagramTab.styled';
 
 function DiagramTab() {
   const { t } = useTranslation();
-  const [month, setMonth] = useState(() => setDefaultMonth(new Date().getMonth()));
-  const [year, setYear] = useState(() => setDefaultYear(String(new Date().getFullYear())));
+  const [month, setMonth] = useState(() =>
+    setDefaultMonth(new Date().getMonth()),
+  );
+  const [year, setYear] = useState(() =>
+    setDefaultYear(String(new Date().getFullYear())),
+  );
 
   const dispatch = useDispatch();
   const statistics = useSelector(getTransactionsStatistics);
 
+  console.log('statistics', statistics);
+
   const { sortingTransactions, balance } = statistics;
 
-  // useEffect(() => {
-  //   const fetchStatistics = data =>
-  //     dispatch(operations.fetchTransactionsStatistics(data));
-  //   fetchStatistics({
-  //     month: month.value,
-  //     year: year.value,
-  //     token:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzExNzc1NSwiZXhwIjoxNjUzMTIxMzU1fQ.oKxW_lfiRArqfYdqQ_QYXbuLyAw7hgLKR9b00zLtQr0',
-  //   });
-  // }, [dispatch, month, year]);
+  useEffect(() => {
+    const fetchStatistics = data =>
+      dispatch(operations.fetchTransactionsStatistics(data));
+    fetchStatistics({
+      month: month.value,
+      year: year.value,
+    });
+  }, [dispatch, month, year]);
 
-  function setNormalizedMonth (month) {
+  function setNormalizedMonth(month) {
     const normalizedMonth = String(month + 1);
     if (normalizedMonth.length < 2) {
       return `0${normalizedMonth}`;
     }
     return normalizedMonth;
-  };
+  }
 
   function getMonthName(monthNumber, location) {
     const date = new Date(1, monthNumber, 1);
@@ -58,7 +62,7 @@ function DiagramTab() {
       value: year,
       displayValueEng: year,
       displayValueUkr: year,
-    }
+    };
   }
 
   const chartData = {
@@ -76,7 +80,7 @@ function DiagramTab() {
     <TabSection>
       <div>
         <TabTitle>{t('statistic')}</TabTitle>
-        <Chart expences={chartData} total={balance.consumption} />
+        <Chart chartData={chartData} total={balance.consumption} />
       </div>
       <StatsTable
         categoriesStatistics={sortingTransactions}
