@@ -17,7 +17,7 @@ export const FormWrapper = styled.div`
   }
 
   @media (min-width: 1280px) {
-    width: 731px;
+    // width: 731px;
     padding: 120px 100px;
     margin: 0;
     border-radius: 0;
@@ -27,7 +27,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormBg = styled.div`
-  height: 468px;
+  // height: 468px;
   display: flex;
   justify-content: center;
   align-items: center;
