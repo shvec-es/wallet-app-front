@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import ApiServices from 'services/ApiServices';
 
 axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
-//тимчасова заглушка здля токена поки немає логіну
+
 
 const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
@@ -55,9 +55,7 @@ const addTransaction = createAsyncThunk(
 
 const deleteTransaction = createAsyncThunk('transactions/deleteTransaction', async (id, token) => {
   try {
-    const { data } = await axios.delete(`/wallet/transaction/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const { data } = await axios.delete(`/wallet/transaction/${id}`);
     return data.payload.deletedTransaction; 
   } catch (error) {
     toast(`${error.message}`, {
