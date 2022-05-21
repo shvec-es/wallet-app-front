@@ -13,7 +13,7 @@ import {
   Header,
   Navigation,
   PublicRoute,
-  PrivateRoute
+  PrivateRoute,
 } from 'components';
 
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
@@ -34,18 +34,18 @@ function App() {
         <Header />
         <LanguageSwitcher />
         <Container>
-          <Media query="(min-width: 768px)">
-            <BackGround />
-          </Media>
           {/* <Navigation /> */}
 
           <Routes>
             <Route path="*" element={<DashboardPage />}></Route>
-            <Route path="/login" element={
-              <PublicRoute restricted>
-                <LoginPage />
-              </PublicRoute>
-              }></Route>
+            <Route
+              path="/login"
+              element={
+                <PublicRoute restricted>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            ></Route>
             <Route path="/register" element={<RegistrationPage />}></Route>
           </Routes>
         </Container>
