@@ -38,11 +38,12 @@ function App() {
       </Media>
       <Suspense fallback={<p>Loading...</p>}>
         <LanguageSwitcher />
-        <Header />
+
         <Container>
           <Routes>
             <Route path="*" element={
               <PrivateRoute>
+                        <Header />
               <DashboardPage />
               </PrivateRoute>
             }></Route>
