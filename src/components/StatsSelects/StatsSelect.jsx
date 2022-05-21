@@ -18,8 +18,6 @@ function StatsSelect({ type, startValue, options, sendSelectedValue }) {
   const { t, i18n } = useTranslation();
   const currentLng = i18n.language.slice(0, 2);
 
-  console.log(typeof currentLng)
-
   const dropDownToggle = () => {
     setOpen(prevState => !prevState);
   };
