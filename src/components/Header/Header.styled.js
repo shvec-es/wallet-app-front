@@ -12,6 +12,7 @@ export const StyledHeader = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 20px 62px 20px 16px;
+  background-color: var(--color-white);
 
   ${size.tablet} {
     padding: 20px 68px 20px 16px;
