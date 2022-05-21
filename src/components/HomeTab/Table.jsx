@@ -31,7 +31,7 @@ const dispatch = useDispatch();
           <TableRow key ={_id}>
             <TableCell>{date}</TableCell>
             <TableCell>{typeTransaction === true ? '+' : '-'}</TableCell>
-            <TableCell>{category ?? '-'}</TableCell>
+            <TableCell>{category ?? 'Income'}</TableCell>
             <TableCell>{description ?? '-'}</TableCell>
             <TableCellColor type={typeTransaction === true ? "income" : "costs"}>{sum}</TableCellColor>
             <TableCell>{balance}</TableCell>

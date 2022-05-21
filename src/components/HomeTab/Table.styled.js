@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const TableMain = styled.table`
   width: 715px;
-  max-height: 60vh;
   @media screen and (min-width: 1280px) {
     width: 745px;
   }
 `;
 export const TableHeader = styled.thead`
+    position: sticky;
     display: block;
     padding: 7px 20px;
     font-size: 18px;
@@ -24,9 +24,10 @@ export const TableHeaderRow = styled.tr`
 
 export const TableBody = styled.tbody`
     display: block;
+    overflow: scroll;
+    max-height: 60vh;
     padding: 0px 20px 15px 20px;
     font-size: 16px;
-    overflow: scroll;
 `
 
 export const ButtonDelete = styled.button`
