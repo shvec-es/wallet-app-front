@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   z-index: -100;
   // filter: blur(50px);
   background-color: var(--color-background);

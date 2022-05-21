@@ -6,7 +6,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-   
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -22,7 +21,6 @@ export const register = createAsyncThunk(
         credentials,
       );
       token.set(data.payload.token);
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -35,9 +33,7 @@ export const logIn = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post( "https://wallet-codewriters.herokuapp.com/api/auth/login", credentials);
-      console.log(data)
-      console.log(data.payload.token)
-      token.set(data.token);
+      token.set(data.payload.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -47,9 +43,29 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.get("https://wallet-codewriters.herokuapp.com/api/auth/logout");
+    await axios.get('https://wallet-codewriters.herokuapp.com/api/auth/logout');
     token.unset();
   } catch (error) {
- return error.message;
+    return error.message;
   }
 });
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.authReducer.token;
+    if (persistedToken === null) {
+      return;
+    }
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get(
+        'http://wallet-codewriters.herokuapp.com/api/users/current',
+      );
+      return data;
+    } catch (error) {
+      return error.message;
+    }
+  },
+);
