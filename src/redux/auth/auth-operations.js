@@ -16,14 +16,13 @@ const token = {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post(
         'https://wallet-codewriters.herokuapp.com/api/auth/signup',
         credentials,
       );
       token.set(data.token);
-      console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -35,8 +34,11 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('https://wallet-codewriters.herokuapp.com/api/auth/login', credentials);
-      console.log(data)
+      const { data } = await axios.post(
+        'https://wallet-codewriters.herokuapp.com/api/auth/login',
+        credentials,
+      );
+      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -45,12 +47,16 @@ export const logIn = createAsyncThunk(
   },
 );
 
-export const logOut = createAsyncThunk('auth/logout', async ({rejectWithValue}) => {
-  try {
-    await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/logout");
-    token.unset();
-  } catch (error) {
- return rejectWithValue(error.message);
-  }
-});
-
+export const logOut = createAsyncThunk(
+  'auth/logout',
+  async ({ rejectWithValue }) => {
+    try {
+      await axios.post(
+        'https://wallet-codewriters.herokuapp.com/api/auth/logout',
+      );
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);

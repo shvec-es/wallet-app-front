@@ -6,7 +6,7 @@ import Currency from './Currency';
 import Chart from './Chart';
 
 import LogoForm from './LogoForm';
-
+import RegistrationForm from './RegistrationForm/RegistrationForm';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 import Navigation from './Navigation';
@@ -15,7 +15,6 @@ import Header from './Header';
 import Balance from './Balance';
 import ModalWindow from './ModalWindow';
 import LogoutContent from './LogoutContent';
-
 
 export {
   BackGround,
@@ -31,6 +30,7 @@ export {
   LoginPage,
   Header,
   Balance,
+  RegistrationForm,
   ModalWindow,
-LogoutContent
+  LogoutContent,
 };

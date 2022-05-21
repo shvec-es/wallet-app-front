@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 const Indicator = ({ value }) => {
-  console.log(value);
   const ref = useRef();
   useEffect(() => {
     getIndicator();

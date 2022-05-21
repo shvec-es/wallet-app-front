@@ -3,12 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: 20px;
-
-  @media (max-width: 768px) {
-    margin-right: 10px;
-  }
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  z-index: 100;
 `;
 
 export const Select = styled.select`
