@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import sprite from 'images/sprite.svg';
 
+import { useTranslation } from 'react-i18next';
+
 import {
   OptionButton,
   DropdownWrapper,
@@ -12,6 +14,9 @@ import {
 function StatsSelect({ type, startValue, options, sendSelectedValue }) {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(startValue);
+
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language.slice(0, 2);
 
   const dropDownToggle = () => {
     setOpen(prevState => !prevState);
@@ -36,7 +41,7 @@ function StatsSelect({ type, startValue, options, sendSelectedValue }) {
   return (
     <DropdownWrapper onBlur={onOutsideClick}>
       <ToggleButton onClick={dropDownToggle}>
-        {selectedValue.displayValueEng}
+        {currentLng === "en" ? selectedValue.displayValueEng : selectedValue.displayValueUkr}
         <ToggleIcon>
           <use href={`${sprite}#check`}/>
         </ToggleIcon>
@@ -44,7 +49,7 @@ function StatsSelect({ type, startValue, options, sendSelectedValue }) {
       {open && (
         <DropdownOptions>
           {options.map(option => (
-            <OptionButton onClick={() => onOptionClick(option)} key={option.value}>{option.displayValueEng}</OptionButton>
+            <OptionButton onClick={() => onOptionClick(option)} key={option.value}>{currentLng === "en" ? option.displayValueEng : option.displayValueUkr}</OptionButton>
           ))}
         </DropdownOptions>
       )}

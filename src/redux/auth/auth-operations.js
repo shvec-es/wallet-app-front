@@ -6,7 +6,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-   
+    console.log('token', token)
+    console.log('header', axios.defaults.headers.common.Authorization)
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -37,7 +38,7 @@ export const logIn = createAsyncThunk(
       const { data } = await axios.post( "https://wallet-codewriters.herokuapp.com/api/auth/login", credentials);
       console.log(data)
       console.log(data.payload.token)
-      token.set(data.token);
+      token.set(data.payload.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

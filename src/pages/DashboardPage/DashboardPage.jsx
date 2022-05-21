@@ -1,6 +1,5 @@
 import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
-
 import DiagramTab from "components/DiagramTab";
 // import ButtonAddTransactions from "components/ButtonAddTransactions";
 import { Navigation, HomeTab, ButtonAddTransactions} from "components";
@@ -11,12 +10,8 @@ import Balance from "components/Balance";
 
 export default function DashboardPage() {
 
-
-
-  return (
-    
+  return (  
     <>
-  
     <MainWrap>
         <SideBar>
           <MobSidebar>
@@ -36,16 +31,13 @@ export default function DashboardPage() {
             <ButtonWrap>
               <ButtonAddTransactions />
            </ButtonWrap>
-          
         </SideBar>
 
         <TabWrap>
           <Routes>
-            <Route index element={<HomeTab />}/>
-            
+            <Route index element={<HomeTab />}/>           
             <Route path="home" element={<HomeTab/> } />
             <Route path="home" element={
-            
             <>
           <Media
             query="(max-width: 767px)"
@@ -78,9 +70,7 @@ export default function DashboardPage() {
             />
           </Routes>
         </TabWrap>
-    
       </MainWrap>
-   
     </>    
   );
 
