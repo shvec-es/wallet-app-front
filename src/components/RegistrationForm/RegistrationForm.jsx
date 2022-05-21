@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import { Logo } from 'components';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import Indicator from './indicator';
@@ -14,10 +15,9 @@ import {
   Icon,
   Wrap,
   Form,
-  Title,
   ErrMessage,
   ButtonLink,
-} from './RegistrationPage.styled';
+} from '../../pages/RegistrationPage/RegistrationPage.styled';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -29,7 +29,6 @@ const RegistrationForm = () => {
     name: '',
   };
   const onSubmit = ({ email, password, name }, { resetForm }) => {
-    console.log(email, password, name);
     dispatch(authOperations.register({ email, password, name }));
     resetForm();
   };
@@ -69,10 +68,7 @@ const RegistrationForm = () => {
       {({ values, handleSubmit, handleChange, errors }) => (
         <Form>
           <Wrap>
-            <svg width="40" height="40">
-              <use href={`${icons}#wallet`}></use>
-            </svg>
-            <Title>{t('app_name')}</Title>
+            <Logo />
           </Wrap>
           <div>
             <Label htmlFor="email">
@@ -142,10 +138,10 @@ const RegistrationForm = () => {
           </div>
           <div>
             <Button type="submit" onClick={handleSubmit}>
-              {t('sign up')}
+              {t('register')}
             </Button>
             <ButtonLink>
-              <Link to="/login">{t('sign in')}</Link>
+              <Link to="/">{t('login')}</Link>
             </ButtonLink>
           </div>
         </Form>

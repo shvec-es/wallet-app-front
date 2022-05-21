@@ -21,13 +21,6 @@ const LogoForm = () => {
         )}
       </Media>
 
-      {/* <Media query="(min-width: 768px)">
-        <img src={Icon} alt="Logo" />
-      </Media>
-
-      <Media query="(min-width: 1240px)">
-        <img src={IconBig} alt="Logo" />
-      </Media> */}
       <Text>Finance App</Text>
     </Wrapper>
   );

@@ -6,28 +6,18 @@ export const size = {
   desktop: '@media screen and (min-width: 1280px)',
 };
 
-export const MainHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-white);
-`;
-
 export const StyledHeader = styled.div`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 60px;
-  padding: 15px 20px;
+  padding: 20px 62px 20px 16px;
 
   ${size.tablet} {
-    height: 80px;
-    width: 768px;
-    padding: 20px 32px;
+    padding: 20px 68px 20px 16px;
   }
 
   ${size.desktop} {
-    width: 1280px;
-    padding: 20px 16px;
   }
 `;
 

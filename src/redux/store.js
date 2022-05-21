@@ -15,19 +15,17 @@ import authReducer from './auth/auth-reducer';
 import transactionsReducer from './transactions/transactions-reducer';
 import { balanceReducer } from './balance';
 
-
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
-console.log(authReducer);
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionsReducer,
     balance: balanceReducer,
-
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

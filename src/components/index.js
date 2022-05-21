@@ -6,14 +6,13 @@ import Currency from './Currency';
 import Chart from './Chart';
 
 import LogoForm from './LogoForm';
-
+import RegistrationForm from './RegistrationForm/RegistrationForm';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 import Navigation from './Navigation';
 import LoginPage from '../pages/LoginPage';
 import Header from './Header';
 import Balance from './Balance';
-
 
 export {
   BackGround,
@@ -29,5 +28,5 @@ export {
   LoginPage,
   Header,
   Balance,
-
+  RegistrationForm,
 };

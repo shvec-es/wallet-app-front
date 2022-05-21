@@ -2,6 +2,7 @@ import { Suspense, Fragment, lazy } from 'react';
 import Media from 'react-media';
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/dashboardPage';
+import { Logo, LanguageSwitcher } from 'components';
 import {
   BackGround,
   Container,
@@ -10,17 +11,19 @@ import {
   Navigation,
 } from 'components';
 
-const RegistrationPage = lazy(() => import('pages/registrationPage'));
+const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
 function App() {
   return (
     <>
-      <Media query="(min-width: 768px)">
-        <BackGround />
-      </Media>
       <Suspense fallback={<p>Loading...</p>}>
+        <LanguageSwitcher />
         {/* <Header /> */}
+
         <Container>
+          <Media query="(min-width: 768px)">
+            <BackGround />
+          </Media>
           {/* <Navigation /> */}
           <Routes>
             <Route path="/register" element={<RegistrationPage />}></Route>
