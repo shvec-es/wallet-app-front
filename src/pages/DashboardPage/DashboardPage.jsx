@@ -28,9 +28,6 @@ export default function DashboardPage() {
               <Currency />
           </CurrencyWrap>
           } />
-            <ButtonWrap>
-              <ButtonAddTransactions />
-           </ButtonWrap>
         </SideBar>
 
         <TabWrap>
