@@ -50,7 +50,7 @@
   "transaction_add": "add transaction",
   "income": "income",
   "expense": "expense",
-  "description": "add comment",
+  "description": "comment",
   "add": "add",
   "cancel": "cancel",
 
@@ -60,5 +60,7 @@
   "balance": "your balance",
   "date": "date",
   "month": "month",
-  "year": "year"
+  "year": "year",
+  "type": "type",
+  "sum": "sum"
 }
