@@ -6,43 +6,46 @@ import ApiServices from 'services/ApiServices';
 
 axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 
-
 const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
   async (token) => {
     try {
-        return await ApiServices.getTransactions(token)
+      return await ApiServices.getTransactions(token);
     } catch (error) {
-        toast(`${error.message}`, {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            });
+      toast(`${error.message}`, {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+      });
     }
-});
+  },
+);
 
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async (
     { typeTransaction, sum, date, description, category },
-    { rejectWithValue },
+    rejectWithValue,
   ) => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzE1MDA0NywiZXhwIjoxNjUzMTUzNjQ3fQ.dfaguj912lUdqSRi4wUmbeLElXUHlVV-9Oy5oCsDDzk';
     try {
       if (typeTransaction || category === '') {
-        const data = await ApiServices.createTransaction(
-          { typeTransaction, sum, date, description },
-          token,
-        );
+        const data = await ApiServices.createTransaction({
+          typeTransaction,
+          sum,
+          date,
+          description,
+        });
         // toast.success('Transaction add successfuly!');
         return data.payload;
       } else {
-        const data = await ApiServices.createTransaction(
-          { typeTransaction, sum, date, description, category },
-          token,
-        );
+        const data = await ApiServices.createTransaction({
+          typeTransaction,
+          sum,
+          date,
+          description,
+          category,
+        });
         // toast.success('Transaction add successfuly!');
         return data.payload;
       }
