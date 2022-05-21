@@ -1,18 +1,20 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  // getTransactions,
-  getTransactionsSuccess,
-  // getTransactionsFailure,
-} from './transactions-actions';
 import { operations } from './transactions-operations';
 
-const result = createReducer([], {
-  [getTransactionsSuccess]: (_, { payload }) => payload,
-  [operations.addTransaction.fulfilled]: (state, { payload }) => [
-    payload,
-    ...state,
-  ],
+const transactionsList = createReducer([], {
+  [operations.fetchTransactions.fulfilled]: (_, {payload}) => payload,
+});
+
+const transactionsListLoading = createReducer(false, {
+  [operations.fetchTransactions.pending]: () => true,
+  [operations.fetchTransactions.fulfilled]: () => false,
+  [operations.fetchTransactions.rejected]: () => false,
+});
+
+const transactionsListError = createReducer(null, {
+  [operations.fetchTransactions.fulfilled]: (_, {payload}) => null,
+  [operations.fetchTransactions.rejected]: (_, {payload}) => payload,
 });
 
 const transactionsStatistics = createReducer(
@@ -61,7 +63,9 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  result,
+  transactionsList,
+  transactionsListLoading,
+  transactionsListError,
   transactionsIsLoading,
   transactionsStatistics,
   transactionsStatisticsIsLoading,

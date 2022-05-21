@@ -1,47 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import * as actions from './transactions-actions';
 import { toast } from 'react-toastify';
 
 import ApiServices from 'services/ApiServices';
 
-const getTransactions = () => async dispatch => {
-  dispatch(actions.getTransactions());
-  try {
-    const { data } = await axios.get('/wallet/transactions', {
-      //заглушка з ручним записом токену поки не працює авторизація
-      headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1Mjk2MjIwMCwiZXhwIjoxNjUyOTY1ODAwfQ.zUfkFRR6eLZrofrcQZpKZaE8Zq5Ginrmd3L_ufv-VGU`,
-      },
-    });
-    dispatch(actions.getTransactionsSuccess(data.payload.transactions));
-    console.log(data.payload.transactions);
-  } catch (error) {
-    dispatch(actions.getTransactionsFailure(error.message));
-    // console.log(error);
-    toast(`${error.message}`, {
-      position: 'top-right',
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
-};
+axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
+//тимчасова заглушка здля токена поки немає логіну
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzA3Mzc4MiwiZXhwIjoxNjUzMDc3MzgyfQ.tVUQ3G0iiICE9aLooTfEERc3SGVx_yrAtpCtS89aoQ0'
 
-//  const getBalance = () => async dispatch => {
-//     dispatch(actions.getBalance());
-//     try {
-//         const { data } = await axios.get("/wallet/stats");
-//         dispatch(actions.getBalanceSuccess(data.payload.balance));
-//         console.log(data.payload.balance);
-//     } catch (error) {
-//         dispatch(actions.getBalanceFailure(error.message));
-//          console.log(error);
-//     }
-// }
+const fetchTransactions = createAsyncThunk(
+  'transactions/fetchTransactions',
+  async () => {
+    try {
+        const { data } = await axios.get("/wallet/transactions",{
+        headers: {'Authorization': `Bearer ${token}`}})
+        return data.payload;
+    } catch (error) {
+        toast(`${error.message}`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            });
+    }
+});
 
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
@@ -86,7 +68,7 @@ const fetchTransactionsStatistics = createAsyncThunk(
 );
 
 export const operations = {
-  getTransactions,
+  fetchTransactions,
   addTransaction,
   fetchTransactionsStatistics,
 };

@@ -1,9 +1,9 @@
 import { MobileCard, MobileCardGroup, MobileCardItem, MobileCardItemValue, MobileCardItemColor } from './TableMobile.styled';
 
-function TableMobile({data, balance}) {
+function TableMobile({data}) {
   return (
   <>
-    {data.map(({_id, date, typeTransaction, category, description, sum}) => (
+    {data.map(({_id, date, typeTransaction, category, description, sum, balance}) => (
       <MobileCard key={_id} type={typeTransaction === true ? "income" : "costs"}>
           <MobileCardGroup>
             <MobileCardItem>Дата</MobileCardItem>
@@ -29,7 +29,7 @@ function TableMobile({data, balance}) {
           </MobileCardGroup>
           <MobileCardGroup>
             <MobileCardItem>Баланс</MobileCardItem>
-            <MobileCardItemValue>{typeTransaction === true ? balance+sum : balance-sum}</MobileCardItemValue>
+            <MobileCardItemValue>{balance}</MobileCardItemValue>
           </MobileCardGroup>
       </MobileCard>
     ) )}
