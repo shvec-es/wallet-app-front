@@ -5,12 +5,12 @@ import { ChartWrapper, Total } from './Chart.styled';
 
 ChartJS.register(ArcElement);
 
-function Chart({ expences, total }) {
+function Chart({ chartData, total }) {
   return (
     <>
       <ChartWrapper>
         <Doughnut
-          data={expences}
+          data={chartData}
           options={{
              maintainAspectRatio: false, 
             layout: {
@@ -18,7 +18,7 @@ function Chart({ expences, total }) {
             },
           }}
               />
-        <Total>₴ {total}</Total>
+        <Total>{chartData.datasets[0].data.length > 0 && `₴ ${total}`}</Total>
       </ChartWrapper>
     </>
   );

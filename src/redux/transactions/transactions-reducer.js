@@ -19,11 +19,7 @@ const transactionsListError = createReducer(null, {
 
 const transactionsStatistics = createReducer(
   {
-    sortingTransactions: [
-      { name: 'main expences', sum: 100, color: '#FFDD33' },
-      { name: 'housing', sum: 86, color: '#FF5E33' },
-      { name: 'products', sum: 40, color: '#2BF956' },
-    ],
+    sortingTransactions: [],
     balance: {
       income: '',
       consumption: '',
