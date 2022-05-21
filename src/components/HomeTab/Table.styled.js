@@ -15,10 +15,18 @@ export const TableHeader = styled.thead`
     background-color: var(--color-white);
     border-radius: 30px;
 `
+export const TableHeaderRow = styled.tr`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    `
+
 export const TableBody = styled.tbody`
     display: block;
     padding: 0px 20px 15px 20px;
     font-size: 16px;
+    overflow: scroll;
 `
 
 export const ButtonDelete = styled.button`
