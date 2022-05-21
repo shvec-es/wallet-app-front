@@ -1,5 +1,8 @@
-import { Suspense, Fragment, lazy } from 'react';
+import { Suspense, Fragment, lazy, useEffect } from 'react';
 import Media from 'react-media';
+
+import { useSelector, useDispatch } from 'react-redux';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
@@ -12,6 +15,7 @@ import {
   PublicRoute,
   PrivateRoute,
 } from 'components';
+import { fetchCurrentUser } from './redux/auth/auth-operations';
 
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
@@ -20,6 +24,12 @@ const LoginPage = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <ToastContainer autoClose={2000} theme="colored" />
