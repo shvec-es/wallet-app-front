@@ -16,8 +16,8 @@ const authReducer = createReducer(initialState, {
 
   },
   [logIn.fulfilled]: (state, {payload}) => {
-    state.user = payload.payload.user;
-    state.token = payload.payload.token;
+    state.user = payload.user;
+    state.token = payload.token;
     state.isLoggedIn = true;
   },
   [logOut.fulfilled]: (state, _) => {

@@ -1,27 +1,27 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com/';
+import ApiServices from '../../services/ApiServices';
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    console.log('token', token)
+    console.log('header', axios.defaults.headers.common.Authorization)
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
   },
 };
 
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
-        'https://wallet-codewriters.herokuapp.com/api/auth/signup',
-        credentials,
-      );
-      token.set(data.payload.token);
-      return data;
+const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/signup", credentials)
+     token.set(data.payload.token)
+      return data
+
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -32,9 +32,11 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post( "https://wallet-codewriters.herokuapp.com/api/auth/login", credentials);
-      token.set(data.payload.token);
-      return data;
+const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/login", credentials)
+     token.set(data.payload.token)
+      return data
+
+
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -43,12 +45,14 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.get('https://wallet-codewriters.herokuapp.com/api/auth/logout');
-    token.unset();
+  
+    await axios.get("https://wallet-codewriters.herokuapp.com/api/auth/logout")
+    token.unset()
   } catch (error) {
     return error.message;
   }
 });
+
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -69,3 +73,4 @@ export const fetchCurrentUser = createAsyncThunk(
     }
   },
 );
+
