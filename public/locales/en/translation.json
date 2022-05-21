@@ -1,29 +1,36 @@
 {
   "app_name": "wallet",
   "app_title": "finance app",
+  "ok": "ok",
 
   "register": "sign up",
   "login": "sign in",
   "logout": "logout",
-  "name": "your name",
+  "logout_sure": "are you sure you want to logout",
 
   "ccy": "currency",
   "buy": "buy",
   "sale": "sale",
-
   "home": "home",
 
-  "email": "email address",
+  "name": "your name",
+  "name_min": "name must be at least 1 characters",
+  "name_max": "name must be at most 12 characters",
+
+  "email": "Email address",
   "email_string": "Enter your email",
   "email_error": "Enter a valid email address",
   "email_require": "Email is required",
   "email_exists": "This email is already registered",
 
-  "pass": "password",
-  "pass_confirm": "confirm password",
+  "pass": "Password",
+  "pass_confirm": "Confirm password",
   "pass_string": "Enter your password",
   "pass_error": "Password must be at least 6 characters long",
+  "pass_max": "Password should be of maximum 12 characters length",
   "pass_require": "Password is required",
+  "pass_matches": "Password must be min 6 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase",
+  "pass_confirm_error": "Passwords do not match",
 
   "transaction_options": [
     "Basic",
