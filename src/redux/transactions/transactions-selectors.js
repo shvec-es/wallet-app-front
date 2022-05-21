@@ -1,5 +1,5 @@
-// import { createSelector } from "reselect";
 import { createSelector } from '@reduxjs/toolkit';
+
 const getAllTransactions = state => state.transactions.transactionsList;
 
 const filtredTransactions = state => {
@@ -7,6 +7,8 @@ const filtredTransactions = state => {
      transactionsList.sort((a, b) => {
         return a.date.localeCompare(b.date);
 })}
+
+const deleteTransaction = state => state.transactions.transactionDelete;
 
 const getTransactionsStatistics = state =>
   state.transactions.transactionsStatistics;
@@ -56,4 +58,5 @@ export {
   getTransactionsStatistics,
   getTransactionsIsLoading,
   getError,
+  deleteTransaction,
 };
