@@ -34,11 +34,9 @@ class ApiServices {
     }
   }
 
-  async getCategories(token) {
+  async getCategories() {
     try {
-      const req = await axios.get('/wallet/transaction/categories', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const req = await axios.get('/wallet/transaction/categories');
       return req.data.payload;
     } catch (e) {
       console.log(e.message);
@@ -71,9 +69,7 @@ class ApiServices {
     }
 
     try {
-      const { data } = await axios.post('/wallet/transaction', userData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { data } = await axios.post('/wallet/transaction', userData);
       return data;
     } catch (e) {
       console.log(e.message);

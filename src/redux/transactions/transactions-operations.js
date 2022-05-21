@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import ApiServices from 'services/ApiServices';
 
-axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
+axios.defaults.baseURL = 'http://wallet-codewriters.herokuapp.com';
 //тимчасова заглушка здля токена поки немає логіну
 
 const fetchTransactions = createAsyncThunk(
@@ -13,38 +13,42 @@ const fetchTransactions = createAsyncThunk(
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyOTcyOSwiZXhwIjoxNjUzMTMzMzI5fQ.sw-ELZZov4aO3N93gv8PWOZBXDyB9mKROXSZTc5FjR8';
     try {
-        return await ApiServices.getTransactions(token)
+      return await ApiServices.getTransactions(token);
     } catch (error) {
-        toast(`${error.message}`, {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            });
+      toast(`${error.message}`, {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+      });
     }
-});
+  },
+);
 
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async (
     { typeTransaction, sum, date, description, category },
-    { rejectWithValue },
+    rejectWithValue,
   ) => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyODI0MiwiZXhwIjoxNjUzMTMxODQyfQ.E07-z7KKBua9hmKvljJAC71KPqK8lP9NQLEVmkFqTnM';
     try {
       if (typeTransaction || category === '') {
-        const data = await ApiServices.createTransaction(
-          { typeTransaction, sum, date, description },
-          token,
-        );
+        const data = await ApiServices.createTransaction({
+          typeTransaction,
+          sum,
+          date,
+          description,
+        });
         // toast.success('Transaction add successfuly!');
         return data.payload;
       } else {
-        const data = await ApiServices.createTransaction(
-          { typeTransaction, sum, date, description, category },
-          token,
-        );
+        const data = await ApiServices.createTransaction({
+          typeTransaction,
+          sum,
+          date,
+          description,
+          category,
+        });
         // toast.success('Transaction add successfuly!');
         return data.payload;
       }

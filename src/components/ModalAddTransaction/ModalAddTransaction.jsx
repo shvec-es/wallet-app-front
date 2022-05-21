@@ -70,10 +70,8 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
 
   useEffect(() => {
     const getAllCategories = async () => {
-      const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY0YThhNGQ1MDg2N2Q5OTUyMGUzYyIsImlhdCI6MTY1MzA1MzYyMywiZXhwIjoxNjUzMDU3MjIzfQ.LkTWMm7I6GE2ZETwEmcscI-b7zsSg_RoRVXeCLPll_s';
       try {
-        const data = await ApiServices.getCategories(token);
+        const data = await ApiServices.getCategories();
         setOptions(data);
       } catch (error) {
         toast.error(error.message);
