@@ -13,18 +13,36 @@ export const getMonths = createSelector(
   (statistics) => {
     const allMonths = statistics.date.map(date => date.month);
     const uniqueMonths = allMonths.filter((month, index, array) => array.indexOf(month) === index)
-    return uniqueMonths.sort();
+    const sortedMonths = uniqueMonths.sort();
+    return sortedMonths.map(month => ({
+      value: month,
+      displayValueEng: getMonthName(month, 'eng'),
+      displayValueUkr: getMonthName(month, 'ukr')
+    }));
 }
 );
+
+function getMonthName (monthNumber, location) {
+    const normalizedMonthNumber = monthNumber - 1;
+    const date = new Date(1, normalizedMonthNumber, 1); 
+    const locationOpt = location === 'eng' ? 'en-us' : 'uk-UA'
+    return date.toLocaleString(locationOpt, { month: 'long' }); 
+  }
 
 export const getYears = createSelector(
   [getTransactionsStatistics],
   (statistics) => {
     const allYears = statistics.date.map(date => date.year);
     const uniqueYears = allYears.filter((year, index, array) => array.indexOf(year) === index);
-    return uniqueYears.sort();
+    const sortedYears = uniqueYears.sort();
+    return sortedYears.map(year => ({
+      value: year,
+      displayValueEng: year,
+      displayValueUkr: year}))
 }
 );
+
+
 
 export {
   getAllTransactions,

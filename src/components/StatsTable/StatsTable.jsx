@@ -24,24 +24,19 @@ function StatsTable({ categoriesStatistics, balance, month, year, updateMonth, u
   
   const statsMonths = useSelector(getMonths);
   const statsYears = useSelector(getYears);
-  
-  const getMonthName = (monthNumber) => {
-    const date = new Date(1, monthNumber, 1); 
-    return date.toLocaleString('en-us', { month: 'long' }); 
-  }
 
-  
 
-  const displayMonth = getMonthName(month)
   return (
     <ContentWrapper>
       <SelectsWrapper>
         <StatsSelect
+          type='months'
           options={statsMonths}
           sendSelectedValue={updateMonth}
-          startValue={displayMonth}
+          startValue={month}
         />
         <StatsSelect
+          type='years'
           options={statsYears}
           sendSelectedValue={updateYear}
           startValue={year}
