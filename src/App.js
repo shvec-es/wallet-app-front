@@ -41,7 +41,11 @@ function App() {
         <Header />
         <Container>
           <Routes>
-            <Route path="*" element={<DashboardPage />}></Route>
+            <Route path="*" element={
+              <PrivateRoute>
+              <DashboardPage />
+              </PrivateRoute>
+            }></Route>
             <Route
               path="/login"
               element={
@@ -50,7 +54,11 @@ function App() {
                 </PublicRoute>
               }
             ></Route>
-            <Route path="/register" element={<RegistrationPage />}></Route>
+            <Route path="/register" element={
+              <PublicRoute restricted>
+                <RegistrationPage />
+                </PublicRoute>
+            }></Route>
           </Routes>
         </Container>
       </Suspense>
