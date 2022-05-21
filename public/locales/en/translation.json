@@ -43,6 +43,7 @@
     "Leisure",
     "Others"
   ],
+
   "transaction_choose": "choose category",
   "transaction_string": "Format is not correct",
   "sum_require": "Sum is required",
@@ -58,6 +59,7 @@
   "category": "category",
   "amount": "amount",
   "balance": "balance",
+  "your_balance": "your balance",
   "date": "date",
   "month": "month",
   "year": "year",
