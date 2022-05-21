@@ -1,6 +1,6 @@
-import LoginForm from '../../components/LoginForm/LoginForm';
-import loginImg from '../../images/loginImg.svg';
-import { Container } from 'components';
+import Media from 'react-media';
+import LoginForm from 'components/LoginForm/LoginForm';
+import icons from 'images/sprite.svg';
 import { Section, ImgWrapper, Img, AppTitle } from './LoginPage.styled';
 import { useTranslation } from 'react-i18next';
 
@@ -9,15 +9,17 @@ function LoginPage() {
 
   return (
     <Section>
-      {/* <Container> */}
       <ImgWrapper>
-        <Img src={loginImg} alt="loginImg" />
+        <Media query="(min-width: 768px)">
+          <Img>
+            <use href={`${icons}#login`} />
+          </Img>
+        </Media>
+
         <AppTitle>{t('app_title')}</AppTitle>
       </ImgWrapper>
 
       <LoginForm />
-
-      {/* </Container> */}
     </Section>
   );
 }

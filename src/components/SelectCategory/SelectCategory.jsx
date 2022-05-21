@@ -12,17 +12,18 @@ import {
 import sprite from 'images/sprite.svg';
 import { useTranslation } from 'react-i18next';
 
-const SelectCategory = ({ value, onChange: handleChange }) => {
+const SelectCategory = ({ options, set }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const { t } = useTranslation();
-
+    
   const toggleList = () => {
     setOpen(prevState => !prevState);
   };
 
   const chooseItem = item => {
     setSelectedCategory(item);
+    set(item);
     setOpen(false);
   };
 
@@ -42,24 +43,16 @@ const SelectCategory = ({ value, onChange: handleChange }) => {
       </SelectButton>
       {open && (
         <SelectList>
-          {t('transaction_options', { returnObjects: true }).map(item => (
+          {options.map(({ name }) =>
             <SelectItem
-              value={item}
-              key={item}
-              onClick={() => chooseItem(item)}
+              value={name}
+              key={name}
+              onClick={() => chooseItem(name)}
             >
-              {item}
+              {name}
             </SelectItem>
-          ))}
-        </SelectList>
-      )}
-      <input
-        type="text"
-        name="category"
-        value={selectedCategory}
-        onChange={handleChange}
-        style={{ display: 'none' }}
-      />
+          )}
+        </SelectList>)}
     </SelectWrapper>
   );
 };

@@ -37,6 +37,7 @@ export const Input = styled.input`
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
+  text-transform: capitalize;
   padding-left: 40px;
   width: 100%;
   border: none;
@@ -107,7 +108,6 @@ export const WrapperPage = styled.div`
 export const WrapperForm = styled.div`
   @media screen and (min-width: 1280px) {
     min-width: 731px;
-
     padding: 52px 91px 52px 61px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);

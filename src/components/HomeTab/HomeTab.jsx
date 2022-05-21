@@ -11,23 +11,15 @@ import ButtonAddTransactions from '../ButtonAddTransactions'
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function HomeTab() {
-  const {getTransactions} = operations;
-  let transactions = useSelector(getAllTransactions);
+  const {fetchTransactions} = operations;
+  const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
-    dispatch(getTransactions());
-  }, [dispatch, getTransactions]);
+    dispatch(fetchTransactions());
+  }, [dispatch, fetchTransactions]);
 
-  //костиль з балансом
-  let balance = 0
-
-  transactions.forEach(item => {
-    // console.log('sum',item.sum);
-    item.typeTransaction === true ? balance = item.sum + balance : balance = balance - item.sum;
-  })
-
+ 
   return (
     /*логіку роботи Media потрібно буде винести в Dashboard */
     <div>
@@ -37,7 +29,7 @@ export default function HomeTab() {
       >
         {({isMobile}) => (
           <div>
-              {isMobile ? <TableMobile data={transactions} balance={balance} /> : <Table data={transactions} balance={balance} />}
+              {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
           </div>
         )}
       </Media>

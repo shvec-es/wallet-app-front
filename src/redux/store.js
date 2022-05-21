@@ -11,7 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import authReducer from './auth/auth-reducer';
+import authorizationReducer from './auth/auth-reducer';
+
 import transactionsReducer from './transactions/transactions-reducer';
 import { balanceReducer } from './balance';
 
@@ -23,7 +24,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistReducer(authPersistConfig, authorizationReducer),
     transactions: transactionsReducer,
     balance: balanceReducer,
   },

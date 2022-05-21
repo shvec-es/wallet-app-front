@@ -8,53 +8,79 @@ import { useTranslation } from 'react-i18next';
 import { operations } from 'redux/transactions/transactions-operations';
 import { getTransactionsStatistics } from 'redux/transactions/transactions-selectors';
 
-import { TabTitle, TabSection, ContentWrapper } from './DiagramTab.styled';
+import { TabTitle, TabSection } from './DiagramTab.styled';
 
 function DiagramTab() {
   const { t } = useTranslation();
-  const [month, setMonth] = useState(setDefaultMonth());
-  const [year, setYear] = useState(String(new Date().getFullYear()));
-  const [expences, setExpences] = useState([
-    { type: 'main expences', amount: 100, color: '#FFDD33' },
-    { type: 'housing', amount: 86, color: '#FF5E33' },
-    { type: 'products', amount: 40, color: '#2BF956' },
-  ]);
-  // const statistics = useSelector(getTransactionsStatistics);
-  // const dispatch = useDispatch();
+  const [month, setMonth] = useState(() => setDefaultMonth(new Date().getMonth()));
+  const [year, setYear] = useState(() => setDefaultYear(String(new Date().getFullYear())));
+
+  const dispatch = useDispatch();
+  const statistics = useSelector(getTransactionsStatistics);
+
+  const { sortingTransactions, balance } = statistics;
 
   // useEffect(() => {
-  //   const fetchStatistics = (data) => dispatch(operations.fetchTransactionsStatistics(data))
-  //   fetchStatistics({month: '05', year: '2022'})
-  // }, [dispatch])
+  //   const fetchStatistics = data =>
+  //     dispatch(operations.fetchTransactionsStatistics(data));
+  //   fetchStatistics({
+  //     month: month.value,
+  //     year: year.value,
+  //     token:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODUzMmMzZDhiODMwMjM5OWVkODAxYiIsImlhdCI6MTY1MzExNzc1NSwiZXhwIjoxNjUzMTIxMzU1fQ.oKxW_lfiRArqfYdqQ_QYXbuLyAw7hgLKR9b00zLtQr0',
+  //   });
+  // }, [dispatch, month, year]);
 
-  function setDefaultMonth() {
-    const month = new Date().getMonth();
+  function setNormalizedMonth (month) {
     const normalizedMonth = String(month + 1);
     if (normalizedMonth.length < 2) {
       return `0${normalizedMonth}`;
     }
     return normalizedMonth;
+  };
+
+  function getMonthName(monthNumber, location) {
+    const date = new Date(1, monthNumber, 1);
+    const locationOpt = location === 'eng' ? 'en-us' : 'uk-UA';
+    return date.toLocaleString(locationOpt, { month: 'long' });
+  }
+
+  function setDefaultMonth(month) {
+    return {
+      value: setNormalizedMonth(month),
+      displayValueEng: getMonthName(month, 'eng'),
+      displayValueUkr: getMonthName(month, 'ukr'),
+    };
+  }
+
+  function setDefaultYear(year) {
+    return {
+      value: year,
+      displayValueEng: year,
+      displayValueUkr: year,
+    }
   }
 
   const chartData = {
-    labels: expences.map(expence => expence.type),
+    labels: sortingTransactions.map(category => category.name),
     datasets: [
       {
-        data: expences.map(expence => expence.amount),
-        backgroundColor: expences.map(expence => expence.color),
+        data: sortingTransactions.map(category => category.sum),
+        backgroundColor: sortingTransactions.map(category => category.color),
         barThickness: 10,
       },
     ],
   };
-  const total = expences.reduce((a, expence) => a + expence.amount, 0);
+
   return (
     <TabSection>
       <div>
         <TabTitle>{t('statistic')}</TabTitle>
-        <Chart expences={chartData} total={total} />
+        <Chart expences={chartData} total={balance.consumption} />
       </div>
       <StatsTable
-        expences={expences}
+        categoriesStatistics={sortingTransactions}
+        balance={balance}
         month={month}
         year={year}
         updateMonth={setMonth}

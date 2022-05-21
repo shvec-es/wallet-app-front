@@ -1,31 +1,85 @@
-import { Routes, Route } from 'react-router-dom';
-// import HomeTab from "components/HomeTab";
+import { Router, Routes, Route, Navigate } from 'react-router-dom';
+import Media from 'react-media';
+
+
 import DiagramTab from "components/DiagramTab";
 // import ButtonAddTransactions from "components/ButtonAddTransactions";
 import { Navigation, HomeTab, ButtonAddTransactions} from "components";
 import { Currency } from "components";
-import { MainWrap, LeftHeader, ButtonNav } from "./dashboardPage.styled";
+
+import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './dashboardPage.styled'
 import Balance from "components/Balance";
 
 export default function DashboardPage() {
-
-    return (
-      <>
+  return (
+    
+    <>
+      {/* <Header /> */}
       <MainWrap>
-        <LeftHeader>
-          <Navigation />
-          <Balance />
-          <Currency />   
-        </LeftHeader>
-         
-      <Routes> 
-        <Route path='/home' element={<HomeTab />} />
-        <Route path='/diagram' element={ <DiagramTab/>}/>
-      </Routes>
+ 
+        <SideBar>
+          <MobSidebar>
+            <Navigation />
+            {/* <Balance /> */}
+            <Media query="(min-width: 768px)" render={() => 
+            <TabletBalanceWrap>
+              <Balance />
+            </TabletBalanceWrap>
+            } />
+          </MobSidebar>
+          <Media query="(min-width: 768px)" render={() => 
+           <CurrencyWrap>
+              <Currency />
+          </CurrencyWrap>
+          } />
+            <ButtonWrap>
+              <ButtonAddTransactions />
+           </ButtonWrap>
+        </SideBar>
+
+        <TabWrap>
+          <Routes>
+            {/* <Route index element={<HomeTab />}/> */}
+            <Route path="/home" element={<HomeTab/> } />
+            <Route path="/home" element={
+            <>
+            
+            <Media
+            query="(max-width: 768px)"
+            render={() => <Balance />}
+          />
+          <HomeTabWrap>
+            <HomeTab />
+          
+          </HomeTabWrap>
+          </>
+          } />
+            <Route path="diagram" element={<DiagramTab />} />
+            <Route
+              path="currency"
+              element={
+                <>
+                  <Media
+                    query="(min-width: 768px)"
+                    render={() => <Navigate to="home" />}
+                  />
+                  
+                  <Media
+                    query="(max-width: 767px)"
+                    render={() => 
+                    <CurrencyWrap>
+                      <Currency />
+                    </CurrencyWrap>}
+                  />
+                </>
+              }
+            />
+          </Routes>
+        </TabWrap>
+    
       </MainWrap>
-        <ButtonNav>
-          <ButtonAddTransactions/>
-        </ButtonNav>
-      </>
-    )
+    </>    
+  );
+
+  
   }

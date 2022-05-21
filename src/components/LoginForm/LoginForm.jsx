@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
-import authOperations from '../../redux/auth/auth-operations';
+import { logIn } from '../../redux/auth/auth-operations';
+
 import { Logo } from 'components';
 import {
   FormWrapper,
@@ -22,25 +23,24 @@ import { useTranslation } from 'react-i18next';
 const LoginForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string('Enter your email')
-        .email('Invalid email address')
-        .required('Email is required'),
-      password: Yup.string('Enter your password')
-        .min(6, 'Password must be at least 6 characters long')
+      email: Yup.string(t('email_string'))
+        .email(t('email_error'))
+        .required(t('email_require')),
+      password: Yup.string('pass_string')
+        .min(6, t('pass_erro'))
         .max(12)
-        .required('Password is required'),
+        .required(t('pass_require')),
     }),
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-      dispatch(authOperations.logIn({ email, password }));
-
-      console.log('Form data:', values);
+      dispatch(logIn({ email, password }));
       resetForm();
     },
   });
@@ -57,7 +57,7 @@ const LoginForm = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="E-mail"
+              placeholder={t('email')}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -76,7 +76,7 @@ const LoginForm = () => {
               id="password"
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('pass')}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}

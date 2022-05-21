@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
 import { Logo } from 'components';
+import { register } from '../../redux/auth/auth-operations';
+
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import Indicator from './indicator';
@@ -29,32 +30,32 @@ const RegistrationForm = () => {
     name: '',
   };
   const onSubmit = ({ email, password, name }, { resetForm }) => {
-    dispatch(authOperations.register({ email, password, name }));
+    dispatch(register({ email, password, name }));
     resetForm();
   };
 
   const validationSchema = yup.object({
     email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
+      .string(t('email_string)'))
+      .email(t('email_error)'))
+      .required(t('email_require')),
     password: yup
-      .string('Enter your password')
+      .string(t('pass_string'))
 
-      .max(12, 'Password should be of maximum 12 characters length')
-      .required('Password is required')
+      .max(12, t('pass_max'))
+      .required(t('pass_require'))
       .matches(
         /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/,
-        'Password must be min 6 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase',
+        t('pass_matches'),
       ),
     confirmPassword: yup
       .string()
-      .required()
-      .oneOf([yup.ref('password'), null], 'Passwords must match'),
+      .required(t('pass_confirm'))
+      .oneOf([yup.ref('password'), null], t('pass_confirm_error')),
     name: yup
       .string('Enter your name')
-      .min(1, 'Name should be of minimum 1 characters length')
-      .max(12, 'Name should be of maximum 12 characters length'),
+      .min(1, t('name_min'))
+      .max(12, t('name_max')),
   });
 
   return (
