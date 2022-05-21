@@ -19,7 +19,8 @@ export default function HomeTab() {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
- 
+
+
   return (
     <div>
       <Media query="(max-width: 767px">
@@ -28,6 +29,7 @@ export default function HomeTab() {
       <Media query="(min-width: 768px">
       <Table data={transactions} /> 
       </Media>
+
       {/* <Media  queries={{
           isMobile: '(max-width: 767px)',
         }}
@@ -36,7 +38,6 @@ export default function HomeTab() {
           <div>
               {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
           </div>
-        )}
       </Media> */}
       <ButtonAddTransactions/>
       <ToastContainer />

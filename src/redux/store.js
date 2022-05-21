@@ -11,16 +11,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-
 import authorizationReducer from './auth/auth-reducer';
 import transactionsReducer from './transactions/transactions-reducer';
 import { balanceReducer } from './balance';
 
-
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['authReducer'],
 };
 
 export const store = configureStore({

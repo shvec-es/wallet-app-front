@@ -37,7 +37,6 @@ export const Input = styled.input`
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  text-transform: capitalize;
   padding-left: 40px;
   width: 100%;
   border: none;
