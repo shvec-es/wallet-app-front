@@ -81,6 +81,18 @@ class ApiServices {
       console.log(e.message);
     }
   }
+
+  async deleteTransaction(token, id){
+    try {
+      const {data} = await axios.delete(`wallet/transaction/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(data.payload)
+      return data.payload;
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 }
 
 export default new ApiServices();
