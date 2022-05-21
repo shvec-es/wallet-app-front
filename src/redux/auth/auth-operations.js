@@ -16,7 +16,6 @@ const token = {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post(
         'https://wallet-codewriters.herokuapp.com/api/auth/signup',
@@ -54,4 +53,3 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
  return error.message;
   }
 });
-

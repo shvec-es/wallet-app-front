@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-top: 60px;
-  margin-left: 114px;
-  margin-bottom: 50px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    margin-left: 114px;
+    margin-bottom: 50px;
+  }
 
   @media screen and (min-width: 1280px) {
     flex-direction: column;
