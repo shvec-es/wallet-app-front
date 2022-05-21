@@ -50,7 +50,7 @@ class ApiServices {
       const req = await axios.get('/wallet/transactions', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return req.data.payload.transactions;
+      return req.data.payload;
     } catch (e) {
       console.log(e.message);
     }

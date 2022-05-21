@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Media from 'react-media';
 import icons from 'images/sprite.svg';
-import { Logo, LanguageSwitcher, ModalWindow, LogoutContent } from 'components';
+import { Logo, ModalWindow, LogoutContent } from 'components';
 import { useTranslation } from 'react-i18next';
 import {
-  MainHeader,
   StyledHeader,
   UserInfo,
   LogoutBtn,
@@ -15,36 +14,37 @@ import {
 
 const Header = () => {
   const { t } = useTranslation();
-    const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
-
-
+  const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
 
   return (
-    <MainHeader>
-      <StyledHeader>
-        <Logo />
-        <LanguageSwitcher />
+    // <MainHeader>
+    <StyledHeader>
+      <Logo />
 
-        <UserInfo>
-          <UserName>{'user' || 'User'} </UserName>
-          <LogoutBtn type="button" onClick={()=>{setModalLogoutOpen(true)}}>
-            <ExitIcon>
-              <use href={`${icons}#exit`}></use>
-            </ExitIcon>
-            <Media
-              query="(min-width: 768px)"
-              render={() => <Logout>{t('logout')}</Logout>}
-            />
-          </LogoutBtn>
-        </UserInfo>
-        {modalLogoutOpen &&
-          <ModalWindow closeModal={setModalLogoutOpen}>
-            <LogoutContent setOpenModal={setModalLogoutOpen}/>
-    </ModalWindow>
-    }
-     
-      </StyledHeader>
-    </MainHeader>
+      <UserInfo>
+        <UserName>{'user' || 'User'} </UserName>
+        <LogoutBtn
+          type="button"
+          onClick={() => {
+            setModalLogoutOpen(true);
+          }}
+        >
+          <ExitIcon>
+            <use href={`${icons}#exit`}></use>
+          </ExitIcon>
+          <Media
+            query="(min-width: 768px)"
+            render={() => <Logout>{t('logout')}</Logout>}
+          />
+        </LogoutBtn>
+      </UserInfo>
+      {modalLogoutOpen && (
+        <ModalWindow closeModal={setModalLogoutOpen}>
+          <LogoutContent setOpenModal={setModalLogoutOpen} />
+        </ModalWindow>
+      )}
+    </StyledHeader>
+    // </MainHeader>
   );
 };
 

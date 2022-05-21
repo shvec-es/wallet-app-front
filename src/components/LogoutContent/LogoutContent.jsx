@@ -1,26 +1,32 @@
-import { TotalAmount } from "components/StatsTable/StatsTable.styled";
+
+
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { logOut } from '../../redux/auth/auth-operations'
-import { getIsError } from '../../redux/auth/auth-selectors'
+import { getIsError} from '../../redux/auth/auth-selectors'
 
 import { ModalContainer, CloseBtn, Title, BtnContainer, ConfirmBtn, CancelBtn } from "./LogoutContent.styled"
 
 const LogoutModal = ({ setOpenModal }) => {
     const dispatch = useDispatch();
-      const isError = useSelector(getIsError)
+    const isError = useSelector(getIsError)
+
+    
     const handleClick = () => {
         if (isError) {
             toast.error('Something went wrong! Please, try again')
         }
+   
         dispatch(logOut());
         setOpenModal(false)
+     
     }
     return (
        
         <ModalContainer>
-              <ToastContainer />
+             
         <CloseBtn type="button" onClick={()=>{setOpenModal(false)}}>X</CloseBtn>
             <Title>Are you sure you want to logout?</Title>
             <BtnContainer>
@@ -33,5 +39,6 @@ const LogoutModal = ({ setOpenModal }) => {
       
     )
 }
+
 
 export default LogoutModal;

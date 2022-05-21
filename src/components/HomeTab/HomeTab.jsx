@@ -29,7 +29,7 @@ export default function HomeTab() {
       >
         {({isMobile}) => (
           <div>
-              {isMobile ? <TableMobile data={transactions}  /> : <Table data={transactions} />}
+              {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
           </div>
         )}
       </Media>

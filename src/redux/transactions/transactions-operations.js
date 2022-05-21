@@ -6,15 +6,14 @@ import ApiServices from 'services/ApiServices';
 
 axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
 //тимчасова заглушка здля токена поки немає логіну
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzA3Mzc4MiwiZXhwIjoxNjUzMDc3MzgyfQ.tVUQ3G0iiICE9aLooTfEERc3SGVx_yrAtpCtS89aoQ0'
 
 const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
   async () => {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyOTcyOSwiZXhwIjoxNjUzMTMzMzI5fQ.sw-ELZZov4aO3N93gv8PWOZBXDyB9mKROXSZTc5FjR8';
     try {
-        const { data } = await axios.get("/wallet/transactions",{
-        headers: {'Authorization': `Bearer ${token}`}})
-        return data.payload;
+        return await ApiServices.getTransactions(token)
     } catch (error) {
         toast(`${error.message}`, {
             position: "top-right",
@@ -32,7 +31,7 @@ const addTransaction = createAsyncThunk(
     { rejectWithValue },
   ) => {
     const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODY0YThhNGQ1MDg2N2Q5OTUyMGUzYyIsImlhdCI6MTY1MzA1MzYyMywiZXhwIjoxNjUzMDU3MjIzfQ.LkTWMm7I6GE2ZETwEmcscI-b7zsSg_RoRVXeCLPll_s';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODU1OGNkZDhiODMwMjM5OWVkODBlYSIsImlhdCI6MTY1MzEyODI0MiwiZXhwIjoxNjUzMTMxODQyfQ.E07-z7KKBua9hmKvljJAC71KPqK8lP9NQLEVmkFqTnM';
     try {
       if (typeTransaction || category === '') {
         const data = await ApiServices.createTransaction(
