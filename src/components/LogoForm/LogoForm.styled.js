@@ -14,15 +14,26 @@ export const Wrapper = styled.div`
   }
 `;
 export const Text = styled.p`
-  width: 187px;
+  width: text-fit-content;
   height: 45px;
   margin-left: 40px;
   font-family: 'Poppins';
   font-size: 30px;
   line-height: 1.5;
   text-align: center;
+  text-transform: capitalize;
 
   @media screen and (min-width: 1280px) {
     margin-top: 32px;
+  }
+`;
+
+export const Icon = styled.svg`
+  width: 296px;
+  height: 270px;
+
+  @media screen and (min-width: 1280px) {
+    width: 486px;
+    height: 523px;
   }
 `;

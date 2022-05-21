@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { logIn } from '../../redux/auth/auth-operations';
 
-
 import { Logo } from 'components';
 import {
   FormWrapper,
@@ -25,20 +24,19 @@ const LoginForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string(t('email string'))
-        .email(t('email error'))
-        .required(t('Email is required')),
-      password: Yup.string('Enter your password')
-        .min(6, 'Password must be at least 6 characters long')
+      email: Yup.string(t('email_string'))
+        .email(t('email_error'))
+        .required(t('email_require')),
+      password: Yup.string('pass_string')
+        .min(6, t('pass_erro'))
         .max(12)
-        .required('Password is required'),
+        .required(t('pass_require')),
     }),
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
@@ -51,7 +49,7 @@ const LoginForm = () => {
       <FormBg>
         <Logo />
         <Form onSubmit={formik.handleSubmit}>
-          <Label >
+          <Label>
             <InputIcon width="24" height="24">
               <use href={`${icons}#email`}></use>
             </InputIcon>

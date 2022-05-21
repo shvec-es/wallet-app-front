@@ -17,18 +17,18 @@ export const FormWrapper = styled.div`
   }
 
   @media (min-width: 1280px) {
-    width:731px;
+    width: 731px;
     padding: 120px 100px;
-    margin:0;
-    border-radius:0;
+    margin: 0;
+    border-radius: 0;
     background: var(--color-blur);
     backdrop-filter: blur(50px);
   }
 `;
 
 export const FormBg = styled.div`
-    height: 468px;
-display: flex;
+  height: 468px;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -75,7 +75,7 @@ export const Input = styled.input`
   display: block;
   margin-left: 50px;
   outline: 0;
- 
+
   font-size: 18px;
   font-weight: bold;
   color: #212529;
@@ -86,6 +86,7 @@ export const Input = styled.input`
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
+    text-transform: capitalize;
   }
 
   @media (min-width: 1280px) {
@@ -109,10 +110,10 @@ export const InputIcon = styled.svg`
 export const SignInBtn = styled.button`
   width: 280px;
   height: 50px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   background: var(--color-secondary);
   border-radius: 20px;
-    font-family: 'Circe';
+  font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -138,7 +139,7 @@ export const SignUpBtn = styled.div`
   background: var(--color-white);
   border: 1px solid var(--color-primary);
   border-radius: 20px;
-    font-family: 'Circe';
+  font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

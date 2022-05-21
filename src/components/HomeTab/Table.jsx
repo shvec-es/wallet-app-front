@@ -1,18 +1,21 @@
 import {TableMain, TableHeader, TableHeaderRow, TableBody, TableRow, TableHeadCell, TableCell, TableCellColor, ButtonDelete } from './Table.styled'
 import sprite from 'images/sprite.svg';
+import { useTranslation } from 'react-i18next';
 /*компонент отримує масив для рендеру як по ТЗ*/
 
 function Table({data}) {
+ const { t } = useTranslation();
+ 
     return ( 
       <TableMain>
         <TableHeader>
           <TableHeaderRow>
-            <TableHeadCell>Дата</TableHeadCell>
-            <TableHeadCell>Тип</TableHeadCell>
-            <TableHeadCell>Категория</TableHeadCell>
-            <TableHeadCell>Комментарий</TableHeadCell>
-            <TableHeadCell>Сумма</TableHeadCell>
-            <TableHeadCell>Баланс</TableHeadCell>
+          <TableHeadCell>{t('date')}</TableHeadCell>
+          <TableHeadCell>{t('type')}</TableHeadCell>
+          <TableHeadCell>{t('category')}</TableHeadCell>
+          <TableHeadCell>{t('description')}</TableHeadCell>
+          <TableHeadCell>{t('sum')}</TableHeadCell>
+          <TableHeadCell>{t('balance')}</TableHeadCell>
           </TableHeaderRow>
         </TableHeader>
         <TableBody>
