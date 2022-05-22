@@ -43,3 +43,7 @@ export const MobileCardItemColor = styled.p`
       ? 'var(--color-secondary)'
       : 'var(--color-tertiary)'};
 `;
+
+export const NoTransactions = styled.p`
+  margin-top: 20px;
+`;
