@@ -64,10 +64,11 @@ export const MobileButtonDelete = styled.button`
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transition: all 250ms var(--cubic-bezier);
-  color:var(--color-primary);
+  color: var(--color-white);
   &:hover {
     transform: scale(1.02) translate(-5px, 3px);
   }
   &:active {
     transform: scale(0.9);
-  }`
+  }
+`;
