@@ -17,7 +17,8 @@ import { operations } from '../../redux/transactions/transactions-operations';
 /*компонент отримує масив для рендеру як по ТЗ*/
 
 function Table({ data }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language.slice(0, 2);
   const dispatch = useDispatch();
 
   const onDelete = _id => {
@@ -38,6 +39,7 @@ function Table({ data }) {
               <TableHeadCell>{t('description')}</TableHeadCell>
               <TableHeadCell>{t('sum')}</TableHeadCell>
               <TableHeadCell>{t('balance')}</TableHeadCell>
+              <TableHeadCell>{''}</TableHeadCell>
             </TableHeaderRow>
           </TableHeader>
           <TableBody>
@@ -49,12 +51,17 @@ function Table({ data }) {
                 category,
                 description,
                 sum,
+                categoryUA,
                 balance,
               }) => (
                 <TableRow key={_id}>
                   <TableCell>{date}</TableCell>
                   <TableCell>{typeTransaction === true ? '+' : '-'}</TableCell>
-                  <TableCell>{category ?? 'Income'}</TableCell>
+                  <TableCell>
+                    {currentLanguage === 'en'
+                      ? category ?? 'Income'
+                      : categoryUA ?? 'Дохід'}
+                  </TableCell>
                   <TableCell>{description ?? '-'}</TableCell>
                   <TableCellColor
                     type={typeTransaction === true ? 'income' : 'costs'}
