@@ -37,3 +37,7 @@ text-transform: capitalize;
   }
 `
 
+export const NoTransactions = styled.p`
+  margin-top: 20px;
+`;
+

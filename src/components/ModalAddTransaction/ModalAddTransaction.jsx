@@ -72,6 +72,7 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
     const getAllCategories = async () => {
       try {
         const data = await ApiServices.getCategories();
+        console.log(data);
         setOptions(data);
       } catch (error) {
         toast.error(error.message);
