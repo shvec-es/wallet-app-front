@@ -49,7 +49,7 @@ const Indicator = ({ value }) => {
       ref.current.style.backgroundColor = '#ffdb00';
     } else if (input_test_val?.length >= 8 && rating >= 3) {
       ref.current.style.width = '100%';
-      ref.current.style.backgroundColor = '#61ac27';
+      ref.current.style.backgroundColor = '#24CCA7';
     } else if (input_test_val?.length >= 6 && rating === 1) {
       ref.current.style.width = '10%';
       ref.current.style.backgroundColor = '#e7140d';
@@ -58,7 +58,7 @@ const Indicator = ({ value }) => {
       ref.current.style.backgroundColor = '#ffdb00';
     } else if (input_test_val?.length >= 6 && rating === 4) {
       ref.current.style.width = '100%';
-      ref.current.style.backgroundColor = '#61ac27';
+      ref.current.style.backgroundColor = '#24CCA7';
     }
   };
   return <div ref={ref} style={{ marginTop: '4px', height: '5px' }}></div>;

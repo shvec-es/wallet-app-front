@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: column;
-    margin: 123px 50px 78px 70px;
+    margin: 153px 30px 78px 50px;
   }
 `;
 export const Text = styled.p`
@@ -35,7 +35,7 @@ export const Icon = styled.svg`
   height: 270px;
 
   @media screen and (min-width: 1280px) {
-    width: 486px;
-    height: 523px;
+    width: 452px;
+    height: 413px;
   }
 `;

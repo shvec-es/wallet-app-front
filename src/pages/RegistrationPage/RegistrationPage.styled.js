@@ -64,7 +64,12 @@ export const Icon = styled('svg')`
   top: 4px;
 `;
 export const Wrap = styled('div')`
-  margin: 20px 116px 60px 116px;
+  width: 154px;
+  margin: 20px auto 60px auto;
+
+  @media screen and (min-width: 768px) {
+    width: 190px;
+  }
 `;
 export const Form = styled('div')`
   background: #fff;
@@ -107,7 +112,7 @@ export const WrapperPage = styled.div`
 export const WrapperForm = styled.div`
   @media screen and (min-width: 1280px) {
     min-width: 731px;
-    padding: 52px 91px 52px 61px;
+    padding: 52px 61px 52px 41px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
   }
