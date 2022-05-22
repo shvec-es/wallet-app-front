@@ -1,15 +1,9 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com';
-
-
 class ApiServices {
   async signIn(userData) {
     try {
       const { data } = await axios.post('/api/auth/login', userData);
-      console.log(data.payload);
- 
-    
       return data.payload;
     } catch (e) {
       console.log(e.message);
@@ -18,10 +12,8 @@ class ApiServices {
 
   async logout() {
     try {
-   
       const req = await axios.get('/api/auth/logout');
 
-   
       return req.data;
     } catch (e) {
       console.log(e.message);
@@ -31,17 +23,10 @@ class ApiServices {
   async signUp(userData) {
     try {
       const { data } = await axios.post('/api/auth/signup', userData);
-      console.log(data.payload);
-   
-   
       return data.payload.user;
     } catch (e) {
       console.log(e.message);
     }
-  }
-
-  async fetchCurrentUser() {
-    
   }
 
   async getCategories() {
@@ -63,8 +48,8 @@ class ApiServices {
   }
 
   async getStats({ month, year }, token) {
-      const req = await axios.get(`wallet/stats?month=${month}&year=${year}`);
-      return req.data.payload;
+    const req = await axios.get(`wallet/stats?month=${month}&year=${year}`);
+    return req.data.payload;
   }
 
   async createTransaction(userData, token) {
@@ -80,12 +65,11 @@ class ApiServices {
     }
   }
 
-  async deleteTransaction(token, id){
+  async deleteTransaction(token, id) {
     try {
-      const {data} = await axios.delete(`wallet/transaction/${id}`, {
+      const { data } = await axios.delete(`wallet/transaction/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(data.payload)
       return data.payload;
     } catch (e) {
       console.log(e.message);
