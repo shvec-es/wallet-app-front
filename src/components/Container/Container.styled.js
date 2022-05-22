@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: relative;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
