@@ -6,15 +6,13 @@ import {
   fetchBalanceError,
 } from './balance-actions';
 
-axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com';
-const date = new Date();
-const currMonth = '0' + (date.getMonth() + 1);
-const currYear = date.getFullYear();
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().toLocaleString('en', { month: '2-digit' });
 
 export const fetchBalance = async dispatch => {
   dispatch(fetchBalancePending);
   const { data } = await axios.get(
-    `/wallet/stats?year=${currYear}&month=${currMonth}`,
+    `/wallet/stats?year=${currentYear}&month=${currentMonth}`,
   );
   const balance = data.payload.balance.balance;
   try {
