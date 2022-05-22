@@ -4,11 +4,9 @@ import { NavLink } from 'react-router-dom';
 export const MainNav = styled.nav`
   display: flex;
   justify-content: space-evenly;
-  // margin-bottom: 12px;
 
   @media (min-width: 768px) {
     flex-direction: column;
-    // margin-top: 40px;
 
     & a {
       font-size: 18px;
@@ -33,7 +31,8 @@ export const StyledLink = styled(NavLink)`
     font-weight: bold;
   }
 
-  &.active svg {
+  &.active svg,
+  &:hover {
     color: var(--color-primary);
     filter: var(--drop-shadow);
   }
