@@ -6,6 +6,10 @@ import { ChartWrapper, Total } from './Chart.styled';
 ChartJS.register(ArcElement);
 
 function Chart({ chartData, total }) {
+  const formatdNumber = (number) => {
+    return number.toFixed(2) 
+  }
+
   return (
     <>
       <ChartWrapper>
@@ -18,7 +22,7 @@ function Chart({ chartData, total }) {
             },
           }}
               />
-        <Total>{chartData.datasets[0].data.length > 0 && `₴ ${total}`}</Total>
+        <Total>{chartData.datasets[0].data.length > 0 && `₴ ${formatdNumber(total)}`}</Total>
       </ChartWrapper>
     </>
   );

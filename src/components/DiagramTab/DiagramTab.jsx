@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { operations } from 'redux/transactions/transactions-operations';
 import { getTransactionsStatistics } from 'redux/transactions/transactions-selectors';
 
-import { TabTitle, TabSection } from './DiagramTab.styled';
+import { TabTitle, TabSection, NoTransactions } from './DiagramTab.styled';
 
 function DiagramTab() {
   const { t } = useTranslation();
@@ -76,6 +76,9 @@ function DiagramTab() {
 
   return (
     <TabSection>
+      {sortingTransactions.length === 0 ?
+        <NoTransactions>You have no transactions yet.</NoTransactions> :
+        <>
       <div>
         <TabTitle>{t('statistic')}</TabTitle>
         <Chart chartData={chartData} total={balance.consumption} />
@@ -87,7 +90,9 @@ function DiagramTab() {
         year={year}
         updateMonth={setMonth}
         updateYear={setYear}
-      />
+          />
+        </>
+      }
     </TabSection>
   );
 }
