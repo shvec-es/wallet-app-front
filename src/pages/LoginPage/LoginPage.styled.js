@@ -7,14 +7,12 @@ export const Section = styled.section`
 
   @media (min-width: 1280px) {
     display: flex;
-    // justify-content:center;
-    // align-items:center;
+    justify-content:center;
+    align-items:center;
   }
 `;
 
-export const SwitcherWrapper = styled.div`
 
-`
 
 export const ImgWrapper = styled.div`
   display: none;
