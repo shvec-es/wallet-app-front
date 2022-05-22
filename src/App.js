@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/DashboardPage';
 import { BackGround, Header, PublicRoute, PrivateRoute } from 'components';
 import { fetchCurrentUser } from './redux/auth/auth-operations';
-
+import Spinner from 'components/Loader';
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
 const LoginPage = lazy(() =>
@@ -29,7 +29,7 @@ function App() {
 
       <BackGround />
 
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Spinner />}>
         <Routes>
           <Route
             path="*"

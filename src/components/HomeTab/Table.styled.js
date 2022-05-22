@@ -83,11 +83,11 @@ export const TableCell = styled.td`
     margin-right: 20px;
   }
   &:nth-child(3) {
-    width: 120px;
+    width: 100px;
     text-align: start;
   }
   &:nth-child(4) {
-    width: 120px;
+    width: 100px;
     text-align: start;
   }
   &:last-child {
