@@ -7,28 +7,28 @@ export const TableMain = styled.table`
   }
 `;
 export const TableHeader = styled.thead`
-    position: sticky;
-    display: block;
-    padding: 7px 20px;
-    font-size: 18px;
-    font-weight: 700;
-    background-color: var(--color-white);
-    border-radius: 30px;
-`
+  position: sticky;
+  display: block;
+  padding: 7px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--color-white);
+  border-radius: 30px;
+`;
 export const TableHeaderRow = styled.tr`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    `
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+`;
 
 export const TableBody = styled.tbody`
-    display: block;
-    overflow: scroll;
-    max-height: 60vh;
-    padding: 0px 20px 15px 20px;
-    font-size: 16px;
-`
+  display: block;
+  overflow: scroll;
+  max-height: 60vh;
+  padding: 0px 20px 15px 20px;
+  font-size: 16px;
+`;
 
 export const ButtonDelete = styled.button`
   background-color: transparent;
@@ -101,4 +101,7 @@ export const TableCellColor = styled.td`
     props.type === 'income'
       ? 'var(--color-secondary)'
       : 'var(--color-tertiary)'};
+`;
+export const NoTransactions = styled.p`
+  margin-top: 20px;
 `;
