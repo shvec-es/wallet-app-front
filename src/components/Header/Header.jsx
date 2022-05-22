@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Media from 'react-media';
 import icons from 'images/sprite.svg';
-import { Logo, ModalWindow, LogoutContent } from 'components';
+import { Logo, ModalWindow, LogoutContent, Container } from 'components';
 import { useTranslation } from 'react-i18next';
 import {
   StyledHeader,
@@ -43,7 +43,8 @@ const Header = () => {
           <LogoutContent setOpenModal={setModalLogoutOpen} />
         </ModalWindow>
       )}
-    </StyledHeader>
+      </StyledHeader>
+
     // </MainHeader>
   );
 };
