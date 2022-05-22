@@ -15,15 +15,20 @@ import { useTranslation } from 'react-i18next';
 const SelectCategory = ({ options, set }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const { t } = useTranslation();
-    
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language.slice(0, 2);  
+
   const toggleList = () => {
     setOpen(prevState => !prevState);
   };
 
   const chooseItem = item => {
-    setSelectedCategory(item);
-    set(item);
+    if (currentLng === 'en') {
+      setSelectedCategory(item.name)
+    } else {
+      setSelectedCategory(item.nameUA);
+    }
+    set(item.name);
     setOpen(false);
   };
 
@@ -43,13 +48,13 @@ const SelectCategory = ({ options, set }) => {
       </SelectButton>
       {open && (
         <SelectList>
-          {options.map(({ name }) =>
+          {options.map((item) =>
             <SelectItem
-              value={name}
-              key={name}
-              onClick={() => chooseItem(name)}
+              value={item.name}
+              key={item.name}
+              onClick={() => chooseItem(item)}
             >
-              {name}
+              {currentLng === 'en' ? item.name : item.nameUA}
             </SelectItem>
           )}
         </SelectList>)}
