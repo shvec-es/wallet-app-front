@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { balance as balanceSelector } from '../../redux/balance/balance-selectors';
+import { useTranslation } from 'react-i18next';
+import { balance as balanceSelector, fetchBalance } from 'redux/balance';
 import {
   BalanceLabel,
   BalanceSumm,
   BalanceWrapper,
   BalanceCurrencySymbol,
 } from './Balance.styled';
-import { useTranslation } from 'react-i18next';
-import { fetchBalance } from '../../redux/balance/balance-operations';
-//import { getAllTransactions } from 'redux/transactions/transactions-selectors';
+
+import { getAllTransactions } from 'redux/transactions/transactions-selectors';
 
 export default function Balance() {
   const location = useLocation();
@@ -18,17 +18,12 @@ export default function Balance() {
   const dispatch = useDispatch();
   const isHome = location.pathname === '/home' || '/diagram';
   const { t } = useTranslation();
-  //const allTransations = useSelector(getAllTransactions);
+  const allTransations = useSelector(getAllTransactions);
 
   //--------------------------------
-  useEffect(
-    () => {
-      dispatch(fetchBalance);
-    },
-    //[
-    //dispatch, allTransations
-    //],
-  );
+  useEffect(() => {
+    dispatch(fetchBalance());
+  }, [dispatch, allTransations]);
   //--------------------------------
 
   const formattedBalance = (+balance)
