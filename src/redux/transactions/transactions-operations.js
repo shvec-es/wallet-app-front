@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 
 import ApiServices from 'services/ApiServices';
 
-axios.defaults.baseURL = "http://wallet-codewriters.herokuapp.com";
+axios.defaults.baseURL = 'http://wallet-codewriters.herokuapp.com';
 
 const fetchTransactions = createAsyncThunk(
   'transactions/fetchTransactions',
-  async (token) => {
+  async token => {
     try {
       return await ApiServices.getTransactions(token);
     } catch (error) {
@@ -56,19 +56,22 @@ const addTransaction = createAsyncThunk(
   },
 );
 
-const deleteTransaction = createAsyncThunk('transactions/deleteTransaction', async (id, token) => {
-  try {
-    const { data } = await axios.delete(`/wallet/transaction/${id}`);
-    return data.payload.deletedTransaction; 
-  } catch (error) {
-    toast(`${error.message}`, {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: true,
-      closeOnClick: true,
+const deleteTransaction = createAsyncThunk(
+  'transactions/deleteTransaction',
+  async (id, token) => {
+    try {
+      const { data } = await axios.delete(`/wallet/transaction/${id}`);
+      return data.payload.deletedTransaction;
+    } catch (error) {
+      toast(`${error.message}`, {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
       });
-  }
-});
+    }
+  },
+);
 
 const fetchTransactionsStatistics = createAsyncThunk(
   'transactions/fetchTransactionStatistics',
