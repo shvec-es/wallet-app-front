@@ -4,10 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { logIn } from '../../redux/auth/auth-operations';
 
-
-import { Logo} from 'components';
+import { Logo, LanguageSwitcher } from 'components';
 import {
-
   FormWrapper,
   FormBg,
   Label,
@@ -17,6 +15,7 @@ import {
   SignInBtn,
   SignUpBtn,
   ErrorText,
+  Switcher,
 } from './LoginForm.styled';
 import * as Yup from 'yup';
 import icons from 'images/sprite.svg';
@@ -25,7 +24,6 @@ import { useTranslation } from 'react-i18next';
 const LoginForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
 
   const formik = useFormik({
     initialValues: {
@@ -43,20 +41,19 @@ const LoginForm = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
-  
-    
-          dispatch(logIn({ email, password }));
+
+      dispatch(logIn({ email, password }));
       resetForm();
     },
   });
   return (
     <FormWrapper>
- 
       <FormBg>
+        <Switcher>
+          <LanguageSwitcher />
+        </Switcher>
         <Logo />
         <Form onSubmit={formik.handleSubmit}>
-
-
           <Label>
             <InputIcon width="24" height="24">
               <use href={`${icons}#email`}></use>
@@ -96,9 +93,7 @@ const LoginForm = () => {
           </Label>
 
           <SignInBtn type="submit">{t('login')}</SignInBtn>
-          <SignUpBtn to="/register">{t('register')}
-           
-          </SignUpBtn>
+          <SignUpBtn to="/register">{t('register')}</SignUpBtn>
         </Form>
       </FormBg>
     </FormWrapper>

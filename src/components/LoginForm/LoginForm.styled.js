@@ -1,26 +1,23 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-
-
 export const FormWrapper = styled.div`
   padding: 107px 0px;
   background: var(--color-white);
   height: 100vh;
-
 
   @media (min-width: 768px) {
     width: 533px;
     height: auto;
     margin: auto;
     padding: 40px 0px;
-      border-radius: var(--border-radius);
+    border-radius: var(--border-radius);
   }
 
   @media (min-width: 1280px) {
-width:100%;
-height:100%;
-    padding:0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
     padding: 120px 100px;
     margin: 0;
     border-radius: 0;
@@ -30,12 +27,12 @@ height:100%;
 `;
 
 export const FormBg = styled.div`
-
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   @media (min-width: 1280px) {
     width: 533px;
     height: 468px;
@@ -46,13 +43,12 @@ export const FormBg = styled.div`
 `;
 
 export const Form = styled.form`
-position:relative;
+  position: relative;
   width: 280px;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 60px;
-
 
   @media (min-width: 768px) {
     width: 533px;
@@ -69,7 +65,6 @@ export const Label = styled.label`
   border-bottom: 1px solid var(--color-gray-light);
 
   @media (min-width: 768px) {
-
     width: 410px;
   }
 `;
@@ -94,7 +89,6 @@ export const Input = styled.input`
 
   @media (min-width: 1280px) {
     font-size: 24px;
-
   }
 `;
 
@@ -105,7 +99,6 @@ export const InputIcon = styled.svg`
   left: 5px;
   padding-left: 10px;
   color: var(--color-gray-light);
-
 
   @media (min-width: 1280px) {
     top: 5px;
@@ -174,4 +167,18 @@ export const ErrorText = styled.p`
   font-size: 12px;
   font-weight: bold;
   color: var(--color-primary);
+`;
+
+export const Switcher = styled.div`
+  position: absolute;
+  right: 25px;
+  top: -80px;
+
+  @media (min-width: 768px) {
+    top: -20px;
+  }
+
+  @media (min-width: 1280px) {
+    top: 20px;
+  }
 `;

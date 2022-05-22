@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { Logo } from 'components';
+import { Logo, LanguageSwitcher } from 'components';
 import { register } from '../../redux/auth/auth-operations';
 
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import {
   Form,
   ErrMessage,
   ButtonLink,
+  Switcher,
 } from '../../pages/RegistrationPage/RegistrationPage.styled';
 
 const RegistrationForm = () => {
@@ -68,6 +69,9 @@ const RegistrationForm = () => {
       {({ values, handleSubmit, handleChange, errors }) => (
         <Form>
           <Wrap>
+            <Switcher>
+              <LanguageSwitcher />
+            </Switcher>
             <Logo />
           </Wrap>
           <div>
@@ -136,14 +140,11 @@ const RegistrationForm = () => {
               <ErrMessage>{errors.name}</ErrMessage>
             </Label>
           </div>
-         
-            <Button type="submit" onClick={handleSubmit}>
-              {t('register')}
-            </Button>
-            <ButtonLink to='/login'>{t('login')}
-            
-            </ButtonLink>
-       
+
+          <Button type="submit" onClick={handleSubmit}>
+            {t('register')}
+          </Button>
+          <ButtonLink to="/login">{t('login')}</ButtonLink>
         </Form>
       )}
     </Formik>
