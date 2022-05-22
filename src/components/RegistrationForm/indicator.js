@@ -4,6 +4,7 @@ const Indicator = ({ value }) => {
   const ref = useRef();
   useEffect(() => {
     getIndicator();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const getIndicator = () => {

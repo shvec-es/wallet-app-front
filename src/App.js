@@ -1,19 +1,24 @@
 import { Suspense, lazy, useEffect } from 'react';
-import Media from 'react-media';
-
 import { useDispatch } from 'react-redux';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
-import DashboardPage from 'pages/DashboardPage';
-import { Container, BackGround, Header, PublicRoute, PrivateRoute } from 'components';
+import { BackGround, Header, PublicRoute, PrivateRoute } from 'components';
 import { fetchCurrentUser } from './redux/auth/auth-operations';
 import Spinner from 'components/Loader';
-const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+
+const RegistrationPage = lazy(() =>
+  import(
+    './pages/RegistrationPage' /* webpackChunkName: 'registration-page' */
+  ),
+);
 
 const LoginPage = lazy(() =>
   import('./pages/LoginPage' /* webpackChunkName: 'login-page' */),
+);
+
+const DashboardPage = lazy(() =>
+  import('pages/DashboardPage' /* webpackChunkName: 'dashboard-page' */),
 );
 
 function App() {
@@ -43,12 +48,9 @@ function App() {
           <Route
             path="/login"
             element={
-            
-
               <PublicRoute restricted>
                 <LoginPage />
               </PublicRoute>
-        
             }
           ></Route>
           <Route

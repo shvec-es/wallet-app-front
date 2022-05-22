@@ -9,7 +9,8 @@ import {
 import { useTranslation } from 'react-i18next';
 
 function TableMobile({ data }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language.slice(0, 2);
 
   return (
     <>
@@ -25,6 +26,7 @@ function TableMobile({ data }) {
               category,
               description,
               sum,
+              categoryUA,
               balance,
             }) => (
               <MobileCard
@@ -43,7 +45,11 @@ function TableMobile({ data }) {
                 </MobileCardGroup>
                 <MobileCardGroup>
                   <MobileCardItem>{t('category')}</MobileCardItem>
-                  <MobileCardItemValue>{category}</MobileCardItemValue>
+                  <MobileCardItemValue>
+                    {currentLanguage === 'en'
+                      ? category ?? 'Income'
+                      : categoryUA ?? 'Дохід'}
+                  </MobileCardItemValue>
                 </MobileCardGroup>
                 <MobileCardGroup>
                   <MobileCardItem>{t('description')}</MobileCardItem>

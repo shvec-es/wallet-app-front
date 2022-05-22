@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {  toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const token = {
   set(token) {
@@ -11,17 +11,18 @@ const token = {
   },
 };
 
-
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/signup", credentials)
-     token.set(data.payload.token)
-      return data
-
+      const { data } = await axios.post(
+        'https://wallet-codewriters.herokuapp.com/api/auth/signup',
+        credentials,
+      );
+      token.set(data.payload.token);
+      return data;
     } catch (error) {
-        toast.error('Something went wrong! Please, try again')
+      toast.error('Something went wrong! Please, try again');
       return rejectWithValue(error.message);
     }
   },
@@ -31,11 +32,14 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/login", credentials)
-     token.set(data.payload.token)
-      return data.payload
+      const { data } = await axios.post(
+        'https://wallet-codewriters.herokuapp.com/api/auth/login',
+        credentials,
+      );
+      token.set(data.payload.token);
+      return data.payload;
     } catch (error) {
-       toast.error('Something went wrong! Please, try again')
+      toast.error('Something went wrong! Please, try again');
       return rejectWithValue(error.message);
     }
   },
@@ -43,15 +47,13 @@ const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/au
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-  
-    await axios.get("https://wallet-codewriters.herokuapp.com/api/auth/logout")
-    token.unset()
+    await axios.get('https://wallet-codewriters.herokuapp.com/api/auth/logout');
+    token.unset();
   } catch (error) {
-         toast.error('Something went wrong! Please, try again')
+    toast.error('Something went wrong! Please, try again');
     return error.message;
   }
 });
-
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -72,4 +74,3 @@ export const fetchCurrentUser = createAsyncThunk(
     }
   },
 );
-
