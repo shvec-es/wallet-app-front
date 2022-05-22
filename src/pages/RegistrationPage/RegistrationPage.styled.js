@@ -91,6 +91,7 @@ export const Icon = styled('svg')`
 `;
 export const Wrap = styled('div')`
   margin-bottom: 60px;
+  position: relative;
 `;
 export const Form = styled('div')`
   display: flex;
@@ -136,5 +137,15 @@ export const WrapperForm = styled.div`
     padding: 52px 91px 52px 61px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
+  }
+`;
+
+export const Switcher = styled.div`
+  position: absolute;
+  right: -70px;
+  top: -20px;
+
+  @media screen and (min-width: 768px) {
+    right: -140px;
   }
 `;
