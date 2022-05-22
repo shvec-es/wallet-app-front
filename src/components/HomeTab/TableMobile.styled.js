@@ -50,6 +50,7 @@ export const NoTransactions = styled.p`
 
 export const MobileButtonDelete = styled.button`
   background: var(--color-tertiary);
+  color: var(--color-white);
   object-fit: fill;
   border: none;
   width: 30px;
@@ -57,14 +58,12 @@ export const MobileButtonDelete = styled.button`
   position: absolute;
   top: -10px;
   right: -15px;
-  // transform: translate(-50%, -50%);
   border-color: transparent;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transition: all 250ms var(--cubic-bezier);
-  color:var(--color-primary);
   &:hover {
     transform: scale(1.02) translate(-5px, 3px);
   }
