@@ -7,8 +7,6 @@ function PublicRoute({ children, restricted = false }) {
 
     const shouldRedirect = isLoggedIn && restricted
    
-    return shouldRedirect?<Navigate to='*'/>:children
-        
-    
+    return shouldRedirect?<Navigate to='/'/>:children
 }
 export default PublicRoute

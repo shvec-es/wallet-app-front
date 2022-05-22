@@ -34,9 +34,7 @@ export const logIn = createAsyncThunk(
     try {
 const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/auth/login", credentials)
      token.set(data.payload.token)
-      return data
-
-
+      return data.payload
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -59,6 +57,7 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.authReducer.token;
+    console.log("persistedToken", persistedToken)
     if (persistedToken === null) {
       return;
     }

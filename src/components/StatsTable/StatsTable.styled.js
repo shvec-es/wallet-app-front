@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ContentWrapper = styled.div`
-padding-top: 65px;
+@media (min-width: 768px) { 
+  padding-top: 65px;
+}
 `
 
 export const SelectsWrapper = styled.div`
