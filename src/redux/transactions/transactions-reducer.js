@@ -8,34 +8,18 @@ const transactionsList = createReducer([], {
     payload,
     ...state,
   ],
+  [operations.deleteTransaction.fulfilled]: (state, { payload }) =>
+    state.filter(item => item._id !== payload),
 });
 
-const transactionsListLoading = createReducer(false, {
+const isLoading = createReducer(false, {
   [operations.fetchTransactions.pending]: () => true,
   [operations.fetchTransactions.fulfilled]: () => false,
   [operations.fetchTransactions.rejected]: () => false,
+  [operations.addTransaction.pending]: () => true,
+  [operations.addTransaction.fulfilled]: () => false,
+  [operations.addTransaction.rejected]: () => false,
 });
-
-const transactionsListError = createReducer(null, {
-  [operations.fetchTransactions.fulfilled]: (_, { payload }) => null,
-  [operations.fetchTransactions.rejected]: (_, { payload }) => payload,
-});
-
-const transactionDelete = createReducer(null, {
-  [operations.deleteTransaction.fulfilled]: (_, {payload}) => payload,
-});
-
-const transactionDeleteLoading = createReducer(false, {
-  [operations.deleteTransaction.pending]: () => true,
-  [operations.deleteTransaction.fulfilled]: () => false,
-  [operations.deleteTransaction.rejected]: () => false,
-});
-
-const transactionDeleteError = createReducer(null, {
-  [operations.deleteTransaction.fulfilled]: (_, {payload}) => null,
-  [operations.deleteTransaction.rejected]: (_, {payload}) => payload,
-});
-
 
 const transactionsStatistics = createReducer(
   {
@@ -57,12 +41,6 @@ const transactionsStatistics = createReducer(
   },
 );
 
-const transactionsIsLoading = createReducer(false, {
-  [operations.addTransaction.pending]: () => true,
-  [operations.addTransaction.fulfilled]: () => false,
-  [operations.addTransaction.rejected]: () => false,
-});
-
 const transactionsStatisticsIsLoading = createReducer(false, {
   [operations.fetchTransactionsStatistics.pending]: () => true,
   [operations.fetchTransactionsStatistics.fulfilled]: () => false,
@@ -70,23 +48,24 @@ const transactionsStatisticsIsLoading = createReducer(false, {
 });
 
 const error = createReducer(null, {
+  [operations.fetchTransactions.pending]: () => null,
+  [operations.fetchTransactions.fulfilled]: () => null,
+  [operations.fetchTransactions.rejected]: () => true,
   [operations.fetchTransactionsStatistics.pending]: () => null,
   [operations.fetchTransactionsStatistics.fulfilled]: () => null,
   [operations.fetchTransactionsStatistics.rejected]: () => true,
   [operations.addTransaction.pending]: () => null,
   [operations.addTransaction.fulfilled]: () => null,
   [operations.addTransaction.rejected]: () => true,
+  [operations.deleteTransaction.pending]: () => null,
+  [operations.deleteTransaction.fulfilled]: () => null,
+  [operations.deleteTransaction.rejected]: () => true,
 });
 
 export default combineReducers({
   transactionsList,
-  transactionsListLoading,
-  transactionsListError,
-  transactionsIsLoading,
+  isLoading,
   transactionsStatistics,
   transactionsStatisticsIsLoading,
   error,
-  transactionDelete,
-  transactionDeleteLoading,
-  transactionDeleteError,
 });

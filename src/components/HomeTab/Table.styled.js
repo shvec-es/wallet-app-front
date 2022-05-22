@@ -24,7 +24,7 @@ export const TableHeaderRow = styled.tr`
 
 export const TableBody = styled.tbody`
   display: block;
-  overflow: scroll;
+  overflow-y: scroll;
   max-height: 60vh;
   padding: 0px 20px 15px 20px;
   font-size: 16px;
