@@ -31,7 +31,7 @@ import { toast } from 'react-toastify';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [categ, setCateg] = useState('');
-  const [dt, setDt] = useState(moment().format('DD.MM.YYYYY'));
+  const [dt, setDt] = useState(moment().format('DD.MM.YYYY'));
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
