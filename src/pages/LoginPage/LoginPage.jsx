@@ -1,5 +1,5 @@
 import Media from 'react-media';
-import {Container, LoginForm} from 'components';
+import {LoginForm} from 'components';
 
 import icons from 'images/sprite.svg';
 import { Section, ImgWrapper, Img, AppTitle } from './LoginPage.styled';
@@ -11,7 +11,7 @@ function LoginPage() {
   return (
 
    
-    <Container>
+   
        <Section>
          <ImgWrapper>
         <Media query="(min-width: 768px)">
@@ -25,7 +25,7 @@ function LoginPage() {
 
         <LoginForm />
         </Section>
-</Container>
+
      
 
 

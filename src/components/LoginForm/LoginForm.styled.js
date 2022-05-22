@@ -4,23 +4,23 @@ import { NavLink } from 'react-router-dom';
 
 
 export const FormWrapper = styled.div`
-position:relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   padding: 107px 0px;
-  border-radius: 20px;
   background: var(--color-white);
+  height: 100vh;
+
 
   @media (min-width: 768px) {
     width: 533px;
+    height: auto;
     margin: auto;
     padding: 40px 0px;
-   
+      border-radius: var(--border-radius);
   }
 
   @media (min-width: 1280px) {
+width:100%;
+height:100%;
+    padding:0;
     padding: 120px 100px;
     margin: 0;
     border-radius: 0;
@@ -35,6 +35,7 @@ export const FormBg = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
   @media (min-width: 1280px) {
     width: 533px;
     height: 468px;
@@ -51,6 +52,7 @@ position:relative;
   align-items: center;
   flex-direction: column;
   margin-top: 60px;
+
 
   @media (min-width: 768px) {
     width: 533px;
