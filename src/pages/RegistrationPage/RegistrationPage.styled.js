@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Button = styled.button`
-width: 280px;
-height: 50px;
-margin-bottom: 20px;
+  width: 280px;
+  height: 50px;
+  margin-bottom: 20px;
   background: var(--color-secondary);
   border-radius: var(--border-radius);
   font-family: 'Circe';
@@ -17,22 +17,19 @@ margin-bottom: 20px;
   text-transform: uppercase;
   border: transparent;
   color: var(--color-white);
-  transition: background-color 250ms var(--cubic-bezier), color 250ms var(--cubic-bezier);
-  
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier);
+
   :hover {
-    background-color:#03a682;
+    background-color: #03a682;
   }
   @media screen and (min-width: 768px) {
     width: 300px;
- 
-
-   
   }
-  `;
-  
+`;
 
 export const ButtonLink = styled(NavLink)`
- width: 280px;
+  width: 280px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -48,16 +45,16 @@ export const ButtonLink = styled(NavLink)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-     transition: background-color 250ms var(--cubic-bezier), color 250ms var(--cubic-bezier);
-  &:hover{
-    background:var(--color-primary-light);
-    color:var(--color-white);
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier);
+  &:hover {
+    background: var(--color-primary-light);
+    color: var(--color-white);
   }
   @media (min-width: 768px) {
     width: 300px;
   }
-  `;
-
+`;
 
 export const Input = styled.input`
   box-sizing: border-box;
@@ -93,13 +90,13 @@ export const Icon = styled('svg')`
   top: 4px;
 `;
 export const Wrap = styled('div')`
-  margin-bottom:  60px ;
+  margin-bottom: 60px;
 `;
 export const Form = styled('div')`
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background:var(--color-white);
+  background: var(--color-white);
   box-sizing: border-box;
   max-width: 320px;
 
@@ -110,7 +107,7 @@ display: flex;
 
   @media screen and (min-width: 768px) {
     max-width: 533px;
- 
+
     border-radius: var(--border-radius);
     padding: 40px 60px 46px 65px;
     margin-left: auto;
