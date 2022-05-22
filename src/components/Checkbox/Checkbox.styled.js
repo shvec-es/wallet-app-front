@@ -50,4 +50,5 @@ export const CheckboxButtonPlus = styled(CheckboxButton)`
 export const CheckboxButtonMinus = styled(CheckboxButton)`
   right: -2px;
   background: var(--color-tertiary);
+  color: var(--color-white);
 `;
