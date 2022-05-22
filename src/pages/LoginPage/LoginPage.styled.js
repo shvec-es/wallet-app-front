@@ -12,6 +12,10 @@ export const Section = styled.section`
   }
 `;
 
+export const SwitcherWrapper = styled.div`
+
+`
+
 export const ImgWrapper = styled.div`
   display: none;
 

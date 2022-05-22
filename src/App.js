@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/DashboardPage';
-import { BackGround, Header, PublicRoute, PrivateRoute } from 'components';
+import { Container, BackGround, Header, PublicRoute, PrivateRoute } from 'components';
 import { fetchCurrentUser } from './redux/auth/auth-operations';
 
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
@@ -43,9 +43,12 @@ function App() {
           <Route
             path="/login"
             element={
+            
+
               <PublicRoute restricted>
                 <LoginPage />
               </PublicRoute>
+        
             }
           ></Route>
           <Route

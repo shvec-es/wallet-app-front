@@ -1,23 +1,20 @@
 
 
-import { useDispatch, useSelector } from "react-redux";
+import {
+    useDispatch} from "react-redux";
 
-import {  toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { logOut } from '../../redux/auth/auth-operations'
-import { getIsError} from '../../redux/auth/auth-selectors'
+
 
 import { ModalContainer, CloseBtn, Title, BtnContainer, ConfirmBtn, CancelBtn } from "./LogoutContent.styled"
 
 const LogoutModal = ({ setOpenModal }) => {
     const dispatch = useDispatch();
-    const isError = useSelector(getIsError)
+
 
     
     const handleClick = () => {
-        if (isError) {
-            toast.error('Something went wrong! Please, try again')
-        }
+    
    
         dispatch(logOut());
         setOpenModal(false)

@@ -25,9 +25,10 @@ export const HeaderWrapper = styled.div`
 export const UserInfo = styled.div`
   display: flex;
   align-items: ${props => props.align || 'center'};
+
   margin-left: 20px;
 
-  font-famile: Circle;
+  font-family: 'Circle';
   font-size: 18px;
   line-height: 1.47;
   color: ${props => props.color || 'var(--color-gray)'};

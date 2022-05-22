@@ -10,7 +10,7 @@ import RegistrationForm from './RegistrationForm/RegistrationForm';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 import Navigation from './Navigation';
-import LoginPage from '../pages/LoginPage';
+import LoginForm from './LoginForm';
 import Header from './Header';
 import Balance from './Balance';
 import ModalWindow from './ModalWindow';
@@ -25,11 +25,12 @@ export {
   ButtonAddTransactions,
   Currency,
   Chart,
+
   LogoForm,
   LanguageSwitcher,
   Logo,
   Navigation,
-  LoginPage,
+  LoginForm,
   Header,
   Balance,
   RegistrationForm,
