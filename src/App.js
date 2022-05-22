@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import Media from 'react-media';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

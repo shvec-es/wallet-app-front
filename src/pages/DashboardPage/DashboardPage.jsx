@@ -5,7 +5,7 @@ import DiagramTab from "components/DiagramTab";
 import { Navigation, HomeTab, ButtonAddTransactions, Container} from "components";
 import { Currency } from "components";
 
-import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap, ButtonWrap} from './DashboardPage.styled'
+import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap} from './DashboardPage.styled'
 import Balance from "components/Balance";
 
 export default function DashboardPage() {
@@ -35,13 +35,13 @@ export default function DashboardPage() {
         <TabWrap>
           <Routes>
             <Route index element={<HomeTab />}/>           
-            <Route path="home" element={<HomeTab/> } />
+           
             <Route path="home" element={
             <>
-          <Media
-            query="(max-width: 767px)"
-            render={() => <Balance />}
-          />
+            <Media query="(max-width: 767px)">
+              <Balance />
+            </Media>
+         
           <HomeTabWrap>
             <HomeTab />
           </HomeTabWrap>

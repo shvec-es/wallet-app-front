@@ -25,8 +25,9 @@ import {
 const Header = () => {
   const { t } = useTranslation();
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
-  const name = useSelector(getUserName)
-
+  const userName = useSelector(getUserName)
+  const name = userName.split('')[0].toUpperCase() + userName.slice(1);
+  
   return (
     <MainHeader>
       <Container>
