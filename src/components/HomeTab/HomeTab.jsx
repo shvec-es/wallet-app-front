@@ -36,7 +36,7 @@ export default function HomeTab() {
         <Spinner />
       ) : (
         <>
-          <Media query="(max-width: 767px">
+          <Media query="(max-width: 767px)">
             <TableMobile data={transactions} />
           </Media>
           <Media query="(min-width: 768px">

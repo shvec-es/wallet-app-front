@@ -33,13 +33,13 @@ export default function DashboardPage() {
         <TabWrap>
           <Routes>
             <Route index element={<HomeTab />}/>           
-            <Route path="home" element={<HomeTab/> } />
+           
             <Route path="home" element={
             <>
-          <Media
-            query="(max-width: 767px)"
-            render={() => <Balance />}
-          />
+            <Media query="(max-width: 767px)">
+              <Balance />
+            </Media>
+         
           <HomeTabWrap>
             <HomeTab />
           </HomeTabWrap>
