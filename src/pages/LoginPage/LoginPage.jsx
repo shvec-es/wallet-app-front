@@ -1,5 +1,6 @@
 import Media from 'react-media';
 import LoginForm from 'components/LoginForm/LoginForm';
+import Container from 'components/Container'
 import icons from 'images/sprite.svg';
 import { Section, ImgWrapper, Img, AppTitle } from './LoginPage.styled';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +9,7 @@ function LoginPage() {
   const { t } = useTranslation();
 
   return (
+    <Container>
     <Section>
       <ImgWrapper>
         <Media query="(min-width: 768px)">
@@ -19,8 +21,9 @@ function LoginPage() {
         <AppTitle>{t('app_title')}</AppTitle>
       </ImgWrapper>
 
-      <LoginForm />
+        <LoginForm />
     </Section>
+    </Container>
   );
 }
 

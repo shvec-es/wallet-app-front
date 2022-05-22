@@ -23,7 +23,7 @@ export const size = {
     justify-content: start;
   }
   ${size.desktop} {
-    padding: 0 16px;
+    padding: 0;
     flex-direction: row;
     position: relative;
   }

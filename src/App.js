@@ -38,8 +38,6 @@ function App() {
       </Media>
       <Suspense fallback={<p>Loading...</p>}>
         <LanguageSwitcher />
-
-        <Container>
           <Routes>
             <Route
               path="*"
@@ -67,7 +65,6 @@ function App() {
               }
             ></Route>
           </Routes>
-        </Container>
       </Suspense>
     </>
   );
