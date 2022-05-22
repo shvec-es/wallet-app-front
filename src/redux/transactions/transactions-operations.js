@@ -76,7 +76,7 @@ const fetchTransactionsStatistics = createAsyncThunk(
     try {
       return await ApiServices.getStats({ month, year }, token);
     } catch (error) {
-      rejectWithValue(error);
+      toast.error('404. Something wrong!')
     }
   },
 );

@@ -1,9 +1,6 @@
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 axios.defaults.baseURL = 'https://wallet-codewriters.herokuapp.com';
-
-
-
 
 
 class ApiServices {
@@ -66,12 +63,8 @@ class ApiServices {
   }
 
   async getStats({ month, year }, token) {
-    try {
       const req = await axios.get(`wallet/stats?month=${month}&year=${year}`);
       return req.data.payload;
-    } catch (e) {
-      console.log(e.message);
-    }
   }
 
   async createTransaction(userData, token) {
