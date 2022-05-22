@@ -24,7 +24,7 @@ export const TableHeaderRow = styled.tr`
 
 export const TableBody = styled.tbody`
   display: block;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 60vh;
   padding: 0px 20px 15px 20px;
   font-size: 16px;
@@ -38,6 +38,7 @@ export const ButtonDelete = styled.button`
   opacity: 0;
   visibility: hidden;
   transition: all 250ms var(--cubic-bezier);
+  color:var(--color-primary);
   &:hover {
     transform: scale(1.2);
   }

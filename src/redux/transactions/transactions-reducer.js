@@ -19,6 +19,9 @@ const isLoading = createReducer(false, {
   [operations.addTransaction.pending]: () => true,
   [operations.addTransaction.fulfilled]: () => false,
   [operations.addTransaction.rejected]: () => false,
+  [operations.deleteTransaction.pending]: () => true,
+  [operations.deleteTransaction.fulfilled]: () => false,
+  [operations.deleteTransaction.rejected]: () => false,
 });
 
 const transactionsStatistics = createReducer(

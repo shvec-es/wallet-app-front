@@ -72,7 +72,7 @@ function Table({ data }) {
                   <TableCell>
                     <ButtonDelete onClick={() => onDelete(_id)}>
                       <svg width="16" height="16">
-                        <use href={`${sprite}#close`} />
+                        <use href={`${sprite}#bin`} />
                       </svg>
                     </ButtonDelete>
                   </TableCell>

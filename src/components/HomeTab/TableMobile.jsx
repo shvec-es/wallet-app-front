@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import {
   MobileCard,
   MobileCardGroup,
@@ -5,12 +6,21 @@ import {
   MobileCardItemValue,
   MobileCardItemColor,
   NoTransactions,
+  MobileButtonDelete,
 } from './TableMobile.styled';
+import sprite from 'images/sprite.svg';
 import { useTranslation } from 'react-i18next';
+import { operations } from '../../redux/transactions/transactions-operations';
 
 function TableMobile({ data }) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language.slice(0, 2);
+
+  const dispatch = useDispatch();
+
+  const onDelete = _id => {
+    dispatch(operations.deleteTransaction(_id));
+  };
 
   return (
     <>
@@ -67,6 +77,11 @@ function TableMobile({ data }) {
                   <MobileCardItem>{t('balance')}</MobileCardItem>
                   <MobileCardItemValue>{balance}</MobileCardItemValue>
                 </MobileCardGroup>
+                <MobileButtonDelete onClick={() => onDelete(_id)}>
+                  <svg width="16" height="16">
+                    <use href={`${sprite}#minus-btn`} />
+                  </svg>
+                </MobileButtonDelete>
               </MobileCard>
             ),
           )}
