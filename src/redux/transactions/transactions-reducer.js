@@ -9,7 +9,7 @@ const transactionsList = createReducer([], {
     ...state,
   ],
   [operations.deleteTransaction.fulfilled]: (state, { payload }) =>
-    state.filter(item => item._id !== payload),
+    state.filter(item => item._id !== payload._id),
 });
 
 const isLoading = createReducer(false, {

@@ -1,8 +1,6 @@
 import Media from 'react-media';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TailSpin } from 'react-loader-spinner';
-
 import { ToastContainer } from 'react-toastify';
 import {
   getAllTransactions,
@@ -14,6 +12,7 @@ import TableMobile from './TableMobile';
 import Table from './Table';
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from 'components/Loader';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 export default function HomeTab() {
@@ -34,7 +33,7 @@ export default function HomeTab() {
   return (
     <div>
       {isLoading ? (
-        <TailSpin ariaLabel="loading-indicator" color="#4a56e2" />
+        <Spinner />
       ) : (
         <>
           <Media query="(max-width: 767px">

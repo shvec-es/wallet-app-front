@@ -62,13 +62,13 @@ function Table({ data }) {
                     {sum}
                   </TableCellColor>
                   <TableCell>{balance}</TableCell>
-                  {/* <TableCell>
+                  <TableCell>
                     <ButtonDelete onClick={() => onDelete(_id)}>
                       <svg width="16" height="16">
                         <use href={`${sprite}#close`} />
                       </svg>
                     </ButtonDelete>
-                  </TableCell> */}
+                  </TableCell>
                 </TableRow>
               ),
             )}
