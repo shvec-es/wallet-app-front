@@ -4,18 +4,20 @@ import { Wrapper, TopEllipse, BottomEllipse } from './BackGround.styled';
 
 const BackGround = () => {
   return (
-    <Wrapper className="BackGround">
+    <Wrapper>
       <Media
         query="(min-width: 768px)"
-        render={()=> (
-      <>
-      <TopEllipse>
-        <use href={`${icons}#bg-top`}></use>
-      </TopEllipse>
-      <BottomEllipse>
-        <use href={`${icons}#bg-bottom`}></use>
-      </BottomEllipse>
-      </> )} />
+        render={() => (
+          <>
+            <TopEllipse>
+              <use href={`${icons}#bg-top`}></use>
+            </TopEllipse>
+            <BottomEllipse>
+              <use href={`${icons}#bg-bottom`}></use>
+            </BottomEllipse>
+          </>
+        )}
+      />
     </Wrapper>
   );
 };

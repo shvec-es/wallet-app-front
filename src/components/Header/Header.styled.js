@@ -6,31 +6,35 @@ export const size = {
   desktop: '@media screen and (min-width: 1280px)',
 };
 
-export const StyledHeader = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px 62px 20px 16px;
+export const MainHeader = styled.header`
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: var(--color-white);
 
   ${size.tablet} {
-    padding: 20px 68px 20px 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
+`;
 
-  ${size.desktop} {
-  }
+export const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const UserInfo = styled.div`
   display: flex;
-  justify-content: ${props => props.justify || 'center'};
   align-items: ${props => props.align || 'center'};
-  font-famile: Circle;
+  margin-left: 20px;
 
+  font-famile: Circle;
   font-size: 18px;
   line-height: 1.47;
   color: ${props => props.color || 'var(--color-gray)'};
+
+  ${size.tablet} {
+    margin-left: 30px;
+  }
 `;
 
 export const LogoutBtn = styled.button`

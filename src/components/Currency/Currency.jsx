@@ -91,9 +91,7 @@ const Currency = () => {
                 </TableRow>
               ))}
           </TableBody>
-          <Media query="(min-width: 1280px)">
-            <TableFooter></TableFooter>
-          </Media>
+          <Media query="(min-width: 1280px)" render={() => <TableFooter />} />
         </CurrencyTable>
       )}
     </>
