@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Media from 'react-media';
+
 import icons from 'images/sprite.svg';
+import { getUserName } from 'redux/auth/auth-selectors';
 import {
   Logo,
   ModalWindow,
@@ -22,6 +25,7 @@ import {
 const Header = () => {
   const { t } = useTranslation();
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+  const name = useSelector(getUserName)
 
   return (
     <MainHeader>
@@ -32,7 +36,7 @@ const Header = () => {
           <LanguageSwitcher />
 
           <UserInfo>
-            <UserName>{'user' || 'User'} </UserName>
+            <UserName>{name || 'User'} </UserName>
             <LogoutBtn
               type="button"
               onClick={() => {

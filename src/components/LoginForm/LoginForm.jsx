@@ -1,15 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import {  toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { logIn } from '../../redux/auth/auth-operations';
-import { getIsError } from 'redux/auth/auth-selectors';
 
-import { Logo } from 'components';
+
+import { Logo} from 'components';
 import {
+
   FormWrapper,
   FormBg,
   Label,
@@ -27,7 +25,7 @@ import { useTranslation } from 'react-i18next';
 const LoginForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const isError = useSelector(getIsError)
+
 
   const formik = useFormik({
     initialValues: {
@@ -46,11 +44,7 @@ const LoginForm = () => {
     onSubmit: (values, { resetForm }) => {
       const { email, password } = values;
   
-      
-            // if (isError !== null) {
-            //    console.log(isError);
-            //       toast.error('Something went wrong! Please, try again')
-            // }
+    
           dispatch(logIn({ email, password }));
       resetForm();
     },
@@ -61,6 +55,8 @@ const LoginForm = () => {
       <FormBg>
         <Logo />
         <Form onSubmit={formik.handleSubmit}>
+
+
           <Label>
             <InputIcon width="24" height="24">
               <use href={`${icons}#email`}></use>
@@ -100,8 +96,8 @@ const LoginForm = () => {
           </Label>
 
           <SignInBtn type="submit">{t('login')}</SignInBtn>
-          <SignUpBtn>
-            <NavLink to="/register">{t('register')}</NavLink>
+          <SignUpBtn to="/register">{t('register')}
+           
           </SignUpBtn>
         </Form>
       </FormBg>

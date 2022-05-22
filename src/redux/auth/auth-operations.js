@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import ApiServices from '../../services/ApiServices';
+import {  toast } from "react-toastify";
 
 const token = {
   set(token) {
@@ -21,6 +21,7 @@ const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/au
       return data
 
     } catch (error) {
+        toast.error('Something went wrong! Please, try again')
       return rejectWithValue(error.message);
     }
   },
@@ -34,6 +35,7 @@ const {data} = await axios.post("https://wallet-codewriters.herokuapp.com/api/au
      token.set(data.payload.token)
       return data.payload
     } catch (error) {
+       toast.error('Something went wrong! Please, try again')
       return rejectWithValue(error.message);
     }
   },
@@ -45,6 +47,7 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.get("https://wallet-codewriters.herokuapp.com/api/auth/logout")
     token.unset()
   } catch (error) {
+         toast.error('Something went wrong! Please, try again')
     return error.message;
   }
 });
@@ -55,7 +58,7 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.authReducer.token;
-    console.log("persistedToken", persistedToken)
+    
     if (persistedToken === null) {
       return;
     }

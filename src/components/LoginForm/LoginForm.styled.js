@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
+
 
 export const FormWrapper = styled.div`
+position:relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,23 +15,22 @@ export const FormWrapper = styled.div`
 
   @media (min-width: 768px) {
     width: 533px;
-    height: 468px;
     margin: auto;
-    padding: 60px 40px;
+    padding: 40px 0px;
+   
   }
 
   @media (min-width: 1280px) {
-    // width: 731px;
     padding: 120px 100px;
     margin: 0;
     border-radius: 0;
     background: var(--color-blur);
-    backdrop-filter: blur(50px);
+    backdrop-filter: var(--backdrop-filter);
   }
 `;
 
 export const FormBg = styled.div`
-  // height: 468px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,26 +39,23 @@ export const FormBg = styled.div`
     width: 533px;
     height: 468px;
     padding: 60px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     background: var(--color-white);
   }
 `;
 
 export const Form = styled.form`
+position:relative;
   width: 280px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top:60px;
+  margin-top: 60px;
 
   @media (min-width: 768px) {
     width: 533px;
-    height: 468px;
-    border-radius: 20px;
+
+    border-radius: var(--border-radius);
   }
 `;
 
@@ -66,8 +66,8 @@ export const Label = styled.label`
   margin-bottom: 40px;
   border-bottom: 1px solid var(--color-gray-light);
 
-  @media (min-width: 1280px) {
-    display: flex;
+  @media (min-width: 768px) {
+
     width: 410px;
   }
 `;
@@ -76,14 +76,13 @@ export const Input = styled.input`
   display: block;
   margin-left: 50px;
   outline: 0;
-
+  font-family: 'Circle';
   font-size: 18px;
-  font-weight: bold;
   color: #212529;
   border: 0;
 
   &::placeholder {
-     font-family: 'Circe';
+    font-family: 'Circe';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -93,16 +92,18 @@ export const Input = styled.input`
 
   @media (min-width: 1280px) {
     font-size: 24px;
-    font-weight: bold;
+
   }
 `;
 
 export const InputIcon = styled.svg`
   position: absolute;
   bottom: 10px;
+
   left: 5px;
   padding-left: 10px;
   color: var(--color-gray-light);
+
 
   @media (min-width: 1280px) {
     top: 5px;
@@ -114,7 +115,7 @@ export const SignInBtn = styled.button`
   height: 50px;
   margin-bottom: 20px;
   background: var(--color-secondary);
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -123,24 +124,27 @@ export const SignInBtn = styled.button`
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: transparent;
+  border: 1px solid var(--color-secondary);
   color: var(--color-white);
-
-  @media (min-width: 1280px) {
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier);
+  &:hover {
+    background-color: #03a682;
+  }
+  @media (min-width: 768px) {
     width: 300px;
   }
 `;
 
-export const SignUpBtn = styled.div`
+export const SignUpBtn = styled(NavLink)`
   width: 280px;
   height: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--color-white);
   border: 1px solid var(--color-primary);
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -149,8 +153,13 @@ export const SignUpBtn = styled.div`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-
-  @media (min-width: 1280px) {
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier);
+  &:hover {
+    background: var(--color-primary-light);
+    color: var(--color-white);
+  }
+  @media (min-width: 768px) {
     width: 300px;
   }
 `;
@@ -162,5 +171,5 @@ export const ErrorText = styled.p`
 
   font-size: 12px;
   font-weight: bold;
-  color: #ff0000;
+  color: var(--color-primary);
 `;

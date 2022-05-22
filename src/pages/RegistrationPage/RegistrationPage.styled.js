@@ -1,6 +1,12 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Button = styled.button`
+width: 280px;
+height: 50px;
+margin-bottom: 20px;
+  background: var(--color-secondary);
+  border-radius: var(--border-radius);
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -9,27 +15,50 @@ export const Button = styled.button`
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary);
-  width: 280px;
-  height: 50px;
-  padding: 13px 20px;
-  border: 1px solid var(--color-primary);
-  border-radius: 20px;
-  display: block;
-  cursor: pointer;
-  background: #fff;
-  margin-bottom: 20px;
+  border: transparent;
+  color: var(--color-white);
+  transition: background-color 250ms var(--cubic-bezier), color 250ms var(--cubic-bezier);
+  
   :hover {
-    color: #fff;
-    background: var(--color-secondary);
-    border: none;
+    background-color:#03a682;
   }
   @media screen and (min-width: 768px) {
     width: 300px;
-    height: 50px;
-    margin-left: 59px;
+ 
+
+   
   }
-`;
+  `;
+  
+
+export const ButtonLink = styled(NavLink)`
+ width: 280px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+     transition: background-color 250ms var(--cubic-bezier), color 250ms var(--cubic-bezier);
+  &:hover{
+    background:var(--color-primary-light);
+    color:var(--color-white);
+  }
+  @media (min-width: 768px) {
+    width: 300px;
+  }
+  `;
+
+
 export const Input = styled.input`
   box-sizing: border-box;
   font-family: 'Circe';
@@ -64,13 +93,16 @@ export const Icon = styled('svg')`
   top: 4px;
 `;
 export const Wrap = styled('div')`
-  margin: 20px 116px 60px 116px;
+  margin-bottom:  60px ;
 `;
 export const Form = styled('div')`
-  background: #fff;
+display: flex;
+  align-items: center;
+  justify-content: center;
+  background:var(--color-white);
   box-sizing: border-box;
   max-width: 320px;
-  height: 568px;
+
   padding: 32px 20px 36px 20px;
   display: flex;
   flex-direction: column;
@@ -78,8 +110,8 @@ export const Form = styled('div')`
 
   @media screen and (min-width: 768px) {
     max-width: 533px;
-    height: 616px;
-    border-radius: 20px;
+ 
+    border-radius: var(--border-radius);
     padding: 40px 60px 46px 65px;
     margin-left: auto;
     margin-right: auto;
@@ -89,9 +121,6 @@ export const Form = styled('div')`
 export const ErrMessage = styled('div')`
   font-size: 11px;
   color: red;
-`;
-export const ButtonLink = styled(Button)`
-  margin-bottom: 0;
 `;
 export const WrapperPage = styled.div`
   margin: 0 auto;

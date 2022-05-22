@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Logo } from 'components';
@@ -137,14 +137,14 @@ const RegistrationForm = () => {
               <ErrMessage>{errors.name}</ErrMessage>
             </Label>
           </div>
-          <div>
+         
             <Button type="submit" onClick={handleSubmit}>
               {t('register')}
             </Button>
-            <ButtonLink>
-              <Link to="/">{t('login')}</Link>
+            <ButtonLink to='/login'>{t('login')}
+            
             </ButtonLink>
-          </div>
+       
         </Form>
       )}
     </Formik>

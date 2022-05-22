@@ -27,6 +27,9 @@ export const CloseBtn = styled.button`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+  &:hover{
+    
+  }
 `;
 
 export const Title = styled.div`
@@ -60,6 +63,12 @@ export const ConfirmBtn = styled.button`
   text-transform: uppercase;
   border: transparent;
   color: var(--color-white);
+    transition-property: background-color,  color;
+  transition-duration: 0.4s;
+  &:hover{
+    background-color:#03a682;
+  
+  }
 `;
 
 export const CancelBtn = styled.button`
@@ -76,4 +85,12 @@ export const CancelBtn = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
+      transition-property: background-color,  color;
+  transition-duration: 0.4s;
+
+  &:hover{
+
+    background:var(--color-primary-light);
+    color:var(--color-white);
+  }
 `;
