@@ -5,8 +5,6 @@ import ApiServices from '../../services/ApiServices';
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    console.log('token', token)
-    console.log('header', axios.defaults.headers.common.Authorization)
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
