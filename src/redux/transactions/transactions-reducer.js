@@ -5,9 +5,11 @@ import { operations } from './transactions-operations';
 const transactionsList = createReducer([], {
   [operations.fetchTransactions.fulfilled]: (_, { payload }) => payload,
   [operations.addTransaction.fulfilled]: (state, { payload }) => [
-    payload,
     ...state,
-  ],
+    payload,
+  ].sort((a, b) => {
+    return a.date.localeCompare(b.date)
+  }),
   [operations.deleteTransaction.fulfilled]: (state, { payload }) =>
     state.filter(item => item._id !== payload._id),
 });
