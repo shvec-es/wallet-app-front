@@ -47,3 +47,27 @@ export const MobileCardItemColor = styled.p`
 export const NoTransactions = styled.p`
   margin-top: 20px;
 `;
+
+export const MobileButtonDelete = styled.button`
+  background: var(--color-tertiary);
+  object-fit: fill;
+  border: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  // transform: translate(-50%, -50%);
+  border-color: transparent;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: all 250ms var(--cubic-bezier);
+  color:var(--color-primary);
+  &:hover {
+    transform: scale(1.02) translate(-5px, 3px);
+  }
+  &:active {
+    transform: scale(0.9);
+  }`

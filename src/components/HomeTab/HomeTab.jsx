@@ -25,10 +25,6 @@ export default function HomeTab() {
     dispatch(fetchTransactions());
   }, [dispatch, fetchTransactions]);
 
-  // useEffect(() => {
-  //   const getTransactions = async () => dispatch(fetchTransactions());
-  //   getTransactions();
-  // }, [dispatch, fetchTransactions]);
 
   return (
     <div>
@@ -44,16 +40,6 @@ export default function HomeTab() {
           </Media>
         </>
       )}
-
-      {/* <Media  queries={{
-          isMobile: '(max-width: 767px)',
-        }}
-      >
-        {({isMobile}) => (
-          <div>
-              {isMobile ? <TableMobile data={transactions} /> : <Table data={transactions} />}
-          </div>
-      </Media> */}
       <ButtonAddTransactions />
       <ToastContainer />
     </div>
