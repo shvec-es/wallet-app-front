@@ -6,6 +6,7 @@ export const Section = styled.section`
   }
 
   @media (min-width: 1280px) {
+    // max-height:720px;
     display: flex;
     justify-content: center;
     align-items: center;

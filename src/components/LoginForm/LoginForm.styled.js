@@ -15,8 +15,8 @@ export const FormWrapper = styled.div`
   }
   @media (min-width: 1280px) {
    
-   max-width: 730px;
-margin:0;
+    max-width: 730px;
+    margin:0;
     padding: 120px 110px;
  
     border-radius: 0;
@@ -40,7 +40,7 @@ export const FormBg = styled.div`
 `;
 
 export const Form = styled.form`
-   position: relative;
+  position: relative;
   width: 280px;
   display: flex;
   align-items: center;
@@ -115,9 +115,10 @@ export const SignInBtn = styled.button`
   text-transform: uppercase;
   border: 1px solid var(--color-secondary);
   color: var(--color-white);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
-  &:hover {
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover, &:focus {
+   
     background-color: #03a682;
   }
   @media (min-width: 768px) {
@@ -142,9 +143,10 @@ export const SignUpBtn = styled(NavLink)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
-  &:hover {
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover, &:focus {
+  
     background: var(--color-primary-light);
     color: var(--color-white);
   }
@@ -160,7 +162,7 @@ export const ErrorText = styled.p`
 
   font-size: 12px;
   font-weight: bold;
-  color: var(--color-primary);
+  color: var(--color-tertiary);
 `;
 
 export const Switcher = styled.div`
