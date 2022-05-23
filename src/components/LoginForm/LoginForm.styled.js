@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 export const FormWrapper = styled.div`
   padding: 107px 0px;
-  background: var(--color-white);
+  background-color: var(--color-white);
   height: 100vh;
-
+ 
   @media (min-width: 768px) {
     width: 533px;
     height: auto;
@@ -15,11 +15,12 @@ export const FormWrapper = styled.div`
   }
 
   @media (min-width: 1280px) {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    padding: 120px 100px;
-    margin: 0;
+   
+   max-width: 730px;
+margin:0;
+
+    padding: 120px 110px;
+ 
     border-radius: 0;
     background: var(--color-blur);
     backdrop-filter: var(--backdrop-filter);
@@ -34,9 +35,10 @@ export const FormBg = styled.div`
   flex-direction: column;
 
   @media (min-width: 1280px) {
-    width: 533px;
-    height: 468px;
-    padding: 60px 40px;
+    max-width: 533px;
+
+
+    padding:60px 40px;
     border-radius: var(--border-radius);
     background: var(--color-white);
   }
@@ -121,9 +123,10 @@ export const SignInBtn = styled.button`
   text-transform: uppercase;
   border: 1px solid var(--color-secondary);
   color: var(--color-white);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
-  &:hover {
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover, &:focus {
+   
     background-color: #03a682;
   }
   @media (min-width: 768px) {
@@ -148,9 +151,10 @@ export const SignUpBtn = styled(NavLink)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
-  &:hover {
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover, &:focus {
+  
     background: var(--color-primary-light);
     color: var(--color-white);
   }
@@ -166,7 +170,7 @@ export const ErrorText = styled.p`
 
   font-size: 12px;
   font-weight: bold;
-  color: var(--color-primary);
+  color: var(--color-tertiary);
 `;
 
 export const Switcher = styled.div`
