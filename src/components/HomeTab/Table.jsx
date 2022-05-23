@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+import EllipsisText from "react-ellipsis-text";
+import { useTranslation } from 'react-i18next';
 import {
   TableMain,
   TableHeader,
@@ -12,7 +14,6 @@ import {
   NoTransactions,
 } from './Table.styled';
 import sprite from 'images/sprite.svg';
-import { useTranslation } from 'react-i18next';
 import { operations } from '../../redux/transactions/transactions-operations';
 /*компонент отримує масив для рендеру як по ТЗ*/
 
@@ -62,7 +63,7 @@ function Table({ data }) {
                       ? category ?? 'Income'
                       : categoryUA ?? 'Дохід'}
                   </TableCell>
-                  <TableCell>{description ?? '-'}</TableCell>
+                  <TableCell><EllipsisText text={description ?? '-'} length={14}></EllipsisText></TableCell>
                   <TableCellColor
                     type={typeTransaction === true ? 'income' : 'costs'}
                   >
