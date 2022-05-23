@@ -35,7 +35,7 @@ const LoginForm = () => {
         .email(t('email_error'))
         .required(t('email_require')),
       password: Yup.string('pass_string')
-        .min(6, t('pass_erro'))
+        .min(6, t('pass_error'))
         .max(12)
         .required(t('pass_require')),
     }),

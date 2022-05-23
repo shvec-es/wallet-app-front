@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 export const Text = styled.p`
   margin-left: 30px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-size: 30px;
   line-height: 1.5;
   text-align: center;

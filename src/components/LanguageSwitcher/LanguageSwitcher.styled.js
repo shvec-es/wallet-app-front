@@ -13,7 +13,7 @@ export const Select = styled.select`
   color: var(--color-gray);
   background-color: var(--color-white);
 
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
