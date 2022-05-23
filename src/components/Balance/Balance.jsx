@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { balance as balanceSelector, fetchBalance } from 'redux/balance';
+import {
+  balance as balanceSelector,
+  fetchBalance,
+  balanceLoading,
+} from 'redux/balance';
 import {
   BalanceLabel,
   BalanceSumm,
@@ -11,20 +15,20 @@ import {
 } from './Balance.styled';
 
 import { getAllTransactions } from 'redux/transactions/transactions-selectors';
+import Loader from 'components/Loader';
 
 export default function Balance() {
   const location = useLocation();
   const balance = useSelector(balanceSelector);
+  const isBalanceLoading = useSelector(balanceLoading);
   const dispatch = useDispatch();
   const isHome = location.pathname === '/home' || '/diagram';
   const { t } = useTranslation();
   const allTransations = useSelector(getAllTransactions);
 
-  //--------------------------------
   useEffect(() => {
     dispatch(fetchBalance());
   }, [dispatch, allTransations]);
-  //--------------------------------
 
   const formattedBalance = (+balance)
     .toFixed(2)
@@ -36,7 +40,7 @@ export default function Balance() {
         <BalanceLabel>{t('your_balance')}</BalanceLabel>
         <BalanceSumm>
           <BalanceCurrencySymbol>&#8372;&nbsp;</BalanceCurrencySymbol>
-          {formattedBalance}
+          {!isBalanceLoading && formattedBalance}
         </BalanceSumm>
       </BalanceWrapper>
     )
