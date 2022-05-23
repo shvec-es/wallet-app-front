@@ -71,6 +71,15 @@ export const ExitIcon = styled.svg`
   width: 18px;
   height: 18px;
   margin-right: ${props => props.mRight || '8px'};
+
+  transition: color 250ms var(--cubic-bezier);
+
+  @media screen and (max-width: 767px) {
+    &:hover,
+    &:focus-within {
+      color: var(--color-primary);
+    }
+  }
 `;
 
 export const UserName = styled.p`
