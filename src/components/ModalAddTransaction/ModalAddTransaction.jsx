@@ -23,7 +23,7 @@ import {
 import sprite from 'images/sprite.svg';
 import Checkbox from 'components/Checkbox';
 import SelectCategory from 'components/SelectCategory';
-import DateTime from 'helpers/DateTime';
+import DateTime from 'components/DateTime';
 import { operations } from 'redux/transactions/transactions-operations';
 import { useTranslation } from 'react-i18next';
 import ApiServices from 'services/ApiServices';
@@ -31,7 +31,7 @@ import { toast } from 'react-toastify';
 
 const ModalAddTransaction = ({ closeModal: setModal }) => {
   const [categ, setCateg] = useState('');
-  const [dt, setDt] = useState(moment().format('DD.MM.YYYY'));
+  const [dt, setDt] = useState(new Date());
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
@@ -42,7 +42,7 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
     initialValues: {
       typeTransaction: false,
       sum: '',
-      date: dt,
+      date: dt.toLocaleString([], { day: 'numeric', month: 'numeric', year: 'numeric' }),
       description: '',
       category: categ,
     },
@@ -56,14 +56,14 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
       category: Yup.string(),
     }),
     onSubmit: values => {
-      values = { ...values, category: categ, date: dt, sum: +sum };
+      values = { ...values, category: categ, date: dt.toLocaleString([], { day: 'numeric', month: 'numeric', year: 'numeric' }), sum: +sum };
       dispatch(operations.addTransaction(values));
       setModal(false);
     },
   });
 
   const {
-    values: { typeTransaction, sum, date, description },
+    values: { typeTransaction, sum, description },
     handleChange,
     handleSubmit,
   } = formik;
@@ -130,7 +130,7 @@ const ModalAddTransaction = ({ closeModal: setModal }) => {
             {formik.touched.sum && formik.errors.sum ? (
               <ErrorMesage>{formik.errors.sum}</ErrorMesage>
             ) : null}
-            <DateTime date={date} setDt={setDt} />
+            <DateTime date={dt} setDt={setDt} />
             {formik.touched.date && formik.errors.date ? (
               <ErrorMesage>{formik.errors.date}</ErrorMesage>
             ) : null}
