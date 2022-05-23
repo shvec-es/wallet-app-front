@@ -26,7 +26,7 @@ export const TableBody = styled.tbody`
   display: block;
   overflow-y: auto;
   max-height: 60vh;
-  padding: 0px 20px 15px 20px;
+  padding: 5px 20px 15px 20px;
   font-size: 16px;
 `;
 
@@ -50,7 +50,7 @@ export const TableRow = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
   transition: transform 150ms var(--cubic-bezier);
   &:not(:last-child) {
     border-bottom: 1px solid #dcdcdf;
@@ -96,7 +96,8 @@ export const TableCell = styled.td`
   }
 `;
 export const TableCellColor = styled.td`
-  width: 80px;
+  width: 50px;
+  margin-right: 30px;
   text-align: end;
   color: ${props =>
     props.type === 'income'
