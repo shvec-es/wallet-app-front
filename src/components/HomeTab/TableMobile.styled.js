@@ -14,7 +14,7 @@ export const MobileCard = styled.div`
         ? 'var(--color-secondary)'
         : 'var(--color-tertiary)'};
   &:not(:last-child) {
-    margin-bottom: 7px;
+    margin-bottom: 10px;
   }
 `;
 
