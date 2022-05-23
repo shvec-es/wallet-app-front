@@ -24,7 +24,7 @@ export const ImgWrapper = styled.div`
 
   @media (min-width: 1280px) {
     flex-direction: column;
-    padding: 150px 0px 150px 75px;
+    padding: 120px 0px 77px 75px;
     margin-right: 38px;
   }
 `;
