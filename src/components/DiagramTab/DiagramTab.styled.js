@@ -38,5 +38,9 @@ export const TabTitle = styled.h1`
 `;
 
 export const NoTransactions = styled.p`
-  margin-top: 20px;
+  padding-top: 50px; 
+  margin: 0 auto;
+  @media (min-width: 1280px) {
+    margin: 0;
+  }
 `;
