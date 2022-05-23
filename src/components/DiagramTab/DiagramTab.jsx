@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Loader from 'components/Loader';
 import Chart from 'components/Chart';
 import StatsTable from 'components/StatsTable';
 import { useTranslation } from 'react-i18next';
 
 import { operations } from 'redux/transactions/transactions-operations';
-import { getTransactionsStatistics } from 'redux/transactions/transactions-selectors';
+import { getTransactionsStatistics, getStatisticsLoading } from 'redux/transactions/transactions-selectors';
 
 import { TabTitle, TabSection, NoTransactions } from './DiagramTab.styled';
 
@@ -21,6 +22,7 @@ function DiagramTab() {
 
   const dispatch = useDispatch();
   const statistics = useSelector(getTransactionsStatistics);
+  const isLoading = useSelector(getStatisticsLoading);
 
   const { sortingTransactions, balance } = statistics;
 
@@ -75,7 +77,9 @@ function DiagramTab() {
   };
 
   return (
-    <TabSection>
+  <>
+{isLoading ? <Loader/> 
+    : <TabSection>
       {sortingTransactions.length === 0 ?
         <NoTransactions>You have no transactions yet.</NoTransactions> :
         <>
@@ -94,6 +98,8 @@ function DiagramTab() {
         </>
       }
     </TabSection>
+      }
+      </>
   );
 }
 

@@ -8,12 +8,10 @@ export const Section = styled.section`
   @media (min-width: 1280px) {
     // max-height:720px;
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
   }
 `;
-
-
 
 export const ImgWrapper = styled.div`
   display: none;
@@ -49,7 +47,7 @@ export const Img = styled.svg`
 `;
 
 export const AppTitle = styled.h1`
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;

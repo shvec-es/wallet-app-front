@@ -75,7 +75,7 @@ export const Input = styled.input`
   display: block;
   margin-left: 50px;
   outline: 0;
-  font-family: 'Circle';
+  font-family: 'Circe';
   font-size: 18px;
   color: #212529;
   border: 0;

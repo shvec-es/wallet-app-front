@@ -27,15 +27,16 @@ export const CloseBtn = styled.button`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+
   transition:transform 300ms var(--cubic-bezier);
   &:hover{
     transform: scale(1.2);
-  }
+
 `;
 
 export const Title = styled.div`
   padding-top: 30px;
-  font-family: Poppins;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-size: 25px;
   font-weight: 700;
   text-align: center;
@@ -64,12 +65,15 @@ export const ConfirmBtn = styled.button`
   text-transform: uppercase;
   border: transparent;
   color: var(--color-white);
+
+
   transition: background-color 300ms var(--cubic-bezier),
     color 300ms var(--cubic-bezier);
   &:hover {
    background-color:var(--color-white);
  
     background-color:#03a682 ;
+
   }
 `;
 
@@ -87,10 +91,12 @@ export const CancelBtn = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
+
   transition: background-color 300ms var(--cubic-bezier),
     color 300ms var(--cubic-bezier);
   &:hover {
     
+
     background: var(--color-primary-light);
     color: var(--color-white);
   }

@@ -31,7 +31,7 @@ export const Icon = styled.svg`
 `;
 
 export const Title = styled.h1`
-  font-family: Poppins;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-size: 25px;
   font-weight: 700;
   text-transform: capitalize;
