@@ -58,6 +58,8 @@ export const getYears = createSelector(
   },
 );
 
+const getStatisticsLoading = state => state.transactions.transactionsStatisticsIsLoading;
+
 export {
   getAllTransactions,
   filtredTransactions,
@@ -65,5 +67,6 @@ export {
   getTransactionsStatistics,
   getTransactionsIsLoading,
   getError,
+  getStatisticsLoading,
   // deleteTransaction,
 };
