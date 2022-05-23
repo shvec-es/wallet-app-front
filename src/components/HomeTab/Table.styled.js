@@ -28,6 +28,17 @@ export const TableBody = styled.tbody`
   max-height: 60vh;
   padding: 5px 20px 15px 20px;
   font-size: 16px;
+  &::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset var(--box-shadow-light);
+	border-radius: 10px;
+  }
+  &::-webkit-scrollbar {
+  width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-light);
+  border-radius: 10px;
+  }
 `;
 
 export const ButtonDelete = styled.button`
