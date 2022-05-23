@@ -13,12 +13,10 @@ export const FormWrapper = styled.div`
     padding: 40px 0px;
     border-radius: var(--border-radius);
   }
-
   @media (min-width: 1280px) {
    
-   max-width: 730px;
-margin:0;
-
+    max-width: 730px;
+    margin:0;
     padding: 120px 110px;
  
     border-radius: 0;
@@ -33,11 +31,8 @@ export const FormBg = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   @media (min-width: 1280px) {
     max-width: 533px;
-
-
     padding:60px 40px;
     border-radius: var(--border-radius);
     background: var(--color-white);
@@ -51,10 +46,8 @@ export const Form = styled.form`
   align-items: center;
   flex-direction: column;
   margin-top: 60px;
-
   @media (min-width: 768px) {
     width: 533px;
-
     border-radius: var(--border-radius);
   }
 `;
@@ -74,13 +67,15 @@ export const Label = styled.label`
 export const Input = styled.input`
   display: block;
   margin-left: 50px;
+ 
   outline: 0;
+  border: 0;
   font-family: 'Circe';
   font-size: 18px;
   color: #212529;
-  border: 0;
 
   &::placeholder {
+   
     font-family: 'Circe';
     font-style: normal;
     font-weight: 400;
@@ -89,21 +84,18 @@ export const Input = styled.input`
     text-transform: capitalize;
   }
 
-  @media (min-width: 1280px) {
-    font-size: 24px;
-  }
 `;
 
 export const InputIcon = styled.svg`
   position: absolute;
-  bottom: 10px;
+  bottom: 7px;
 
   left: 5px;
   padding-left: 10px;
   color: var(--color-gray-light);
 
   @media (min-width: 1280px) {
-    top: 5px;
+    top: 1px;
   }
 `;
 
