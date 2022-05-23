@@ -20,6 +20,9 @@ export const register = createAsyncThunk(
         credentials,
       );
       token.set(data.payload.token);
+      toast.success(
+        'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions',
+      );
       return data;
     } catch (error) {
       toast.error('Something went wrong! Please, try again');

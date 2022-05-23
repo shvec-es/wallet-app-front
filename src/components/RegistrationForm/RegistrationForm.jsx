@@ -44,16 +44,14 @@ const RegistrationForm = () => {
 
       .max(12, t('pass_max'))
       .required(t('pass_require'))
-      .matches(
-        /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/,
-        t('pass_matches'),
-      ),
+      .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){6,}/, t('pass_matches')),
     confirmPassword: yup
       .string()
       .required(t('pass_confirm'))
       .oneOf([yup.ref('password'), null], t('pass_confirm_error')),
     name: yup
       .string('Enter your name')
+      .required(t('name_min'))
       .min(1, t('name_min'))
       .max(12, t('name_max')),
   });
