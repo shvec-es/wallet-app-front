@@ -14,52 +14,44 @@ import {
 import { useTranslation } from 'react-i18next';
 import { TailSpin } from 'react-loader-spinner';
 
-const Currency = () => {
+export const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const [status, setStatus] = useState('idle');
   const { t } = useTranslation();
 
   useEffect(() => {
     const localCurrency = JSON.parse(localStorage.getItem('currency'));
-    const currencyTime = JSON.parse(localStorage.getItem('currency_time'));
 
-    async function fetchCurrency() {
+    (async () => {
       setStatus('pending');
-
-      try {
-        const response = await getCurrency();
-
-        if (response.ok) {
-          const data = await response.json();
-
-          localStorage.setItem('currency', JSON.stringify(data));
-          localStorage.setItem('currency_time', Date.now());
-
-          setCurrency(data);
-          setStatus('success');
-        } else {
-          setStatus('error');
-        }
-      } catch (error) {
-        setStatus('error');
-      }
-    }
-
-    const condition = () => {
-      setStatus('pending');
-
-      if (
-        (localCurrency && currencyTime) ||
-        Date.now() - currencyTime < 3600000
-      ) {
-        setCurrency(localCurrency);
+      if (localCurrency && Date.now() - localCurrency?.time < 3600000) {
+        // 3600000 = 1 hour
+        setCurrency(localCurrency.data);
         setStatus('success');
       } else {
-        fetchCurrency();
-      }
-    };
+        setStatus('pending');
 
-    condition();
+        try {
+          const response = await getCurrency();
+
+          if (response.ok) {
+            const data = await response.json();
+
+            localStorage.setItem(
+              'currency',
+              JSON.stringify({ data, time: Date.now() }),
+            );
+
+            setCurrency(data);
+            setStatus('success');
+          } else {
+            setStatus('error');
+          }
+        } catch (error) {
+          setStatus('error');
+        }
+      }
+    })();
   }, []);
 
   return (
@@ -107,5 +99,3 @@ Currency.propTypes = {
     }),
   ),
 };
-
-export default Currency;
