@@ -117,10 +117,19 @@ export const Form = styled('div')`
 `;
 
 export const ErrMessage = styled('div')`
-  font-size: 11px;
-  color: red;
+  font-size: 13px;
+  color: var(--color-tertiary);
 `;
 export const WrapperPage = styled.div`
+  max-width: 320px;
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1280px;
+  }
   margin: 0 auto;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 50px;
@@ -134,7 +143,7 @@ export const WrapperPage = styled.div`
 export const WrapperForm = styled.div`
   @media screen and (min-width: 1280px) {
     min-width: 731px;
-    padding: 52px 91px 52px 61px;
+    padding: 52px 91px 52px 107px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
   }

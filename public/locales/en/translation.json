@@ -29,7 +29,7 @@
   "pass_error": "Password must be at least 6 characters long",
   "pass_max": "Password should be of maximum 12 characters length",
   "pass_require": "Password is required",
-  "pass_matches": "Password must be min 6 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase",
+  "pass_matches": "Password must be min 6 characters and have 1 Uppercase, 1 Number and 1 Lowercase",
   "pass_confirm_error": "Passwords do not match",
 
   "transaction_choose": "Choose category",

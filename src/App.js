@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer autoClose={2000} theme="colored" />
+      <ToastContainer autoClose={5000} pauseOnHover theme="colored" />
 
       <BackGround />
 
