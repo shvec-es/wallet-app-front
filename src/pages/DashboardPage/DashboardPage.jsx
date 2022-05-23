@@ -1,8 +1,9 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Media from 'react-media';
 import DiagramTab from "components/DiagramTab";
 import { Navigation, HomeTab, Container} from "components";
 import { Currency } from "components";
+
 import {MobSidebar, TabWrap, SideBar, MainWrap, HomeTabWrap, CurrencyWrap, TabletBalanceWrap} from './DashboardPage.styled'
 import Balance from "components/Balance";
 
@@ -16,52 +17,44 @@ export default function DashboardPage() {
         <SideBar>
           <MobSidebar>
             <Navigation />
-            {/* <Balance /> */}
-            <Media query="(min-width: 768px)" render={() => 
-            <TabletBalanceWrap>
-              <Balance />
-            </TabletBalanceWrap>
-            } />
+          
+            <Media query="(min-width: 768px)">
+              <TabletBalanceWrap>
+                <Balance />
+              </TabletBalanceWrap>  
+            </Media>
           </MobSidebar>
-          <Media query="(min-width: 768px)" render={() => 
-           <CurrencyWrap>
+          <Media query="(min-width: 768px)">
+            <CurrencyWrap>
               <Currency />
-          </CurrencyWrap>
-          } />
+            </CurrencyWrap>
+          </Media>
         </SideBar>
 
         <TabWrap>
           <Routes>
             <Route index element={<HomeTab />}/>           
-           
-            <Route path="home" element={
-            <>
-            <Media query="(max-width: 767px)">
-              <Balance />
-            </Media>
+            <Route path="/home" element={
+              <>
+                <Media query="(max-width: 767px)">
+                  <Balance />
+                </Media>
          
-          <HomeTabWrap>
-            <HomeTab />
-          </HomeTabWrap>
-          </>
+                <HomeTabWrap>
+                  <HomeTab />
+                </HomeTabWrap>
+              </>
           } />
             <Route path="diagram" element={<DiagramTab />} />
             <Route
               path="currency"
               element={
                 <>
-                  <Media
-                    query="(min-width: 768px)"
-                    render={() => <Navigate to="home" />}
-                  />
-                  
-                  <Media
-                    query="(max-width: 767px)"
-                    render={() => 
-                    <CurrencyWrap>
+              <Media query="(max-width: 767px)">
+                  <CurrencyWrap>
                       <Currency />
-                    </CurrencyWrap>}
-                  />
+                    </CurrencyWrap>
+                  </Media>
                 </>
               }
             />
