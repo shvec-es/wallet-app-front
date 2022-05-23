@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BalanceLabel = styled.span`
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

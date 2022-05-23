@@ -32,7 +32,7 @@ export const ModalBtn = styled.button`
 export const ModalTitle = styled.h2`
   margin-bottom: 40px;
 
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: center;

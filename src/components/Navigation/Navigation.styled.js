@@ -52,6 +52,9 @@ export const StyledSvg = styled.svg`
 
 export const NavItemTitle = styled.span`
   display: none;
+
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 18px;
   text-transform: capitalize;
 
   @media (min-width: 768px) {
