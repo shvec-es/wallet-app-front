@@ -24,16 +24,16 @@ export const HeaderWrapper = styled.div`
 
 export const UserInfo = styled.div`
   display: flex;
-  align-items: baseline;
+  // align-items: center;
 
   // align-items: ${props => props.align || 'center'};
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 18px;
   line-height: 1.47;
   color: ${props => props.color || 'var(--color-gray)'};
 
   ${size.tablet} {
-    margin-left: 30px;
+    margin-left: 20px;
   }
 `;
 
@@ -84,6 +84,7 @@ export const ExitIcon = styled.svg`
 
 export const UserName = styled.p`
   ${size.tablet} {
+    transform: translateY(3px);
     padding: 0px 12px 6px 0;
     border-right: 1px solid;
   }
