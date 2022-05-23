@@ -145,7 +145,6 @@ const ModalButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 20px;
-  cursor: pointer;
 `;
 
 export const ModalButtonAdd = styled(ModalButton)`
@@ -156,7 +155,7 @@ export const ModalButtonAdd = styled(ModalButton)`
   border: transparent;
   outline: none;
 
-  transition: transform 250ms linear;
+  transition: background-color 250ms var(--cubic-bezier);
 
   @media (min-width: 768px) {
     margin: 20px auto;
@@ -165,7 +164,7 @@ export const ModalButtonAdd = styled(ModalButton)`
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    background-color: #03a682;
   }
 `;
 
@@ -174,7 +173,8 @@ export const ModalButtonCancel = styled(ModalButton)`
   color: var(--color-primary);
   border-color: var(--color-primary);
 
-  transition: transform 250ms linear;
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier);
 
   @media (min-width: 768px) {
     margin: 0 auto;
@@ -183,7 +183,9 @@ export const ModalButtonCancel = styled(ModalButton)`
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    background: var(--color-primary-light);
+    color: var(--color-white);
+    border-color: transparent;
   }
 `;
 
@@ -194,7 +196,7 @@ export const ErrorMesage = styled.p`
 
   font-size: 12px;
   font-weight: bold;
-  color: var(--color-error);
+  color: var(--color-tertiary);
 
   @media (min-width: 768px) {
     margin: 0;
