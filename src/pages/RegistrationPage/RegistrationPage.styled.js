@@ -17,10 +17,10 @@ export const Button = styled.button`
   text-transform: uppercase;
   border: transparent;
   color: var(--color-white);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
-
-  :hover {
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier), transform 300ms var(--cubic-bezier);
+  &:hover {
+    transform:scale(1.1);
     background-color: #03a682;
   }
   @media screen and (min-width: 768px) {
@@ -45,9 +45,10 @@ export const ButtonLink = styled(NavLink)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
+   transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier), transform 300ms var(--cubic-bezier);
   &:hover {
+    transform: scale(1.1);
     background: var(--color-primary-light);
     color: var(--color-white);
   }

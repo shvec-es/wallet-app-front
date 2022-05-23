@@ -7,6 +7,8 @@ export const Link = styled(NavLink)`
   align-items: center;
   width: fit-content;
   cursor: pointer;
+
+
 `;
 
 export const Icon = styled.svg`
@@ -33,6 +35,7 @@ export const Title = styled.h1`
   font-size: 25px;
   font-weight: 700;
   text-transform: capitalize;
+
 
   @media screen and (min-width: 768px) {
     font-size: 30px;

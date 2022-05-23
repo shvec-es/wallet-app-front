@@ -23,12 +23,13 @@ export const CloseBtn = styled.button`
   right: 8px;
   width: 30px;
   height: 30px;
-  background: #ffffff;
+  background: var(--color-white);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+  transition:transform 300ms var(--cubic-bezier);
   &:hover{
-    
+    transform: scale(1.2);
   }
 `;
 
@@ -63,11 +64,12 @@ export const ConfirmBtn = styled.button`
   text-transform: uppercase;
   border: transparent;
   color: var(--color-white);
-    transition-property: background-color,  color;
-  transition-duration: 0.4s;
-  &:hover{
-    background-color:#03a682;
-  
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover {
+   background-color:var(--color-white);
+ 
+    background-color:#03a682 ;
   }
 `;
 
@@ -85,12 +87,11 @@ export const CancelBtn = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-      transition-property: background-color,  color;
-  transition-duration: 0.4s;
-
-  &:hover{
-
-    background:var(--color-primary-light);
-    color:var(--color-white);
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
+  &:hover {
+    
+    background: var(--color-primary-light);
+    color: var(--color-white);
   }
 `;

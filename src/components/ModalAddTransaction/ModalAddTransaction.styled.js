@@ -171,10 +171,11 @@ export const ModalButtonAdd = styled(ModalButton)`
 export const ModalButtonCancel = styled(ModalButton)`
   background-color: transparent;
   color: var(--color-primary);
-  border-color: var(--color-primary);
+  
+   border: 1px solid var(--color-primary);
 
-  transition: background-color 250ms var(--cubic-bezier),
-    color 250ms var(--cubic-bezier);
+  transition: background-color 300ms var(--cubic-bezier),
+    color 300ms var(--cubic-bezier);
 
   @media (min-width: 768px) {
     margin: 0 auto;
@@ -183,6 +184,7 @@ export const ModalButtonCancel = styled(ModalButton)`
 
   &:hover,
   &:focus {
+   
     background: var(--color-primary-light);
     color: var(--color-white);
     border-color: transparent;
