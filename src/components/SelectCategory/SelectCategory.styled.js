@@ -56,8 +56,7 @@ export const SelectList = styled.ul`
 export const SelectItem = styled.li`
   display: block;
   min-height: 44px;
-  padding-top: 9px;
-  padding-bottom: 9px;
+  padding: 5px 20px;
   border: none;
 
   font-size: 18px;

@@ -20,7 +20,7 @@ const DateTime = ({date, setDt}) => {
         );
     };
   
-    return <Datetime renderInput={renderInput} value={date} dateFormat="DD-MM-YYYY"  timeFormat={false} closeOnSelect onChange={(e)=>setDt(e._d.toLocaleString([], {day: 'numeric', month: 'numeric', year: 'numeric'}))}/>;
+    return <Datetime renderInput={renderInput} value={date} dateFormat="DD.MM.YYYY"  timeFormat={false} closeOnSelect onChange={(e)=>setDt(e._d)}/>;
 }
 
 export default DateTime;
