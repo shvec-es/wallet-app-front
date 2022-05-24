@@ -3,12 +3,12 @@ import { createReducer } from '@reduxjs/toolkit';
 import { operations } from './transactions-operations';
 
 const transactionsList = createReducer([], {
-  [operations.fetchTransactions.fulfilled]: (_, { payload }) => payload,
+  [operations.fetchTransactions.fulfilled]: (_, { payload }) => payload.reverse(),
   [operations.addTransaction.fulfilled]: (state, { payload }) => [
     ...state,
     payload,
   ].sort((a, b) => {
-    return a.date.localeCompare(b.date)
+    return b.date.localeCompare(a.date)
   }),
   [operations.deleteTransaction.fulfilled]: (state, { payload }) =>
     state.filter(item => item._id !== payload._id),

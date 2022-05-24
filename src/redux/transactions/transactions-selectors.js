@@ -1,17 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 const getAllTransactions = state => state.transactions.transactionsList;
-
-const filtredTransactions = state => {
-  const { transactionsList } = state.transactions;
-  transactionsList.sort((a, b) => {
-    return a.date.localeCompare(b.date);
-  });
-};
-
 const getIsLoading = state => state.transactions.isLoading;
 
-// const deleteTransaction = state => state.transactions.transactionDelete;
 
 const getTransactionsStatistics = state =>
   state.transactions.transactionsStatistics;
@@ -62,11 +53,9 @@ const getStatisticsLoading = state => state.transactions.transactionsStatisticsI
 
 export {
   getAllTransactions,
-  filtredTransactions,
   getIsLoading,
   getTransactionsStatistics,
   getTransactionsIsLoading,
   getError,
   getStatisticsLoading,
-  // deleteTransaction,
 };
