@@ -7,7 +7,10 @@ import StatsTable from 'components/StatsTable';
 import { useTranslation } from 'react-i18next';
 
 import { operations } from 'redux/transactions/transactions-operations';
-import { getTransactionsStatistics, getStatisticsLoading } from 'redux/transactions/transactions-selectors';
+import {
+  getTransactionsStatistics,
+  getStatisticsLoading,
+} from 'redux/transactions/transactions-selectors';
 
 import { TabTitle, TabSection, NoTransactions } from './DiagramTab.styled';
 
@@ -77,29 +80,32 @@ function DiagramTab() {
   };
 
   return (
-  <>
-{isLoading ? <Loader/> 
-    : <TabSection>
-      {sortingTransactions.length === 0 ?
-        <NoTransactions>You have no transactions yet.</NoTransactions> :
-        <>
-      <div>
-        <TabTitle>{t('statistic')}</TabTitle>
-        <Chart chartData={chartData} total={balance.consumption} />
-      </div>
-      <StatsTable
-        categoriesStatistics={sortingTransactions}
-        balance={balance}
-        month={month}
-        year={year}
-        updateMonth={setMonth}
-        updateYear={setYear}
-          />
-        </>
-      }
-    </TabSection>
-      }
-      </>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <TabSection>
+          {sortingTransactions.length === 0 ? (
+            <NoTransactions>{t('no_transactions')}.</NoTransactions>
+          ) : (
+            <>
+              <div>
+                <TabTitle>{t('statistic')}</TabTitle>
+                <Chart chartData={chartData} total={balance.consumption} />
+              </div>
+              <StatsTable
+                categoriesStatistics={sortingTransactions}
+                balance={balance}
+                month={month}
+                year={year}
+                updateMonth={setMonth}
+                updateYear={setYear}
+              />
+            </>
+          )}
+        </TabSection>
+      )}
+    </>
   );
 }
 
