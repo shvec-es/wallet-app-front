@@ -15,7 +15,7 @@ const token = {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     try {
       const { data } = await axios.post(
@@ -23,10 +23,14 @@ export const register = createAsyncThunk(
         credentials,
       );
       token.set(data.payload.token);
-      toast.success(t('register_success'));
+      // toast.success(t('register_success'));
+      toast.success(
+        'Your registration has been successfully completed. You have just been sent an email containing membership activation instructions',
+      );
       return data;
     } catch (error) {
-      toast.error(t('error_something'));
+      // toast.error(t('error_something'));
+      toast.error('Something went wrong! Please, try again');
       return rejectWithValue(error.message);
     }
   },
@@ -35,8 +39,7 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
-    const { t } = useTranslation();
-
+    // const { t } = useTranslation();
     try {
       const { data } = await axios.post(
         'https://wallet-codewriters.herokuapp.com/api/auth/login',
@@ -45,22 +48,22 @@ export const logIn = createAsyncThunk(
       token.set(data.payload.token);
       return data.payload;
     } catch (error) {
-      toast.error(t('error_something'));
-
+      // toast.error(t('error_something'));
+      toast.error('Something went wrong! Please, try again');
       return rejectWithValue(error.message);
     }
   },
 );
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   try {
     await axios.get('https://wallet-codewriters.herokuapp.com/api/auth/logout');
     token.unset();
   } catch (error) {
-    toast.error(t('error_something'));
-
+    // toast.error(t('error_something'));
+    toast.error('Something went wrong! Please, try again');
     return error.message;
   }
 });
