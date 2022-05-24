@@ -13,7 +13,6 @@ import Table from './Table';
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from 'components/Loader';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 export default function HomeTab() {
   const { fetchTransactions } = operations;

@@ -57,7 +57,6 @@ export const MobileButtonDelete = styled.button`
   position: absolute;
   top: -10px;
   right: -15px;
-  // transform: translate(-50%, -50%);
   border-color: transparent;
   border-radius: 50%;
   outline: none;
