@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { BackGround, Header, PublicRoute, PrivateRoute } from 'components';
 import { fetchCurrentUser } from './redux/auth/auth-operations';
 import Spinner from 'components/Loader';
@@ -37,7 +37,7 @@ function App() {
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route
-            path="*"
+            path="/*"
             element={
               <PrivateRoute>
                 <Header />
@@ -61,6 +61,9 @@ function App() {
               </PublicRoute>
             }
           ></Route>
+
+          <Route path="/" element={<Navigate to="/home" />}></Route>
+          <Route path="*" element={<Navigate to="/home" />}></Route>
         </Routes>
       </Suspense>
     </>
