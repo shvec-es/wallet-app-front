@@ -28,7 +28,7 @@ const addTransaction = createAsyncThunk(
     { typeTransaction, sum, date, description, category },
     rejectWithValue,
   ) => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     try {
       if (typeTransaction || category === '') {
@@ -52,7 +52,8 @@ const addTransaction = createAsyncThunk(
         return data.payload;
       }
     } catch (error) {
-      toast.error(t('error_something'));
+      // toast.error(t('error_something'));
+      toast.error('Something wrong! Transaction not added!');
       return rejectWithValue(error.message);
     }
   },
@@ -78,12 +79,13 @@ const deleteTransaction = createAsyncThunk(
 const fetchTransactionsStatistics = createAsyncThunk(
   'transactions/fetchTransactionStatistics',
   async ({ month, year, token }, rejectWithValue) => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     try {
       return await ApiServices.getStats({ month, year }, token);
     } catch (error) {
-      toast.error(t('error_something'));
+      // toast.error(t('error_something'));
+      toast.error('404. Something wrong!')
     }
   },
 );
