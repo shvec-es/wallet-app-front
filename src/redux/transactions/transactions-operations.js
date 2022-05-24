@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import { useTranslation } from 'react-i18next';
 import ApiServices from 'services/ApiServices';
 
 axios.defaults.baseURL = 'http://wallet-codewriters.herokuapp.com';
@@ -28,6 +28,8 @@ const addTransaction = createAsyncThunk(
     { typeTransaction, sum, date, description, category },
     rejectWithValue,
   ) => {
+    const { t } = useTranslation();
+
     try {
       if (typeTransaction || category === '') {
         const data = await ApiServices.createTransaction({
@@ -50,7 +52,7 @@ const addTransaction = createAsyncThunk(
         return data.payload;
       }
     } catch (error) {
-      toast.error('Something wrong! Transaction not added!');
+      toast.error(t('error_something'));
       return rejectWithValue(error.message);
     }
   },
@@ -76,10 +78,12 @@ const deleteTransaction = createAsyncThunk(
 const fetchTransactionsStatistics = createAsyncThunk(
   'transactions/fetchTransactionStatistics',
   async ({ month, year, token }, rejectWithValue) => {
+    const { t } = useTranslation();
+
     try {
       return await ApiServices.getStats({ month, year }, token);
     } catch (error) {
-      toast.error('404. Something wrong!')
+      toast.error(t('error_something'));
     }
   },
 );

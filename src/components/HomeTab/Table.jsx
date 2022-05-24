@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import EllipsisText from "react-ellipsis-text";
+import EllipsisText from 'react-ellipsis-text';
 import { useTranslation } from 'react-i18next';
 import {
   TableMain,
@@ -29,7 +29,7 @@ function Table({ data }) {
   return (
     <>
       {data.length === 0 ? (
-        <NoTransactions>You have no transactions yet.</NoTransactions>
+        <NoTransactions>{t('no_transactions')}.</NoTransactions>
       ) : (
         <TableMain>
           <TableHeader>
@@ -63,7 +63,12 @@ function Table({ data }) {
                       ? category ?? 'Income'
                       : categoryUA ?? 'Дохід'}
                   </TableCell>
-                  <TableCell><EllipsisText text={description ?? '-'} length={14}></EllipsisText></TableCell>
+                  <TableCell>
+                    <EllipsisText
+                      text={description ?? '-'}
+                      length={14}
+                    ></EllipsisText>
+                  </TableCell>
                   <TableCellColor
                     type={typeTransaction === true ? 'income' : 'costs'}
                   >

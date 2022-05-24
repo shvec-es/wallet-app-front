@@ -25,7 +25,7 @@ function TableMobile({ data }) {
   return (
     <>
       {data.length === 0 ? (
-        <NoTransactions>You have no transactions yet.</NoTransactions>
+        <NoTransactions>{t('no_transactions')}.</NoTransactions>
       ) : (
         <>
           {data.map(

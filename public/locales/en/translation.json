@@ -52,5 +52,10 @@
   "month": "Month",
   "year": "Year",
   "type": "Type",
-  "sum": "Sum"
+  "sum": "Sum",
+
+  "no_transactions": "You have no transactions yet",
+  "error_something": "Something went wrong! Please, try again",
+
+  "register_success": "Your registration has been successfully completed. You have just been sent an email containing membership activation instructions"
 }
