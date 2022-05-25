@@ -134,7 +134,7 @@ export const WrapperPage = styled.div`
 export const WrapperForm = styled.div`
   @media (max-width: 767px) {
     background: var(--color-white);
-    height: 100vh;
+    height: 100%;
   }
   @media screen and (min-width: 1280px) {
     width: 731px;
