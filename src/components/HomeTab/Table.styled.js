@@ -12,7 +12,7 @@ export const TableHeader = styled.thead`
   padding: 7px 20px;
   font-size: 18px;
   font-weight: 700;
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
   border-radius: 30px;
 `;
 export const TableHeaderRow = styled.tr`
@@ -49,7 +49,8 @@ export const ButtonDelete = styled.button`
   opacity: 0;
   visibility: hidden;
   transition: all 250ms var(--cubic-bezier);
-  color:var(--color-primary);
+  color:${({ theme }) => theme.text};
+
   &:hover {
     transform: scale(1.2);
   }

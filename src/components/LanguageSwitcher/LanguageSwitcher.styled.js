@@ -11,7 +11,7 @@ export const Select = styled.select`
   outline: none;
   color: white;
   color: var(--color-gray);
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
 
   font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-style: normal;

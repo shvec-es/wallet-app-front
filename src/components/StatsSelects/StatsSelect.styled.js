@@ -15,9 +15,9 @@ padding-bottom: 13px;
 min-height: 50px;
 width: 100%;
 border-radius: 30px;
-border: 1px solid #000000;
-background-color: transparent;
-
+border: 1px solid ${({ theme }) => theme.text};
+background-color: transparent ;
+color: ${({ theme }) => theme.text};
 text-transform: capitalize;
 
 @media (min-width: 768px) {

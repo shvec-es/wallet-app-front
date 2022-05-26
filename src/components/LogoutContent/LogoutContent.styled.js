@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
 
   padding: 25px;
   border-radius: 12px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.headers};
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;

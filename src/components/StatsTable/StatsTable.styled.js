@@ -44,12 +44,11 @@ export const Table = styled.table`
 export const TableHeader = styled.thead`
   width: 280px;
 
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.headers};;
 `;
 
 export const HeadCell = styled.th`
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px;
   font-size: 18px;
   font-weight: 700;
   line-height: 1.5em;
