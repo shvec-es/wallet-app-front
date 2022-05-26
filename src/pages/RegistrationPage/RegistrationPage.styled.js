@@ -20,7 +20,7 @@ export const Button = styled.button`
   transition: background-color 300ms var(--cubic-bezier),
     color 300ms var(--cubic-bezier), transform 300ms var(--cubic-bezier);
   &:hover {
-    transform:scale(1.1);
+    transform: scale(1.1);
     background-color: #03a682;
   }
   @media screen and (min-width: 768px) {
@@ -45,7 +45,7 @@ export const ButtonLink = styled(NavLink)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
-   transition: background-color 300ms var(--cubic-bezier),
+  transition: background-color 300ms var(--cubic-bezier),
     color 300ms var(--cubic-bezier), transform 300ms var(--cubic-bezier);
   &:hover {
     transform: scale(1.1);
@@ -101,20 +101,17 @@ export const Form = styled('div')`
   justify-content: center;
   background: ${({ theme }) => theme.headers};
   box-sizing: border-box;
-  max-width: 320px;
-
+  width: 320px;
   padding: 32px 20px 36px 20px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-bottom: 36px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
-    max-width: 533px;
-
+    width: 533px;
     border-radius: var(--border-radius);
     padding: 40px 60px 46px 65px;
-    margin-left: auto;
-    margin-right: auto;
   } ;
 `;
 
@@ -123,14 +120,7 @@ export const ErrMessage = styled('div')`
   color: var(--color-tertiary);
 `;
 export const WrapperPage = styled.div`
-  max-width: 320px;
-
-  @media (min-width: 768px) {
-    max-width: 768px;
-  }
-
   @media (min-width: 1280px) {
-    max-width: 1280px;
   }
   margin: 0 auto;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -143,8 +133,12 @@ export const WrapperPage = styled.div`
   }
 `;
 export const WrapperForm = styled.div`
+  @media (max-width: 767px) {
+    background: var(--color-white);
+    height: 100%;
+  }
   @media screen and (min-width: 1280px) {
-    min-width: 731px;
+    width: 731px;
     padding: 52px 91px 52px 107px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
@@ -159,4 +153,7 @@ export const Switcher = styled.div`
   @media screen and (min-width: 768px) {
     right: -140px;
   }
+`;
+export const WrapperLogo = styled.div`
+  min-width: 555px;
 `;
