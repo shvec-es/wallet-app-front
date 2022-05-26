@@ -1,59 +1,68 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
-
-@media(min-width:768px){
-   width: 500px;
-
-}
-  width:230px
-  height: 200px;
-
   padding: 25px;
   border-radius: 12px;
-  background-color: white;
+  background-color: var(--color-white);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
 `;
 
 export const CloseBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 8px;
   right: 8px;
   width: 30px;
   height: 30px;
-  background: var(--color-white);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary);
   border-radius: 50%;
   cursor: pointer;
 
-  transition:transform 300ms var(--cubic-bezier);
-  &:hover{
-    transform: scale(1.2);
+  transition: transform 2500ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier), background-color 250ms var(--cubic-bezier),
+    animation 250ms var(--cubic-bezier);
 
+  &:hover,
+  &:focus-within {
+    transform: scale(1.1) rotate(360deg);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+`;
+
+export const CloseIcon = styled.svg`
+  width: 60%;
+  height: 60%;
+  stroke: currentColor;
 `;
 
 export const Title = styled.div`
-  padding-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-size: 25px;
   font-weight: 700;
   text-align: center;
-  text-transform: capitalize;
 `;
 
 export const BtnContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: -30px;
+  margin-left: -30px;
 `;
 
 export const ConfirmBtn = styled.button`
   width: 150px;
   height: 50px;
-  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 30px;
   background: var(--color-secondary);
   border-radius: 20px;
   font-style: normal;
@@ -66,21 +75,21 @@ export const ConfirmBtn = styled.button`
   border: transparent;
   color: var(--color-white);
 
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier), transform 250ms var(--cubic-bezier);
 
-  transition: background-color 300ms var(--cubic-bezier),
-    color 300ms var(--cubic-bezier);
   &:hover {
-   background-color:var(--color-white);
- 
-    background-color:#03a682 ;
-
+    background-color: var(--color-white);
+    background-color: var(--color-secondary-dark);
+    transform: scale(1.1);
   }
 `;
 
 export const CancelBtn = styled.button`
   width: 150px;
   height: 50px;
-
+  margin-left: 30px;
+  margin-top: 30px;
   background: var(--color-white);
   border: 1px solid var(--color-primary);
   border-radius: 20px;
@@ -92,12 +101,12 @@ export const CancelBtn = styled.button`
   text-transform: uppercase;
   color: var(--color-primary);
 
-  transition: background-color 300ms var(--cubic-bezier),
-    color 300ms var(--cubic-bezier);
-  &:hover {
-    
+  transition: background-color 250ms var(--cubic-bezier),
+    color 250ms var(--cubic-bezier), transform 250ms var(--cubic-bezier);
 
+  &:hover {
     background: var(--color-primary-light);
     color: var(--color-white);
+    transform: scale(1.1);
   }
 `;

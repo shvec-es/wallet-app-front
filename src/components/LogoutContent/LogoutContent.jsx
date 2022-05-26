@@ -1,41 +1,56 @@
-
-
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/auth-operations';
+import { useTranslation } from 'react-i18next';
+import icons from 'images/sprite.svg';
 import {
-    useDispatch} from "react-redux";
-
-import { logOut } from '../../redux/auth/auth-operations'
-
-
-import { ModalContainer, CloseBtn, Title, BtnContainer, ConfirmBtn, CancelBtn } from "./LogoutContent.styled"
+  ModalContainer,
+  CloseBtn,
+  CloseIcon,
+  Title,
+  BtnContainer,
+  ConfirmBtn,
+  CancelBtn,
+} from './LogoutContent.styled';
 
 const LogoutModal = ({ setOpenModal }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
+  const handleClick = () => {
+    dispatch(logOut());
+    setOpenModal(false);
+  };
 
-    
-    const handleClick = () => {
-    
-   
-        dispatch(logOut());
-        setOpenModal(false)
-     
-    }
-    return (
-       
-        <ModalContainer>
-             
-        <CloseBtn type="button" onClick={()=>{setOpenModal(false)}}>X</CloseBtn>
-            <Title>Are you sure you want to logout?</Title>
-            <BtnContainer>
-    <ConfirmBtn type="button" onClick={handleClick}>Ok</ConfirmBtn>
-            <CancelBtn type="button" onClick={()=>{setOpenModal(false)}}>Cancel</CancelBtn>
-            </BtnContainer>    
+  return (
+    <ModalContainer>
+      <CloseBtn
+        type="button"
+        onClick={() => {
+          setOpenModal(false);
+        }}
+      >
+        <CloseIcon>
+          <use href={`${icons}#close`} />
+        </CloseIcon>
+      </CloseBtn>
 
-</ModalContainer>
-                 
-      
-    )
-}
+      <Title>{t('logout_sure')}?</Title>
 
+      <BtnContainer>
+        <ConfirmBtn type="button" onClick={handleClick}>
+          {t('ok')}
+        </ConfirmBtn>
+        <CancelBtn
+          type="button"
+          onClick={() => {
+            setOpenModal(false);
+          }}
+        >
+          {t('cancel')}
+        </CancelBtn>
+      </BtnContainer>
+    </ModalContainer>
+  );
+};
 
 export default LogoutModal;
