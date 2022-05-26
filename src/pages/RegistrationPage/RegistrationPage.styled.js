@@ -69,13 +69,14 @@ export const Input = styled.input`
   border: none;
   border-bottom: 1px solid var(--color-gray-light);
   outline: none;
+  background: ${({ theme }) => theme.headers};
 `;
 export const Label = styled.label`
   display: block;
   position: relative;
   width: 280px;
   height: 32px;
-  color: var(--color-gray);
+  color: ${({ theme }) => theme.gray};
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -98,7 +99,7 @@ export const Form = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-white);
+  background: ${({ theme }) => theme.headers};
   box-sizing: border-box;
   width: 320px;
   padding: 32px 20px 36px 20px;

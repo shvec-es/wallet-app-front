@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const FormWrapper = styled.div`
   padding: 107px 0px;
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
   height: 100vh;
  
   @media (min-width: 768px) {
@@ -35,7 +35,7 @@ export const FormBg = styled.div`
     max-width: 533px;
     padding:60px 40px;
     border-radius: var(--border-radius);
-    background: var(--color-white);
+    background: ${({ theme }) => theme.headers};
   }
 `;
 
@@ -72,8 +72,8 @@ export const Input = styled.input`
   border: 0;
   font-family: 'Circe';
   font-size: 18px;
-  color: #212529;
-
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.headers};
   &::placeholder {
    
     font-family: 'Circe';

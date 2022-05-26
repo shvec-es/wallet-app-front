@@ -9,7 +9,7 @@ export const size = {
 export const MainHeader = styled.header`
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
 
   ${size.tablet} {
     padding-top: 20px;
@@ -48,7 +48,7 @@ export const LogoutBtn = styled.button`
   text-transform: capitalize;
 
   color: ${props => props.color || 'var(--color-gray)'};
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
   border: none;
   border-radius: 5px;
   padding-left: 12px;

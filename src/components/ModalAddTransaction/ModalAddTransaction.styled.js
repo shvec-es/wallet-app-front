@@ -4,7 +4,7 @@ export const ModalContainer = styled.div`
   width: 320px;
   max-height: 700px;
   padding: 20px 20px 35px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.headers};
   box-sizing: border-box;
 
   @media (min-width: 768px) {
@@ -55,7 +55,7 @@ export const CheckboxText = styled.span`
   font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-gray-light);
+  color: ${({ theme }) => theme.gray};
 `;
 
 export const CheckboxTextPlus = styled(CheckboxText)`
@@ -77,17 +77,18 @@ export const ModalSelect = styled.select`
   line-height: 1.5;
   border: transparent;
   outline: none;
-  border-bottom: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid ${({ theme }) => theme.gray};
   appearance: none;
   cursor: pointer;
 
   &::placeholder {
-    color: var(--color-gray-light);
+    color: ${({ theme }) => theme.gray};
   }
 `;
 
 export const ModalInputWrapper = styled.div`
   position: relative;
+  
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -107,9 +108,9 @@ export const ModalInput = styled.input`
   line-height: 1.5;
   border: transparent;
   outline: none;
-  border-bottom: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid ${({ theme }) => theme.gray};
   box-sizing: border-box;
-
+  background: ${({ theme }) => theme.headers};
   @media (min-width: 768px) {
     width: 185px;
   }
@@ -126,10 +127,10 @@ export const ModalInputComment = styled.textarea`
   font-size: 18px;
   line-height: 1.5;
   border: transparent;
-  border-bottom: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid ${({ theme }) => theme.gray};
   outline: none;
   resize: none;
-
+  background: ${({ theme }) => theme.headers};
   @media (min-width: 768px) {
     height: 32px;
   }

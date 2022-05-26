@@ -14,7 +14,7 @@ export const CurrencyTable = styled.table`
   color: #ffffff;
 
   background: url(${header}) top, url(${footer}) bottom;
-  background-color: var(--color-primary);
+  background-color: ${({ theme }) => theme.primary};
   background-repeat: no-repeat;
   background-size: contain;
 

@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   width: 100vw;
   z-index: -100;
   // filter: blur(50px);
-  background-color: var(--color-background);
+  background-color: ${({ theme }) => theme.background};
 `;
 
 export const TopEllipse = styled.svg`
@@ -17,7 +17,7 @@ export const TopEllipse = styled.svg`
   right: 0;
   width: 368px;
   height: 383px;
-  color: var(--color-ellipse-top);
+  color: ${({ theme }) => theme.ellipseTop};
 
   @media (min-width: 1280px) {
     width: 552px;
@@ -31,5 +31,5 @@ export const BottomEllipse = styled.svg`
   left: 0;
   width: 496px;
   height: 322px;
-  color: var(--color-ellipse-bottom);
+  color:  ${({ theme }) => theme.ellipseBottom};
 `;

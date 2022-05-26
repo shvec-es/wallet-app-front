@@ -7,7 +7,7 @@ export const MobileCard = styled.div`
   border-radius: 10px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.headers};
   border-left: 5px solid
     ${props =>
       props.type === 'income'
