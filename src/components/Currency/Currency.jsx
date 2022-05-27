@@ -24,7 +24,7 @@ export const Currency = () => {
 
     (async () => {
       setStatus('pending');
-      if (localCurrency && Date.now() - localCurrency?.time < 3600000) {
+      if (Date.now() - localCurrency?.time < 3600000) {
         // 3600000 = 1 hour
         setCurrency(localCurrency.data);
         setStatus('success');
@@ -55,38 +55,34 @@ export const Currency = () => {
   }, []);
 
   return (
-    <>
-      {status === 'pending' && (
-        <TailSpin
-          ariaLabel="loading-indicator"
-          color="var(--color-primary)"
-          height={100}
-          width={100}
-        />
-      )}
-      {status === 'success' && (
-        <CurrencyTable>
-          <TableHeader>
-            <TableRow>
-              <HeadCell>{t('ccy')}</HeadCell>
-              <HeadCell>{t('buy')}</HeadCell>
-              <HeadCell>{t('sale')}</HeadCell>
+    <CurrencyTable>
+      <TableHeader>
+        <TableRow>
+          <HeadCell>{t('ccy')}</HeadCell>
+          <HeadCell>{t('buy')}</HeadCell>
+          <HeadCell>{t('sale')}</HeadCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {status === 'success' &&
+          currency.map(({ ccy, buy, sale }) => (
+            <TableRow key={ccy}>
+              <TableData>{ccy}</TableData>
+              <TableData>{parseFloat(buy).toFixed(2)}</TableData>
+              <TableData>{parseFloat(sale).toFixed(2)}</TableData>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {currency &&
-              currency.map(({ ccy, buy, sale }) => (
-                <TableRow key={ccy}>
-                  <TableData>{ccy}</TableData>
-                  <TableData>{parseFloat(buy).toFixed(2)}</TableData>
-                  <TableData>{parseFloat(sale).toFixed(2)}</TableData>
-                </TableRow>
-              ))}
-          </TableBody>
-          <Media query="(min-width: 1280px)" render={() => <TableFooter />} />
-        </CurrencyTable>
-      )}
-    </>
+          ))}
+        {status === 'pending' && (
+          <TailSpin
+            ariaLabel="loading-indicator"
+            color="var(--color-white)"
+            height={80}
+            width={80}
+          />
+        )}
+      </TableBody>
+      <Media query="(min-width: 1280px)" render={() => <TableFooter />} />
+    </CurrencyTable>
   );
 };
 
