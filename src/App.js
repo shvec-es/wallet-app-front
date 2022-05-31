@@ -3,13 +3,17 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { BackGround, Header, PublicRoute, PrivateRoute } from 'components';
-import { fetchCurrentUser } from './redux/auth/auth-operations';
-import Spinner from 'components/Loader';
-
+import { fetchCurrentUser } from 'redux/auth/auth-operations';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme, GlobalStyles } from './components/Theme/theme';
-import  ThemeSwitcher  from './components/ThemeSwitcher/ThemeSwitcher';
+import {
+  BackGround,
+  Header,
+  PublicRoute,
+  PrivateRoute,
+  Spinner,
+  ThemeSwitcher,
+} from 'components';
+import { GlobalStyles, FontStyles, lightTheme, darkTheme } from './stylesheet';
 
 const RegistrationPage = lazy(() =>
   import(
@@ -25,23 +29,24 @@ const DashboardPage = lazy(() =>
   import('pages/DashboardPage' /* webpackChunkName: 'dashboard-page' */),
 );
 
-function App() {
-  const [theme, setTheme] = useState("light");
-  
+const App = () => {
+  const [theme, setTheme] = useState('light');
+
   const toggleTheme = () => {
-    const updatedTheme = theme === "dark" ? "light" : "dark";
+    const updatedTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(updatedTheme);
-    localStorage.setItem("theme", updatedTheme);
+    localStorage.setItem('theme', updatedTheme);
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia &&
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark =
+      window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme && ["dark", "light"].includes(savedTheme)) {
+    if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
       setTheme(savedTheme);
     } else if (prefersDark) {
-      setTheme("dark");
+      setTheme('dark');
     }
   }, []);
 
@@ -51,14 +56,12 @@ function App() {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-
   return (
-    <>
-    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
-      <GlobalStyles />
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <BackGround /><GlobalStyles /><FontStyles />
       <ToastContainer autoClose={5000} pauseOnHover theme="colored" />
-      <ThemeSwitcher toggleTheme={toggleTheme} theme={theme}/>
-      <BackGround/>
+      <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
+
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route
@@ -91,9 +94,8 @@ function App() {
           <Route path="*" element={<Navigate to="/home" />}></Route>
         </Routes>
       </Suspense>
-      </ThemeProvider>
-    </>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
