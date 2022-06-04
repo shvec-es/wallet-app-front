@@ -11,6 +11,7 @@ export const Switcher = styled.button`
   cursor: pointer;
   outline: none;
   z-index: 100;
+
   &:hover {
     color: ${({ theme }) => theme.text};
   }

@@ -4,7 +4,6 @@ import HomeTab from './HomeTab';
 import ButtonAddTransactions from './ButtonAddTransactions';
 import Currency from './Currency';
 import Chart from './Chart';
-
 import LogoForm from './LogoForm';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -17,6 +16,8 @@ import ModalWindow from './ModalWindow';
 import LogoutContent from './LogoutContent';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
+import Spinner from './Loader';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export {
   BackGround,
@@ -25,7 +26,6 @@ export {
   ButtonAddTransactions,
   Currency,
   Chart,
-
   LogoForm,
   LanguageSwitcher,
   Logo,
@@ -37,5 +37,7 @@ export {
   ModalWindow,
   LogoutContent,
   PrivateRoute,
-  PublicRoute
+  PublicRoute,
+  Spinner,
+  ThemeSwitcher
 };
